@@ -1,5 +1,3 @@
-# Android Iconify
-
 ![Alt](https://raw.github.com/JoanZapata/android-iconify/master/screenshot.png)
 
 Iconify is packed as a single JAR file, you can download it here, or via maven:
@@ -45,7 +43,7 @@ It works the same way for anything that extends TextView, so you can put icons i
 ```xml
 <IconButton
     android:id="@+id/icon"
-    android:text="{icon_star} Edit"
+    android:text="{icon_edit} Edit"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 ```
