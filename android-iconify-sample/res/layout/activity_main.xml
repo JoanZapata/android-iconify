@@ -14,10 +14,16 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 
+    It uses FontAwesome font, licensed under OFL 1.1, which is compatible
+    with this library's license.
+
+        http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
+
 -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/gridView"
@@ -30,4 +36,4 @@
         android:gravity="center" />
 
 
-</FrameLayout>
+</LinearLayout>

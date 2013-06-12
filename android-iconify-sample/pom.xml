@@ -18,7 +18,6 @@
             <groupId>com.joanzapata.android</groupId>
             <artifactId>android-iconify</artifactId>
             <version>${project.version}</version>
-            <type>apklib</type>
         </dependency>
         <dependency>
             <groupId>com.joanzapata.android</groupId>
