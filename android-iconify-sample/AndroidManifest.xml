@@ -1,0 +1,44 @@
+<!--
+
+    Copyright 2013 Joan Zapata
+
+    This file is part of Android-pdfview.
+
+    Android-pdfview is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Android-pdfview is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Android-pdfview.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.joanzapata.android.icons.sample"
+	android:versionCode="3"
+	android:versionName="1.0.1" >
+
+	<uses-sdk
+		android:minSdkVersion="8"
+		android:targetSdkVersion="17" />
+
+	<application
+		android:icon="@drawable/ic_launcher"
+        android:theme="@style/AppTheme" 
+		android:label="@string/app_name" >
+		<activity
+			android:name="com.joanzapata.android.IconsActivity_"
+			android:label="@string/app_name" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+	</application>
+
+</manifest>

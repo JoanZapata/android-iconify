@@ -1,0 +1,12 @@
+target/
+lint.xml
+bin/
+gen/
+.settings
+.project
+.classpath
+*.iml
+.idea
+out
+gen-external-apklibs/
+classes/

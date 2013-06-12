@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.joanzapata.android</groupId>
+    <artifactId>android-iconify-parent</artifactId>
+    <name>Android Icons parent</name>
+    <description>An icon library based on FontAwesome for Android</description>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <url>http://joanzapata.com/android-icons/</url>
+    <inceptionYear>2013</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>http://github.com/JoanZapata/android-icons/</url>
+        <connection>scm:git:git://github.com/JoanZapata/android-icons.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/JoanZapata/android-icons.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Joan Zapata</name>
+            <email>zapata.joan@gmail.com</email>
+            <url>http://joanzapata.com</url>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
+        <java.version>1.6</java.version>
+        <android-maven-plugin.version>3.0.0</android-maven-plugin.version>
+        <android.version>4.1.1.4</android.version>
+        <api.platform>16</api.platform>
+        <androidannotations.version>2.7</androidannotations.version>
+        <actionBarSherlock.version>4.2.0</actionBarSherlock.version>
+        <maven-jarsigner.version>1.2</maven-jarsigner.version>
+        <maven-license.version>1.10.b1</maven-license.version>
+        <base-adapter-helper.version>1.1.0</base-adapter-helper.version>
+        <password />
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>${android-maven-plugin.version}</version>
+                    <configuration>
+                        <androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+                        <assetsDirectory>${project.basedir}/assets</assetsDirectory>
+                        <resourceDirectory>${project.basedir}/res</resourceDirectory>
+                        <nativeLibrariesDirectory>${project.basedir}/libs</nativeLibrariesDirectory>
+                        <sdk>
+                            <platform>${api.platform}</platform>
+                        </sdk>
+                        <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                    </configuration>
+                    <extensions>true</extensions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <version>${maven-license.version}</version>
+                <configuration>
+                    <header>LICENSE.txt</header>
+                    <excludes>
+                        <exclude>**/.idea/**</exclude>
+                        <exclude>**/*.iml</exclude>
+                        <exclude>LICENSE.txt</exclude>
+                        <exclude>RELEASE.md</exclude>
+                        <exclude>**/.gitignore</exclude>
+                        <exclude>README.md</exclude>
+                        <exclude>**/keystore</exclude>
+                    </excludes>
+                    <strictCheck>true</strictCheck>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>android-iconify</module>
+        <module>android-iconify-sample</module>
+    </modules>
+</project>
