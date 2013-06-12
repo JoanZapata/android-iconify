@@ -26,9 +26,10 @@
 Iconify.addIcons(iconTextView);
 ```
 
+> Syntax is inspired from [Linkify](http://developer.android.com/reference/android/text/util/Linkify.html).
+
 ![Alt](https://raw.github.com/JoanZapata/android-iconify/master/iconify-this.png)
 
-> Syntax is based on Android's [Linkify](http://developer.android.com/reference/android/text/util/Linkify.html) feature.
 
 ## From XML
 
