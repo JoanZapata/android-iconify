@@ -14,7 +14,7 @@
     <description>An icon library based on FontAwesome for Android</description>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <url>http://joanzapata.com/android-icons/</url>
+    <url>http://joanzapata.com/android-iconify/</url>
     <inceptionYear>2013</inceptionYear>
 
     <licenses>
@@ -25,9 +25,9 @@
     </licenses>
 
     <scm>
-        <url>http://github.com/JoanZapata/android-icons/</url>
-        <connection>scm:git:git://github.com/JoanZapata/android-icons.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/JoanZapata/android-icons.git</developerConnection>
+        <url>http://github.com/JoanZapata/android-iconify/</url>
+        <connection>scm:git:git://github.com/JoanZapata/android-iconify.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/JoanZapata/android-iconify.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
