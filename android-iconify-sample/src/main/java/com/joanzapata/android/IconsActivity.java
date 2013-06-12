@@ -20,36 +20,75 @@
  */
 package com.joanzapata.android;
 
-import android.app.Activity;
-import android.widget.GridView;
-import android.widget.TextView;
+import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.NonConfigurationInstance;
 import com.googlecode.androidannotations.annotations.ViewById;
-import com.joanzapata.android.iconify.Iconify;
 import com.joanzapata.android.icons.sample.R;
+import com.viewpagerindicator.TitlePageIndicator;
 
-import static com.joanzapata.android.iconify.Iconify.IconValue;
-import static java.lang.String.format;
-import static java.util.Arrays.asList;
+import java.io.Serializable;
 
 @EActivity(R.layout.activity_main)
-public class IconsActivity extends Activity {
+public class IconsActivity extends FragmentActivity {
+
+    private static final String TAG = IconsActivity.class.getSimpleName();
 
     @ViewById
-    protected GridView gridView;
+    protected ViewPager viewPager;
+
+    @ViewById
+    protected TitlePageIndicator titles;
 
     @AfterViews
     void afterViews() {
-        gridView.setAdapter(new QuickAdapter<IconValue>(this, R.layout.item, asList(IconValue.values())) {
-            @Override
-            protected void convert(BaseAdapterHelper helper, IconValue iconValue) {
-                helper.setText(R.id.icon, format("{%s}", iconValue.toString()))
-                        .setText(R.id.iconText, format("{%s} %s",
-                                iconValue.toString(), iconValue.toString()));
-                Iconify.addIcons((TextView) helper.getView(R.id.icon));
-                Iconify.addIcons((TextView) helper.getView(R.id.iconText));
+        viewPager.setAdapter(new ViewPagerAdapter(this));
+        titles.setViewPager(viewPager);
+    }
+
+    static class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        @SuppressWarnings("unchecked")
+        private Class<? extends Fragment>[] pages = new Class[]
+                {HomeFragment_.class, IconListFragment_.class};
+
+        private int[] titles = {
+                R.string.page_home,
+                R.string.page_list
+        };
+
+        private Context context;
+
+        public ViewPagerAdapter(FragmentActivity context) {
+            super(context.getSupportFragmentManager());
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            return pages.length;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return context.getString(titles[position]);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            try {
+                return pages[position].newInstance();
+            } catch (Exception e) {
+                Log.e(TAG, "", e);
+                return null;
             }
-        });
+        }
+
     }
 }

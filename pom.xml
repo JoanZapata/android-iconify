@@ -51,6 +51,7 @@
         <maven-jarsigner.version>1.2</maven-jarsigner.version>
         <maven-license.version>1.10.b1</maven-license.version>
         <base-adapter-helper.version>1.1.0</base-adapter-helper.version>
+        <android-support.version>r7</android-support.version>
         <password />
     </properties>
 

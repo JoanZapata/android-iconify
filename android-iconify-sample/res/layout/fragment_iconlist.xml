@@ -20,8 +20,19 @@
         http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
 
 -->
-<resources>
-    <string name="app_name">android-icons demo</string>
-    <string name="page_home">About</string>
-    <string name="page_list">All icons</string>
-</resources>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="@dimen/columnWidth"
+        android:numColumns="auto_fit"
+        android:horizontalSpacing="@dimen/smallSpace"
+        android:stretchMode="columnWidth"
+        android:gravity="center" />
+
+</LinearLayout>
