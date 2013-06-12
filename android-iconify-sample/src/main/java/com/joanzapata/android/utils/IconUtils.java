@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static java.lang.Integer.toHexString;
+
 public final class IconUtils {
 
     private IconUtils() {
@@ -20,5 +22,9 @@ public final class IconUtils {
             }
         });
         return iconValues;
+    }
+
+    public static String unicodeValue(Iconify.IconValue iconValue) {
+        return "\\u" + toHexString(iconValue.character() | 0x10000).substring(1);
     }
 }

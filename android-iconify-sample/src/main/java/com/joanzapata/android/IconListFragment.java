@@ -42,7 +42,11 @@ public class IconListFragment extends Fragment {
 
     @ItemClick
     void gridView(IconValue iconValue) {
-
+        IconDialogFragment_.builder()
+                .iconValue(iconValue)
+                .build()
+                .show(getFragmentManager(),
+                        IconDialogFragment.class.getSimpleName());
     }
 
     @Override

@@ -22,6 +22,7 @@ package com.joanzapata.android.iconify;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -31,6 +32,8 @@ import java.io.*;
 import static java.lang.String.valueOf;
 
 public final class Iconify {
+
+    private static final String TTF_FILE = "fontawesome-webfont-3.2.0.ttf";
 
     private static Typeface typeface = null;
 
@@ -76,14 +79,14 @@ public final class Iconify {
 
     private static final Typeface fileStreamTypeface(Context context) {
         if (typeface != null) return typeface;
-        InputStream inputStream = Iconify.class.getClassLoader().getResourceAsStream("fontawesome_webfont.ttf");
+        InputStream inputStream = Iconify.class.getClassLoader().getResourceAsStream(TTF_FILE);
         File f = new File(context.getFilesDir(), "icon_tmp");
         if (!f.exists()) {
             if (!f.mkdirs()) {
                 return null;
             }
         }
-        File outPath = new File(f, "tmp.raw");
+        File outPath = new File(f, TTF_FILE);
         try {
             byte[] buffer = new byte[inputStream.available()];
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(outPath));
