@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE_2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -38,9 +38,11 @@ public final class Iconify {
         // Prevent instantiation
     }
 
-    public static final void addIcons(TextView textView) {
-        textView.setTypeface(fileStreamTypeface(textView.getContext()));
-        textView.setText(replaceIcons(new StringBuilder(textView.getText().toString())));
+    public static final void addIcons(TextView... textViews) {
+        for (TextView textView : textViews) {
+            textView.setTypeface(fileStreamTypeface(textView.getContext()));
+            textView.setText(replaceIcons(new StringBuilder(textView.getText().toString())));
+        }
     }
 
     private static StringBuilder replaceIcons(StringBuilder text) {
@@ -100,12 +102,12 @@ public final class Iconify {
     }
 
     public static enum IconValue {
-        icon_glass('\uf000'), icon_music('\uf001'), icon_search('\uf002'), icon_envelope('\uf003'),
+        icon_glass('\uf000'), icon_music('\uf001'), icon_search('\uf002'), icon_envelope_alt('\uf003'),
         icon_heart('\uf004'), icon_star('\uf005'), icon_star_empty('\uf006'), icon_user('\uf007'),
         icon_film('\uf008'), icon_th_large('\uf009'), icon_th('\uf00a'), icon_th_list('\uf00b'),
         icon_ok('\uf00c'), icon_remove('\uf00d'), icon_zoom_in('\uf00e'), icon_zoom_out('\uf010'),
         icon_off('\uf011'), icon_signal('\uf012'), icon_cog('\uf013'), icon_trash('\uf014'),
-        icon_home('\uf015'), icon_file('\uf016'), icon_time('\uf017'), icon_road('\uf018'),
+        icon_home('\uf015'), icon_file_alt('\uf016'), icon_time('\uf017'), icon_road('\uf018'),
         icon_download_alt('\uf019'), icon_download('\uf01a'), icon_upload('\uf01b'), icon_inbox('\uf01c'),
         icon_play_circle('\uf01d'), icon_repeat('\uf01e'), icon_refresh('\uf021'), icon_list_alt('\uf022'),
         icon_lock('\uf023'), icon_flag('\uf024'), icon_headphones('\uf025'), icon_volume_off('\uf026'),
@@ -131,8 +133,8 @@ public final class Iconify {
         icon_chevron_up('\uf077'), icon_chevron_down('\uf078'), icon_retweet('\uf079'), icon_shopping_cart('\uf07a'),
         icon_folder_close('\uf07b'), icon_folder_open('\uf07c'), icon_resize_vertical('\uf07d'), icon_resize_horizontal('\uf07e'),
         icon_bar_chart('\uf080'), icon_twitter_sign('\uf081'), icon_facebook_sign('\uf082'), icon_camera_retro('\uf083'),
-        icon_key('\uf084'), icon_cogs('\uf085'), icon_comments('\uf086'), icon_thumbs_up('\uf087'),
-        icon_thumbs_down('\uf088'), icon_star_half('\uf089'), icon_heart_empty('\uf08a'), icon_signout('\uf08b'),
+        icon_key('\uf084'), icon_cogs('\uf085'), icon_comments('\uf086'), icon_thumbs_up_alt('\uf087'),
+        icon_thumbs_down_alt('\uf088'), icon_star_half('\uf089'), icon_heart_empty('\uf08a'), icon_signout('\uf08b'),
         icon_linkedin_sign('\uf08c'), icon_pushpin('\uf08d'), icon_external_link('\uf08e'), icon_signin('\uf090'),
         icon_trophy('\uf091'), icon_github_sign('\uf092'), icon_upload_alt('\uf093'), icon_lemon('\uf094'),
         icon_phone('\uf095'), icon_check_empty('\uf096'), icon_bookmark_empty('\uf097'), icon_phone_sign('\uf098'),
@@ -149,23 +151,23 @@ public final class Iconify {
         icon_truck('\uf0d1'), icon_pinterest('\uf0d2'), icon_pinterest_sign('\uf0d3'), icon_google_plus_sign('\uf0d4'),
         icon_google_plus('\uf0d5'), icon_money('\uf0d6'), icon_caret_down('\uf0d7'), icon_caret_up('\uf0d8'),
         icon_caret_left('\uf0d9'), icon_caret_right('\uf0da'), icon_columns('\uf0db'), icon_sort('\uf0dc'),
-        icon_sort_down('\uf0dd'), icon_sort_up('\uf0de'), icon_envelope_alt('\uf0e0'), icon_linkedin('\uf0e1'),
+        icon_sort_down('\uf0dd'), icon_sort_up('\uf0de'), icon_envelope('\uf0e0'), icon_linkedin('\uf0e1'),
         icon_undo('\uf0e2'), icon_legal('\uf0e3'), icon_dashboard('\uf0e4'), icon_comment_alt('\uf0e5'),
         icon_comments_alt('\uf0e6'), icon_bolt('\uf0e7'), icon_sitemap('\uf0e8'), icon_umbrella('\uf0e9'),
         icon_paste('\uf0ea'), icon_lightbulb('\uf0eb'), icon_exchange('\uf0ec'), icon_cloud_download('\uf0ed'),
         icon_cloud_upload('\uf0ee'), icon_user_md('\uf0f0'), icon_stethoscope('\uf0f1'), icon_suitcase('\uf0f2'),
-        icon_bell_alt('\uf0f3'), icon_coffee('\uf0f4'), icon_food('\uf0f5'), icon_file_alt('\uf0f6'),
+        icon_bell_alt('\uf0f3'), icon_coffee('\uf0f4'), icon_food('\uf0f5'), icon_file_text_alt('\uf0f6'),
         icon_building('\uf0f7'), icon_hospital('\uf0f8'), icon_ambulance('\uf0f9'), icon_medkit('\uf0fa'),
         icon_fighter_jet('\uf0fb'), icon_beer('\uf0fc'), icon_h_sign('\uf0fd'), icon_plus_sign_alt('\uf0fe'),
         icon_double_angle_left('\uf100'), icon_double_angle_right('\uf101'), icon_double_angle_up('\uf102'), icon_double_angle_down('\uf103'),
         icon_angle_left('\uf104'), icon_angle_right('\uf105'), icon_angle_up('\uf106'), icon_angle_down('\uf107'),
         icon_desktop('\uf108'), icon_laptop('\uf109'), icon_tablet('\uf10a'), icon_mobile_phone('\uf10b'),
         icon_circle_blank('\uf10c'), icon_quote_left('\uf10d'), icon_quote_right('\uf10e'), icon_spinner('\uf110'),
-        icon_circle('\uf111'), icon_reply('\uf112'), icon_folder_close_alt('\uf114'), icon_folder_open_alt('\uf115'),
-        icon_expand_alt('\uf116'), icon_collapse_alt('\uf117'), icon_smile('\uf118'), icon_frown('\uf119'),
-        icon_meh('\uf11a'), icon_gamepad('\uf11b'), icon_keyboard('\uf11c'), icon_flag_alt('\uf11d'),
-        icon_flag_checkered('\uf11e'), icon_terminal('\uf120'), icon_code('\uf121'), icon_reply_all('\uf122'),
-        icon_mail_reply_all('\uf122'), icon_star_half_full('\uf123'), icon_star_half_empty('\uf123'), icon_location_arrow('\uf124'),
+        icon_circle('\uf111'), icon_reply('\uf112'), icon_github_alt('\uf113'), icon_folder_close_alt('\uf114'),
+        icon_folder_open_alt('\uf115'), icon_expand_alt('\uf116'), icon_collapse_alt('\uf117'), icon_smile('\uf118'),
+        icon_frown('\uf119'), icon_meh('\uf11a'), icon_gamepad('\uf11b'), icon_keyboard('\uf11c'),
+        icon_flag_alt('\uf11d'), icon_flag_checkered('\uf11e'), icon_terminal('\uf120'), icon_code('\uf121'),
+        icon_reply_all('\uf122'), icon_mail_reply_all('\uf122'), icon_star_half_empty('\uf123'), icon_location_arrow('\uf124'),
         icon_crop('\uf125'), icon_code_fork('\uf126'), icon_unlink('\uf127'), icon_question('\uf128'),
         icon_info('\uf129'), icon_exclamation('\uf12a'), icon_superscript('\uf12b'), icon_subscript('\uf12c'),
         icon_eraser('\uf12d'), icon_puzzle_piece('\uf12e'), icon_microphone('\uf130'), icon_microphone_off('\uf131'),
@@ -175,12 +177,35 @@ public final class Iconify {
         icon_unlock_alt('\uf13e'), icon_bullseye('\uf140'), icon_ellipsis_horizontal('\uf141'), icon_ellipsis_vertical('\uf142'),
         icon_rss_sign('\uf143'), icon_play_sign('\uf144'), icon_ticket('\uf145'), icon_minus_sign_alt('\uf146'),
         icon_check_minus('\uf147'), icon_level_up('\uf148'), icon_level_down('\uf149'), icon_check_sign('\uf14a'),
-        icon_edit_sign('\uf14b'), icon_external_link_sign('\uf14c'), icon_share_sign('\uf14d');
+        icon_edit_sign('\uf14b'), icon_external_link_sign('\uf14c'), icon_share_sign('\uf14d'), icon_compass('\uf14e'),
+        icon_collapse('\uf150'), icon_collapse_top('\uf151'), icon_expand('\uf152'), icon_eur('\uf153'),
+        icon_gbp('\uf154'), icon_usd('\uf155'), icon_inr('\uf156'), icon_jpy('\uf157'),
+        icon_cny('\uf158'), icon_krw('\uf159'), icon_btc('\uf15a'), icon_file('\uf15b'),
+        icon_file_text('\uf15c'), icon_sort_by_alphabet('\uf15d'), icon_sort_by_alphabet_alt('\uf15e'), icon_sort_by_attributes('\uf160'),
+        icon_sort_by_attributes_alt('\uf161'), icon_sort_by_order('\uf162'), icon_sort_by_order_alt('\uf163'), icon_thumbs_up('\uf164'),
+        icon_thumbs_down('\uf165'), icon_youtube_sign('\uf166'), icon_youtube('\uf167'), icon_xing('\uf168'),
+        icon_xing_sign('\uf169'), icon_youtube_play('\uf16a'), icon_dropbox('\uf16b'), icon_stackexchange('\uf16c'),
+        icon_instagram('\uf16d'), icon_flickr('\uf16e'), icon_adn('\uf170'), icon_bitbucket('\uf171'),
+        icon_bitbucket_sign('\uf172'), icon_tumblr('\uf173'), icon_tumblr_sign('\uf174'), icon_long_arrow_down('\uf175'),
+        icon_long_arrow_up('\uf176'), icon_long_arrow_left('\uf177'), icon_long_arrow_right('\uf178'), icon_apple('\uf179'),
+        icon_windows('\uf17a'), icon_android('\uf17b'), icon_linux('\uf17c'), icon_dribble('\uf17d'),
+        icon_skype('\uf17e'), icon_foursquare('\uf180'), icon_trello('\uf181'), icon_female('\uf182'),
+        icon_male('\uf183'), icon_gittip('\uf184'), icon_sun('\uf185'), icon_moon('\uf186'),
+        icon_archive('\uf187'), icon_bug('\uf188'), icon_vk('\uf189'), icon_weibo('\uf18a'),
+        icon_renren('\uf18b');
 
         char character;
 
         IconValue(char character) {
             this.character = character;
+        }
+
+        public String formattedName() {
+            return "{" + name() + "}";
+        }
+
+        public char character() {
+            return character;
         }
     }
 }
