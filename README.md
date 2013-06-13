@@ -1,6 +1,6 @@
 ![Alt](https://raw.github.com/JoanZapata/android-iconify/master/screenshot.png)
 
-**Iconify** is a single JAR, you can download it [here](#), it's available on **Maven Central**:
+**Iconify** is a single JAR, you can download it [here](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.0/android-iconify-1.0.0.jar), it's available on **Maven Central**:
 
 ```xml
 <dependency>
