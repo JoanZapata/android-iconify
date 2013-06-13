@@ -1,5 +1,7 @@
 ![Alt](https://raw.github.com/JoanZapata/android-iconify/master/header.png)
 
+[![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
+
 > **Iconify** makes it easy to include any of the **[361 FontAwesome icons](http://fortawesome.github.io/Font-Awesome/icons)** in a native Android application. 
 
 > If you're not familiar with it, ```FontAwesome``` is a **font** in which some special characters draw vectorial icons instead of letters. That means you can **scale them as much as you want**, and you can **apply text transforms** on these icons, just like you would do with texts. These icons will **never ever become fuzzy**.
