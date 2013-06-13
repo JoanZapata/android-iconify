@@ -17,6 +17,8 @@ Wrap icon names with ```{ }``` where you want the icon to appear in the text.
     android:layout_height="wrap_content" />
 ```
 
+![Alt](https://raw.github.com/JoanZapata/android-iconify/master/texts.png)
+
 > You can use any icon from [FontAwesome 3.2.0](http://fortawesome.github.io/Font-Awesome/icons/)
 
 
