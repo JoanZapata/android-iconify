@@ -1,6 +1,65 @@
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/screenshot.png)
+![Alt](https://raw.github.com/JoanZapata/android-iconify/master/header.png)
 
-**Iconify** is a single JAR, you can download it [here](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.0/android-iconify-1.0.0.jar), it's also available on **Maven Central**:
+> **Iconify** makes it easy to include any of the **[361 FontAwesome icons](http://fortawesome.github.io/Font-Awesome/icons)** in a native Android application. 
+
+> If you're not familiar with it, ```FontAwesome``` is a **font** in which some special characters draw vectorial icons instead of letters. That means you can **scale them as much as you want**, and you can **apply text transforms** on these icons, just like you would do with texts. These icons will **never ever become fuzzy**.
+
+## How to use
+
+Wrap icon names with ```{ }``` where you want the icon to appear in the text.
+
+```xml
+<IconTextView
+    android:text="FontAwesome {icon_flag} in Android {icon_android} !"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+```
+
+> You can use any icon from [FontAwesome 3.2.0](http://fortawesome.github.io/Font-Awesome/icons/)
+
+
+# Transforms
+
+The good thing is that you can **scale** and apply **shadows** and **colors** to the icon, like any text.
+
+```xml
+<IconTextView
+    android:text="{icon_android} !"
+    android:shadowColor="#22000000"
+    android:shadowDx="3"
+    android:shadowDy="3"
+    android:shadowRadius="1"
+    android:textSize="90dp"
+    android:textColor="#FF33B5E5"
+    ... />
+```
+
+![Alt](https://raw.github.com/JoanZapata/android-iconify/master/androids.png)
+
+## Buttons
+
+It plays nice with buttons, just use ```IconButton``` instead of ```Button```.
+
+```xml
+<IconButton
+    android:text="{icon_retweet} Retweet"
+    ... />
+```
+
+![Alt](https://raw.github.com/JoanZapata/android-iconify/master/buttons.png)
+
+## Other views
+
+Any ```View``` that extends ```TextView``` can be iconified programmatically.
+
+```java
+TextView myTextView = (TextView) findViewById(R.id.myTextView);
+Iconify.addIcons(myTextView);
+```
+
+## [Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.0/android-iconify-1.0.0.jar)
+
+Or via **Maven Central**
 
 ```xml
 <dependency>
@@ -9,49 +68,6 @@
     <version>1.0.0</version>
 </dependency>
 ```
-
-## Programmatically
-
-```xml
-<TextView
-    android:id="@+id/iconTextView"
-    android:text="Iconify this {icon_star} !"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-```
-
-> You can use any icon from [FontAwesome 3.2.0](http://fortawesome.github.io/Font-Awesome/icons/)
-
-```java
-Iconify.addIcons(iconTextView);
-```
-
-> Syntax is inspired from [Linkify](http://developer.android.com/reference/android/text/util/Linkify.html).
-
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/iconify-this.png)
-
-
-## From XML
-
-```xml
-<IconTextView
-    android:id="@+id/icon"
-    android:text="Iconify this {icon_star} !"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-```
-
-It works the same way for anything that extends TextView, so you can put icons in your buttons too.
-
-```xml
-<IconButton
-    android:id="@+id/icon"
-    android:text="{icon_edit} Edit"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-```
-
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/edit.png)
 
 ## License
 
