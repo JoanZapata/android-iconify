@@ -20,7 +20,7 @@
     android:layout_height="wrap_content" />
 ```
 
-> You can use any icon from [FontAwesome 3.1.1](http://fortawesome.github.io/Font-Awesome/icons/)
+> You can use any icon from [FontAwesome 3.2.0](http://fortawesome.github.io/Font-Awesome/icons/)
 
 ```java
 Iconify.addIcons(iconTextView);
