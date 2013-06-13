@@ -28,7 +28,7 @@ The good thing is that you can **scale** and apply **shadows** and **colors** to
 
 ```xml
 <IconTextView
-    android:text="{icon_android} !"
+    android:text="{icon_android}"
     android:shadowColor="#22000000"
     android:shadowDx="3"
     android:shadowDy="3"
