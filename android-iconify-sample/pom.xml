@@ -90,7 +90,7 @@
                                     <keystore>${project.baseUri}keystore</keystore>
                                     <storepass>${password}</storepass>
                                     <keypass>${password}</keypass>
-                                    <alias>android-pdfview</alias>
+                                    <alias>android-iconify</alias>
                                     <arguments>
                                         <argument>-sigalg</argument>
                                         <argument>MD5withRSA</argument>
