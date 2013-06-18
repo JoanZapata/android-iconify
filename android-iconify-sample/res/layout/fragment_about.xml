@@ -73,12 +73,8 @@
         <TextView
             android:layout_marginTop="@dimen/bigSpace"
             android:id="@+id/bullets"
-            android:shadowColor="#22000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="1"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="22dp"
             android:gravity="left"
             android:lineSpacingExtra="4dp"
             android:layout_below="@+id/title"

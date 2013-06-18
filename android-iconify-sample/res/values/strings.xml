@@ -28,10 +28,10 @@
         <![CDATA[FONTAWESOME<br><font color="#CCCCCC">FOR</font>ANDROID]]>
     </string>
     <string name="bullets"><![CDATA[
-            <font color="#FFF601">{icon_android}</font> Single JAR library<br>
-            <font color="#fff601">{icon_thumbs_up}</font> Available in Maven Central<br>
-            <font color="#fff601">{icon_flag}</font> Font Awesome 3.2.0<br>
-            <font color="#fff601">{icon_globe}</font> Apache v2 license<br>
-            <font color="#fff601">{icon_twitter}</font> @JoanZap<br>
+            <font color="#999999">{icon_android}</font> Open source library<br>
+            <font color="#999999">{icon_thumbs_up}</font> Available in Maven Central<br>
+            <font color="#999999">{icon_flag}</font> Font Awesome 3.2.0<br>
+            <font color="#999999">{icon_globe}</font> Apache v2 license<br>
+            <font color="#999999">{icon_twitter}</font> @JoanZap<br>
         ]]></string>
 </resources>

@@ -44,4 +44,5 @@ public class IconTextView extends TextView {
     private void init() {
         Iconify.addIcons(this);
     }
+
 }

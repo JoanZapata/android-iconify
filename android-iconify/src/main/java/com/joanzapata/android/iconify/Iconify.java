@@ -22,6 +22,8 @@ package com.joanzapata.android.iconify;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +46,13 @@ public final class Iconify {
     public static final void addIcons(TextView... textViews) {
         for (TextView textView : textViews) {
             textView.setTypeface(fileStreamTypeface(textView.getContext()));
-            textView.setText(replaceIcons(new StringBuilder(textView.getText().toString())));
+            if (textView.getText() instanceof Spanned) {
+                String text = Html.toHtml((Spanned) textView.getText());
+                textView.setText(Html.fromHtml(replaceIcons(new StringBuilder((text))).toString()));
+            } else {
+                String text = textView.getText().toString();
+                textView.setText(replaceIcons(new StringBuilder(text)));
+            }
         }
     }
 

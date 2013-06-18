@@ -25,7 +25,6 @@ import android.animation.ValueAnimator;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 import com.googlecode.androidannotations.annotations.AfterViews;
@@ -35,8 +34,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
 import com.joanzapata.android.iconify.Iconify;
 import com.joanzapata.android.icons.sample.R;
 
-import static android.animation.ValueAnimator.INFINITE;
-import static android.animation.ValueAnimator.REVERSE;
+import static android.animation.ValueAnimator.*;
 
 @EFragment(R.layout.fragment_about)
 public class HomeFragment extends Fragment {
