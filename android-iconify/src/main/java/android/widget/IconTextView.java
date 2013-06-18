@@ -45,4 +45,9 @@ public class IconTextView extends TextView {
         Iconify.addIcons(this);
     }
 
+    @Override
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(Iconify.compute(text), type);
+    }
+
 }

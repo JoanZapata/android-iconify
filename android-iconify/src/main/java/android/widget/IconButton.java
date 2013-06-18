@@ -44,4 +44,9 @@ public class IconButton extends Button {
     private void init() {
         Iconify.addIcons(this);
     }
+
+    @Override
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(Iconify.compute(text), type);
+    }
 }

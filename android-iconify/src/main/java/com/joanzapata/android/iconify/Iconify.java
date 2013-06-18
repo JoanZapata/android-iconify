@@ -31,6 +31,8 @@ import android.widget.TextView;
 
 import java.io.*;
 
+import static android.text.Html.fromHtml;
+import static android.text.Html.toHtml;
 import static java.lang.String.valueOf;
 
 public final class Iconify {
@@ -46,13 +48,7 @@ public final class Iconify {
     public static final void addIcons(TextView... textViews) {
         for (TextView textView : textViews) {
             textView.setTypeface(fileStreamTypeface(textView.getContext()));
-            if (textView.getText() instanceof Spanned) {
-                String text = Html.toHtml((Spanned) textView.getText());
-                textView.setText(Html.fromHtml(replaceIcons(new StringBuilder((text))).toString()));
-            } else {
-                String text = textView.getText().toString();
-                textView.setText(replaceIcons(new StringBuilder(text)));
-            }
+            textView.setText(compute(textView.getText()));
         }
     }
 
@@ -78,6 +74,15 @@ public final class Iconify {
 
         text = text.replace(startIndex, endIndex, iconValue);
         return replaceIcons(text);
+    }
+
+    public static CharSequence compute(CharSequence charSequence) {
+        if (charSequence instanceof Spanned) {
+            String text = toHtml((Spanned) charSequence);
+            return fromHtml(replaceIcons(new StringBuilder((text))).toString());
+        }
+        String text = charSequence.toString();
+        return replaceIcons(new StringBuilder(text));
     }
 
     public static final void setIcon(TextView textView, IconValue value) {
