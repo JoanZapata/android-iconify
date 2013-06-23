@@ -22,63 +22,105 @@
 
 -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_gravity="center_vertical"
-        android:padding="@dimen/smallSpace"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/smallSpace"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <IconTextView
-            android:id="@+id/title"
-            android:text="{icon_flag}"
-            android:shadowColor="#22000000"
-            android:shadowDx="4"
-            android:shadowDy="4"
-            android:shadowRadius="1"
-            android:textSize="90dp"
-            android:layout_marginLeft="@dimen/smallSpace"
-            android:layout_marginRight="@dimen/smallSpace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp">
+
+            <IconTextView
+                    android:id="@+id/title"
+                    android:text="{icon_flag}"
+                    android:shadowColor="#22000000"
+                    android:shadowDx="4"
+                    android:shadowDy="4"
+                    android:shadowRadius="1"
+                    android:textSize="90dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/iconify"
+                        android:text="Iconify"
+                        android:shadowColor="#22000000"
+                        android:shadowDx="4"
+                        android:shadowDy="4"
+                        android:shadowRadius="1"
+                        android:textStyle="bold"
+                        android:textSize="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/fontAwesomeForAndroid"
+                        android:gravity="left"
+                        android:textSize="20dp"
+                        android:textColor="#FFaaaaaa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/fontAwesomeForAndroid"
-            android:gravity="left"
-            android:textSize="20dp"
-            android:textColor="#FFaaaaaa"
-            android:layout_toRightOf="@id/title"
-            android:layout_alignBottom="@id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                android:id="@+id/bullet1"
+                android:text="@string/bullet1"
+                android:textStyle="bold"
+                android:textSize="22dp"
+                android:lineSpacingExtra="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/iconify"
-            android:text="Iconify"
-            android:shadowColor="#22000000"
-            android:shadowDx="4"
-            android:shadowDy="4"
-            android:shadowRadius="1"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:layout_toRightOf="@id/title"
-            android:layout_above="@id/fontAwesomeForAndroid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                android:id="@+id/bullet2"
+                android:textStyle="bold"
+                android:text="@string/bullet2"
+                android:textSize="22dp"
+                android:lineSpacingExtra="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         <TextView
-            android:layout_marginTop="@dimen/bigSpace"
-            android:id="@+id/bullets"
-            android:textStyle="bold"
-            android:textSize="22dp"
-            android:gravity="left"
-            android:lineSpacingExtra="4dp"
-            android:layout_below="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+                android:id="@+id/bullet3"
+                android:textStyle="bold"
+                android:text="@string/bullet3"
+                android:textSize="22dp"
+                android:lineSpacingExtra="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/bullet4"
+                android:textStyle="bold"
+                android:text="@string/bullet4"
+                android:textSize="22dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/bullet5"
+                android:textStyle="bold"
+                android:text="@string/bullet5"
+                android:textSize="22dp"
+                android:lineSpacingExtra="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
 </ScrollView>
