@@ -20,8 +20,6 @@
  */
 package com.joanzapata.android;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,6 +31,8 @@ import com.googlecode.androidannotations.annotations.FromHtml;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.joanzapata.android.iconify.Iconify;
 import com.joanzapata.android.icons.sample.R;
+import com.nineoldandroids.animation.ArgbEvaluator;
+import com.nineoldandroids.animation.ValueAnimator;
 
 import static android.animation.ValueAnimator.*;
 
