@@ -34,56 +34,58 @@ import com.joanzapata.android.icons.sample.R;
 import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.ValueAnimator;
 
-import static android.animation.ValueAnimator.*;
+import static android.animation.ValueAnimator.INFINITE;
+import static android.animation.ValueAnimator.REVERSE;
 
 @EFragment(R.layout.fragment_about)
 public class HomeFragment extends Fragment {
 
-    @ViewById
-    @FromHtml
-    protected TextView fontAwesomeForAndroid;
+	@ViewById
+	@FromHtml
+	protected TextView fontAwesomeForAndroid;
+	@ViewById protected TextView bullet1;
+	@ViewById protected TextView bullet2;
+	@ViewById protected TextView bullet3;
+	@ViewById protected TextView bullet4;
+	@ViewById protected TextView bullet5;
+	@ViewById
+	protected TextView iconify, title;
+	private ValueAnimator valueAnimator;
 
-    @ViewById
-    @FromHtml
-    protected TextView bullets;
+	@AfterViews
+	protected void init() {
+		setRetainInstance(true);
+		Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "DaysOne-Regular.ttf");
+		fontAwesomeForAndroid.setTypeface(face);
+		iconify.setTypeface(face);
 
-    @ViewById
-    protected TextView iconify, title;
+		Iconify.addIcons(bullet1, bullet2, bullet3, bullet4, bullet5);
 
-    private ValueAnimator valueAnimator;
+		updateColor();
+	}
 
-    @AfterViews
-    protected void init() {
-        setRetainInstance(true);
-        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "DaysOne-Regular.ttf");
-        fontAwesomeForAndroid.setTypeface(face);
-        iconify.setTypeface(face);
-        Iconify.addIcons(bullets);
-        updateColor();
-    }
+	private void updateColor() {
+		if (valueAnimator != null) return;
+		valueAnimator = ValueAnimator.ofInt(0xFF33B5E5, 0xFFAA66CC, 0xFF99CC00, 0xFFFFBB33, 0xFFFF4444);
+		valueAnimator.setDuration(6000);
+		valueAnimator.setInterpolator(new LinearInterpolator());
+		valueAnimator.setRepeatMode(REVERSE);
+		valueAnimator.setRepeatCount(INFINITE);
+		valueAnimator.setEvaluator(new ArgbEvaluator());
+		valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+			@Override
+			public void onAnimationUpdate(ValueAnimator valueAnimator) {
+				iconify.setTextColor((Integer) valueAnimator.getAnimatedValue());
+				title.setTextColor((Integer) valueAnimator.getAnimatedValue());
+			}
+		});
+		valueAnimator.start();
+	}
 
-    private void updateColor() {
-        if (valueAnimator != null) return;
-        valueAnimator = ValueAnimator.ofInt(0xFF33B5E5, 0xFFAA66CC, 0xFF99CC00, 0xFFFFBB33, 0xFFFF4444);
-        valueAnimator.setDuration(6000);
-        valueAnimator.setInterpolator(new LinearInterpolator());
-        valueAnimator.setRepeatMode(REVERSE);
-        valueAnimator.setRepeatCount(INFINITE);
-        valueAnimator.setEvaluator(new ArgbEvaluator());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                iconify.setTextColor((Integer) valueAnimator.getAnimatedValue());
-                title.setTextColor((Integer) valueAnimator.getAnimatedValue());
-            }
-        });
-        valueAnimator.start();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        //first saving my state, so the bundle wont be empty.
-        outState.putString("WORKAROUND_FOR_BUG_19917_KEY", "WORKAROUND_FOR_BUG_19917_VALUE");
-        super.onSaveInstanceState(outState);
-    }
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		//first saving my state, so the bundle wont be empty.
+		outState.putString("WORKAROUND_FOR_BUG_19917_KEY", "WORKAROUND_FOR_BUG_19917_VALUE");
+		super.onSaveInstanceState(outState);
+	}
 }
