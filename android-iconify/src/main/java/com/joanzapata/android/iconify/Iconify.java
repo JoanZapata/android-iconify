@@ -22,11 +22,7 @@ package com.joanzapata.android.iconify;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.text.Html;
 import android.text.Spanned;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.io.*;
@@ -47,7 +43,7 @@ public final class Iconify {
 
     public static final void addIcons(TextView... textViews) {
         for (TextView textView : textViews) {
-            textView.setTypeface(fileStreamTypeface(textView.getContext()));
+            textView.setTypeface(getTypeface(textView.getContext()));
             textView.setText(compute(textView.getText()));
         }
     }
@@ -86,11 +82,11 @@ public final class Iconify {
     }
 
     public static final void setIcon(TextView textView, IconValue value) {
-        textView.setTypeface(fileStreamTypeface(textView.getContext()));
+        textView.setTypeface(getTypeface(textView.getContext()));
         textView.setText(valueOf(value.character));
     }
 
-    private static final Typeface fileStreamTypeface(Context context) {
+    public static final Typeface getTypeface(Context context) {
         if (typeface != null) return typeface;
         InputStream inputStream = Iconify.class.getClassLoader().getResourceAsStream(TTF_FILE);
         File f = new File(context.getFilesDir(), "icon_tmp");
