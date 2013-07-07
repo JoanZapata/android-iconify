@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.util.Log;
 
+import static com.joanzapata.android.iconify.Utils.convertDpToPx;
 import static java.lang.String.valueOf;
 
 /**
@@ -15,13 +16,16 @@ import static java.lang.String.valueOf;
  */
 public class IconDrawable extends Drawable {
 
+    public static final int ANDROID_ACTIONBAR_ICON_SIZE_DP = 24;
     private final Context context;
     private final Iconify.IconValue icon;
     private TextPaint paint;
+    private float size = -1;
 
     public IconDrawable(Context context, Iconify.IconValue icon) {
         this.context = context;
         this.icon = icon;
+        this.size = convertDpToPx(context, ANDROID_ACTIONBAR_ICON_SIZE_DP);
         paint = new TextPaint();
         paint.setTypeface(Iconify.getTypeface(context));
         paint.setStyle(Paint.Style.STROKE);
@@ -40,6 +44,18 @@ public class IconDrawable extends Drawable {
         paint.setColor(context.getResources().getColor(colorRes));
         invalidateSelf();
         return this;
+    }
+
+    @Override
+    public int getIntrinsicHeight() {
+        if (size == -1) return super.getIntrinsicHeight();
+        return (int) size;
+    }
+
+    @Override
+    public int getIntrinsicWidth() {
+        if (size == -1) return super.getIntrinsicWidth();
+        return (int) size;
     }
 
     @Override
@@ -65,4 +81,5 @@ public class IconDrawable extends Drawable {
     public int getOpacity() {
         return 255;
     }
+
 }
