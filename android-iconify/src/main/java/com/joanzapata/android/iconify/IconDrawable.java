@@ -20,7 +20,7 @@ public class IconDrawable extends Drawable {
     private final Context context;
     private final Iconify.IconValue icon;
     private TextPaint paint;
-    private float size = -1;
+    private int size;
 
     public IconDrawable(Context context, Iconify.IconValue icon) {
         this.context = context;
@@ -48,14 +48,12 @@ public class IconDrawable extends Drawable {
 
     @Override
     public int getIntrinsicHeight() {
-        if (size == -1) return super.getIntrinsicHeight();
-        return (int) size;
+        return size;
     }
 
     @Override
     public int getIntrinsicWidth() {
-        if (size == -1) return super.getIntrinsicWidth();
-        return (int) size;
+        return size;
     }
 
     @Override

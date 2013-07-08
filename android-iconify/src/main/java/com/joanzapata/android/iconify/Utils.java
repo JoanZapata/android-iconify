@@ -3,6 +3,10 @@ package com.joanzapata.android.iconify;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
+
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
+import static android.util.TypedValue.applyDimension;
 
 class Utils {
 
@@ -10,11 +14,9 @@ class Utils {
         // Prevents instantiation
     }
 
-    static float convertDpToPx(Context context, float dp) {
-        Resources resources = context.getResources();
-        DisplayMetrics metrics = resources.getDisplayMetrics();
-        float px = dp * (metrics.densityDpi / 160f);
-        return px;
+    static int convertDpToPx(Context context, float dp) {
+        return (int) applyDimension(COMPLEX_UNIT_DIP, dp,
+                context.getResources().getDisplayMetrics());
     }
 
 }
