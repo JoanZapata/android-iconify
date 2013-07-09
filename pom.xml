@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -52,9 +53,60 @@
         <maven-license.version>1.10.b1</maven-license.version>
         <base-adapter-helper.version>1.1.0</base-adapter-helper.version>
         <android-support.version>r7</android-support.version>
+        <viewpager-indicator.version>2.4.1</viewpager-indicator.version>
+        <nineoldandroid.version>2.4.0</nineoldandroid.version>
         <password />
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.joanzapata.android</groupId>
+                <artifactId>android-iconify</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.joanzapata.android</groupId>
+                <artifactId>base-adapter-helper</artifactId>
+                <version>${base-adapter-helper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.android</groupId>
+                <artifactId>android</artifactId>
+                <scope>provided</scope>
+                <version>${android.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.androidannotations</groupId>
+                <artifactId>androidannotations</artifactId>
+                <version>${androidannotations.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.androidannotations</groupId>
+                <artifactId>androidannotations-api</artifactId>
+                <version>${androidannotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.android</groupId>
+                <artifactId>support-v4</artifactId>
+                <version>${android-support.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nineoldandroids</groupId>
+                <artifactId>library</artifactId>
+                <version>${nineoldandroid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.viewpagerindicator</groupId>
+                <artifactId>library</artifactId>
+                <version>${viewpager-indicator.version}</version>
+                <type>apklib</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <pluginManagement>
             <plugins>
