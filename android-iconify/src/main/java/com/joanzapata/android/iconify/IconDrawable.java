@@ -1,5 +1,6 @@
 package com.joanzapata.android.iconify;
 
+import android.R;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
@@ -7,6 +8,7 @@ import android.text.TextPaint;
 import android.util.Log;
 
 import static com.joanzapata.android.iconify.Utils.convertDpToPx;
+import static com.joanzapata.android.iconify.Utils.isEnabled;
 import static java.lang.String.valueOf;
 
 /**
@@ -21,6 +23,7 @@ public class IconDrawable extends Drawable {
     private final Iconify.IconValue icon;
     private TextPaint paint;
     private int size;
+    private int alpha = 255;
 
     public IconDrawable(Context context, Iconify.IconValue icon) {
         this.context = context;
@@ -67,12 +70,32 @@ public class IconDrawable extends Drawable {
     }
 
     @Override
+    public boolean isStateful() {
+        return true;
+    }
+
+    @Override
+    public boolean setState(int[] stateSet) {
+        int oldValue = paint.getAlpha();
+        int newValue = isEnabled(stateSet) ? alpha : alpha / 2;
+        paint.setAlpha(newValue);
+        return oldValue != newValue;
+    }
+
+    @Override
     public void setAlpha(int alpha) {
+        this.alpha = alpha;
         paint.setAlpha(alpha);
     }
 
     @Override
     public void setColorFilter(ColorFilter cf) {
+        paint.setColorFilter(cf);
+    }
+
+    @Override
+    public void clearColorFilter() {
+        paint.setColorFilter(null);
     }
 
     @Override

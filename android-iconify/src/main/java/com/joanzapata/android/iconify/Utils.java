@@ -1,5 +1,6 @@
 package com.joanzapata.android.iconify;
 
+import android.R;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -19,4 +20,10 @@ class Utils {
                 context.getResources().getDisplayMetrics());
     }
 
+    public static boolean isEnabled(int[] stateSet) {
+        for (int state : stateSet)
+            if (state == R.attr.state_enabled)
+                return true;
+        return false;
+    }
 }
