@@ -23,17 +23,22 @@ package com.joanzapata.android.iconify;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.text.Spanned;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.*;
 
+import static android.graphics.Typeface.createFromFile;
 import static android.text.Html.fromHtml;
 import static android.text.Html.toHtml;
+import static com.joanzapata.android.iconify.Utils.resourceToFile;
 import static java.lang.String.valueOf;
 
 public final class Iconify {
 
     private static final String TTF_FILE = "fontawesome-webfont-3.2.0.ttf";
+
+    private static final String TAG = Iconify.class.getSimpleName();
 
     private static Typeface typeface = null;
 
@@ -41,6 +46,7 @@ public final class Iconify {
         // Prevent instantiation
     }
 
+    /** Transform the given TextViews replacing {icon_xxx} texts with icons. */
     public static final void addIcons(TextView... textViews) {
         for (TextView textView : textViews) {
             textView.setTypeface(getTypeface(textView.getContext()));
@@ -86,30 +92,18 @@ public final class Iconify {
         textView.setText(valueOf(value.character));
     }
 
+    /**
+     * The typeface that contains FontAwesome icons.
+     * @return the typeface, or null if something goes wrong.
+     */
     public static final Typeface getTypeface(Context context) {
-        if (typeface != null) return typeface;
-        InputStream inputStream = Iconify.class.getClassLoader().getResourceAsStream(TTF_FILE);
-        File f = new File(context.getFilesDir(), "icon_tmp");
-        if (!f.exists()) {
-            if (!f.mkdirs()) {
+        if (typeface == null) {
+            try {
+                typeface = Typeface.createFromFile(resourceToFile(context, TTF_FILE));
+            } catch (IOException e) {
                 return null;
             }
         }
-        File outPath = new File(f, TTF_FILE);
-        try {
-            byte[] buffer = new byte[inputStream.available()];
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(outPath));
-            int l = 0;
-            while ((l = inputStream.read(buffer)) > 0) {
-                bos.write(buffer, 0, l);
-            }
-            bos.close();
-            typeface = Typeface.createFromFile(outPath);
-            outPath.delete();
-        } catch (IOException e) {
-            return null;
-        }
-
         return typeface;
     }
 
