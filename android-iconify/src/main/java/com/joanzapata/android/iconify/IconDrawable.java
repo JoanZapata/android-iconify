@@ -22,19 +22,23 @@ public class IconDrawable extends Drawable {
     private final Context context;
     private final Iconify.IconValue icon;
     private TextPaint paint;
-    private int size;
+    private int size = -1;
     private int alpha = 255;
 
     public IconDrawable(Context context, Iconify.IconValue icon) {
         this.context = context;
         this.icon = icon;
-        this.size = convertDpToPx(context, ANDROID_ACTIONBAR_ICON_SIZE_DP);
         paint = new TextPaint();
         paint.setTypeface(Iconify.getTypeface(context));
         paint.setStyle(Paint.Style.STROKE);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setUnderlineText(false);
         paint.setColor(Color.BLACK);
+    }
+
+    public IconDrawable setActionBarSize() {
+        this.size = convertDpToPx(context, ANDROID_ACTIONBAR_ICON_SIZE_DP);
+        return this;
     }
 
     public IconDrawable setColor(int color) {
