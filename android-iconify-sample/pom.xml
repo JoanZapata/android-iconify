@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>com.joanzapata.android</groupId>
@@ -16,45 +17,37 @@
         <dependency>
             <groupId>com.joanzapata.android</groupId>
             <artifactId>android-iconify</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.joanzapata.android</groupId>
             <artifactId>base-adapter-helper</artifactId>
-            <version>${base-adapter-helper.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
             <scope>provided</scope>
-            <version>${android.version}</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.androidannotations</groupId>
             <artifactId>androidannotations</artifactId>
-            <version>${androidannotations.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.googlecode.androidannotations</groupId>
             <artifactId>androidannotations-api</artifactId>
-            <version>${androidannotations.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>support-v4</artifactId>
-            <version>${android-support.version}</version>
         </dependency>
         <dependency>
             <groupId>com.viewpagerindicator</groupId>
             <artifactId>library</artifactId>
-            <version>2.4.1</version>
             <type>apklib</type>
         </dependency>
         <dependency>
             <groupId>com.nineoldandroids</groupId>
             <artifactId>library</artifactId>
-            <version>2.4.0</version>
         </dependency>
     </dependencies>
 

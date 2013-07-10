@@ -104,7 +104,7 @@ public class IconDrawable extends Drawable {
 
     @Override
     public int getOpacity() {
-        return 255;
+        return this.alpha;
     }
 
 }
