@@ -61,7 +61,7 @@ TextView myTextView = (TextView) findViewById(R.id.myTextView);
 Iconify.addIcons(myTextView);
 ```
 
-## [Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.0/android-iconify-1.0.0.jar)
+## [Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.1/android-iconify-1.0.1.jar)
 
 Or via **Maven Central**
 
@@ -69,7 +69,7 @@ Or via **Maven Central**
 <dependency>
     <groupId>com.joanzapata.android</groupId>
     <artifactId>android-iconify</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
