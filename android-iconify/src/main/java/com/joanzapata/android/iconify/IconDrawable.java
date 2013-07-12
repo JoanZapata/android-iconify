@@ -1,30 +1,44 @@
 package com.joanzapata.android.iconify;
 
-import android.R;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
-import android.util.Log;
 
-import static com.joanzapata.android.iconify.Utils.convertDpToPx;
-import static com.joanzapata.android.iconify.Utils.isEnabled;
+import static com.joanzapata.android.iconify.Utils.*;
 import static java.lang.String.valueOf;
 
 /**
- * Embed an icon into a Drawable.
- * You can use it to draw an icon in an
- * ImageView for example, or as a TextView's compound image.
+ * Embed an icon into a Drawable that can be used as TextView icons, or ActionBar icons.
+ * <p/>
+ * <pre>
+ *     new IconDrawable(context, IconValue.icon_star)
+ *           .colorRes(R.color.white)
+ *           .actionBarSize();
+ * </pre>
+ * If you don't set the size of the drawable, it will use the size
+ * that is given to him. Note that in an ActionBar, if you don't
+ * set the size explicitly it uses 0, so please use actionBarSize().
  */
 public class IconDrawable extends Drawable {
 
     public static final int ANDROID_ACTIONBAR_ICON_SIZE_DP = 24;
+
     private final Context context;
+
     private final Iconify.IconValue icon;
+
     private TextPaint paint;
+
     private int size = -1;
+
     private int alpha = 255;
 
+    /**
+     * Create an IconDrawable.
+     * @param context Your activity or application context.
+     * @param icon    The icon you want this drawable to display.
+     */
     public IconDrawable(Context context, Iconify.IconValue icon) {
         this.context = context;
         this.icon = icon;
@@ -36,19 +50,72 @@ public class IconDrawable extends Drawable {
         paint.setColor(Color.BLACK);
     }
 
-    public IconDrawable setActionBarSize() {
-        this.size = convertDpToPx(context, ANDROID_ACTIONBAR_ICON_SIZE_DP);
+    /**
+     * Set the size of this icon to the standard Android ActionBar.
+     * @return The current IconDrawable for chaining.
+     */
+    public IconDrawable actionBarSize() {
+        return sizeDp(ANDROID_ACTIONBAR_ICON_SIZE_DP);
+    }
+
+    /**
+     * Set the size of the drawable.
+     * @param dimenRes The dimension resource.
+     * @return The current IconDrawable for chaining.
+     */
+    public IconDrawable sizeRes(int dimenRes) {
+        return sizePx(context.getResources().getDimensionPixelSize(dimenRes));
+    }
+
+    /**
+     * Set the size of the drawable.
+     * @param size The size in density-independent pixels (dp).
+     * @return The current IconDrawable for chaining.
+     */
+    public IconDrawable sizeDp(int size) {
+        return sizePx(convertDpToPx(context, size));
+    }
+
+    /**
+     * Set the size of the drawable.
+     * @param size The size in pixels (px).
+     * @return The current IconDrawable for chaining.
+     */
+    public IconDrawable sizePx(int size) {
+        this.size = size;
+        invalidateSelf();
         return this;
     }
 
-    public IconDrawable setColor(int color) {
+    /**
+     * Set the color of the drawable.
+     * @param color The color, usually from android.graphics.Color or 0xFF012345.
+     * @return The current IconDrawable for chaining.
+     */
+    public IconDrawable color(int color) {
         paint.setColor(color);
         invalidateSelf();
         return this;
     }
 
-    public IconDrawable setColorRes(int colorRes) {
+    /**
+     * Set the color of the drawable.
+     * @param colorRes The color resource, from your R file.
+     * @return The current IconDrawable for chaining.
+     */
+    public IconDrawable colorRes(int colorRes) {
         paint.setColor(context.getResources().getColor(colorRes));
+        invalidateSelf();
+        return this;
+    }
+
+    /**
+     * Set the alpha of this drawable.
+     * @param alpha The alpha, between 0 (transparent) and 255 (opaque).
+     * @return The current IconDrawable for chaining.
+     */
+    public IconDrawable alpha(int alpha) {
+        setAlpha(alpha);
         invalidateSelf();
         return this;
     }
