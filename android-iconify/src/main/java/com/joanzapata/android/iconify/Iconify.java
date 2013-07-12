@@ -31,6 +31,7 @@ import java.io.*;
 import static android.graphics.Typeface.createFromFile;
 import static android.text.Html.fromHtml;
 import static android.text.Html.toHtml;
+import static com.joanzapata.android.iconify.Utils.replaceIcons;
 import static com.joanzapata.android.iconify.Utils.resourceToFile;
 import static java.lang.String.valueOf;
 
@@ -52,31 +53,6 @@ public final class Iconify {
             textView.setTypeface(getTypeface(textView.getContext()));
             textView.setText(compute(textView.getText()));
         }
-    }
-
-    private static StringBuilder replaceIcons(StringBuilder text) {
-        int startIndex = text.indexOf("{icon_");
-        if (startIndex == -1) {
-            return text;
-        }
-
-        int endIndex = text.substring(startIndex).indexOf("}") + startIndex + 1;
-        if (endIndex == startIndex) {
-            return text;
-        }
-
-        String iconString = text.substring(startIndex + 1, endIndex - 1);
-        iconString = iconString.replaceAll("-", "_");
-        IconValue value = IconValue.valueOf(iconString);
-        String iconValue;
-        if (value == null) {
-            iconValue = "{}";
-        } else {
-            iconValue = valueOf(value.character);
-        }
-
-        text = text.replace(startIndex, endIndex, iconValue);
-        return replaceIcons(text);
     }
 
     public static CharSequence compute(CharSequence charSequence) {
