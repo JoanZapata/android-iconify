@@ -66,6 +66,7 @@ public final class Iconify {
         }
 
         String iconString = text.substring(startIndex + 1, endIndex - 1);
+        iconString = iconString.replaceAll("-", "_");
         IconValue value = IconValue.valueOf(iconString);
         String iconValue;
         if (value == null) {
