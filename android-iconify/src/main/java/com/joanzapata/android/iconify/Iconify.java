@@ -39,7 +39,7 @@ public final class Iconify {
 
     private static final String TTF_FILE = "fontawesome-webfont-3.2.0.ttf";
 
-    private static final String TAG = Iconify.class.getSimpleName();
+    public static final String TAG = Iconify.class.getSimpleName();
 
     private static Typeface typeface = null;
 

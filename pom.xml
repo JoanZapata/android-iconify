@@ -55,12 +55,13 @@
         <android-support.version>r7</android-support.version>
         <viewpager-indicator.version>2.4.1</viewpager-indicator.version>
         <nineoldandroid.version>2.4.0</nineoldandroid.version>
+        <robolectric.version>2.1.1</robolectric.version>
+        <junit.version>4.8.2</junit.version>
         <password />
     </properties>
 
     <dependencyManagement>
-        <dependencies>
-
+        <dependencies><!-- Make sure this is below the android dependencies -->
             <dependency>
                 <groupId>com.joanzapata.android</groupId>
                 <artifactId>android-iconify</artifactId>
@@ -98,12 +99,21 @@
                 <artifactId>library</artifactId>
                 <version>${nineoldandroid.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.viewpagerindicator</groupId>
                 <artifactId>library</artifactId>
                 <version>${viewpager-indicator.version}</version>
                 <type>apklib</type>
+            </dependency>
+            <dependency>
+                <groupId>org.robolectric</groupId>
+                <artifactId>robolectric</artifactId>
+                <version>${robolectric.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

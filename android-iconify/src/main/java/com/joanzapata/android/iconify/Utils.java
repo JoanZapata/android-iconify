@@ -2,6 +2,7 @@ package com.joanzapata.android.iconify;
 
 import android.R;
 import android.content.Context;
+import android.util.Log;
 
 import java.io.*;
 
@@ -59,27 +60,26 @@ class Utils {
     }
 
     public static StringBuilder replaceIcons(StringBuilder text) {
-        int startIndex = text.indexOf("{icon_");
+        int startIndex = text.indexOf("{icon");
         if (startIndex == -1) {
             return text;
         }
 
         int endIndex = text.substring(startIndex).indexOf("}") + startIndex + 1;
-        if (endIndex == startIndex) {
-            return text;
-        }
 
         String iconString = text.substring(startIndex + 1, endIndex - 1);
         iconString = iconString.replaceAll("-", "_");
-        IconValue value = IconValue.valueOf(iconString);
-        String iconValue;
-        if (value == null) {
-            iconValue = "{}";
-        } else {
-            iconValue = String.valueOf(value.character);
-        }
+        try {
 
-        text = text.replace(startIndex, endIndex, iconValue);
-        return replaceIcons(text);
+            IconValue value = IconValue.valueOf(iconString);
+            String iconValue = String.valueOf(value.character);
+
+            text = text.replace(startIndex, endIndex, iconValue);
+            return replaceIcons(text);
+
+        } catch (IllegalArgumentException e) {
+            Log.w(Iconify.TAG, "Wrong icon name: " + iconString);
+            return text;
+        }
     }
 }
