@@ -108,6 +108,8 @@
                         <artifactId>android-maven-plugin</artifactId>
                         <inherited>true</inherited>
                         <configuration>
+                            <manifestVersionCodeUpdateFromVersion>true</manifestVersionCodeUpdateFromVersion>
+                            <manifestVersionName>${project.version}</manifestVersionName>
                             <sign>
                                 <debug>false</debug>
                             </sign>
