@@ -23,6 +23,7 @@ package com.joanzapata.android;
 import android.support.v4.app.DialogFragment;
 import android.view.Window;
 import android.widget.TextView;
+import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.googlecode.androidannotations.annotations.*;
 import com.joanzapata.android.iconify.Iconify;
 import com.joanzapata.android.icons.sample.R;
@@ -32,7 +33,7 @@ import static com.joanzapata.android.iconify.Iconify.IconValue;
 import static com.joanzapata.android.utils.IconUtils.unicodeValue;
 
 @EFragment(R.layout.dialog_icon)
-public class IconDialogFragment extends DialogFragment {
+public class IconDialogFragment extends SherlockDialogFragment {
 
     @FragmentArg
     protected IconValue iconValue;

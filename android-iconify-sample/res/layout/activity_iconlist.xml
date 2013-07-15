@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<!--
 
     Copyright 2013 Joan Zapata
 
@@ -20,13 +20,20 @@
         http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
 
 -->
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/iconText"
-    android:gravity="left"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:textSize="16sp"
-    android:singleLine="true"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    android:layout_height="match_parent"
+    android:padding="@dimen/smallSpace"
+    android:orientation="vertical">
 
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="@dimen/columnWidth"
+        android:numColumns="auto_fit"
+        android:horizontalSpacing="@dimen/smallSpace"
+        android:stretchMode="columnWidth"
+        android:gravity="center" />
+
+</LinearLayout>

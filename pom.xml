@@ -56,6 +56,7 @@
         <nineoldandroid.version>2.4.0</nineoldandroid.version>
         <robolectric.version>2.1.1</robolectric.version>
         <junit.version>4.8.2</junit.version>
+        <actionBarSherlock.version>4.2.0</actionBarSherlock.version>
         <password />
     </properties>
 
@@ -113,6 +114,12 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.actionbarsherlock</groupId>
+                <artifactId>actionbarsherlock</artifactId>
+                <version>${actionBarSherlock.version}</version>
+                <type>apklib</type>
             </dependency>
         </dependencies>
     </dependencyManagement>

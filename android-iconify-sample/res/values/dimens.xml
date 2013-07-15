@@ -22,7 +22,7 @@
 
 -->
 <resources>
-    <dimen name="columnWidth">90dp</dimen>
+    <dimen name="columnWidth">150dp</dimen>
     <dimen name="smallSpace">10dp</dimen>
     <dimen name="bigSpace">25dp</dimen>
 </resources>

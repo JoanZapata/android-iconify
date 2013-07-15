@@ -48,6 +48,11 @@
             <groupId>com.nineoldandroids</groupId>
             <artifactId>library</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.actionbarsherlock</groupId>
+            <artifactId>actionbarsherlock</artifactId>
+            <type>apklib</type>
+        </dependency>
     </dependencies>
 
     <build>

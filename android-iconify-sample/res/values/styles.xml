@@ -22,7 +22,7 @@
 -->
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+    <style name="AppTheme" parent="Sherlock.__Theme.DarkActionBar">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 

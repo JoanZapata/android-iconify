@@ -23,6 +23,7 @@
 <resources>
     <string name="app_name">android-icons demo</string>
     <string name="page_home">About</string>
+    <string name="share_action">Quickly improve your android app\'s UI with #AndroidIconify! http://joanzapata.com/android-iconify/</string>
     <string name="page_list">All icons</string>
     <string name="font_awesome_for_android">
         <![CDATA[FONTAWESOME<br><font color="#CCCCCC">FOR</font>ANDROID]]>
