@@ -22,8 +22,25 @@
 -->
 <resources>
 
-    <style name="AppTheme" parent="Sherlock.__Theme.DarkActionBar">
+    <style name="AppTheme" parent="Theme.Example">
         <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:actionBarSize">56dp</item>
+        <item name="android:textColor">@color/text</item>
     </style>
 
+    <style name="BigButton">
+        <item name="android:background">@drawable/white_box</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
+        <item name="android:padding">@dimen/bigSpace</item>
+    </style>
+
+    <style name="ShowcaseText">
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:drawablePadding">@dimen/smallSpace</item>
+        <item name="android:paddingLeft">@dimen/smallSpace</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
 </resources>

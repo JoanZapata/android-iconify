@@ -47,11 +47,12 @@ public class IconListActivity extends SherlockFragmentActivity {
 
     @AfterViews
     void afterViews() {
+        getSupportActionBar().setIcon(R.drawable.actionbar_logo);
         gridView.setAdapter(new QuickAdapter<IconValue>(this, R.layout.item, sort(asList(IconValue.values()))) {
             @Override
             protected void convert(BaseAdapterHelper helper, IconValue iconValue) {
-                helper.setText(R.id.iconText, format("{%s}  %s",
-                        iconValue.toString(), iconValue.toString()));
+                String iconName = iconValue.toString().replaceAll("_", "-");
+                helper.setText(R.id.iconText, format("{%s}  %s", iconName, iconName));
                 Iconify.addIcons((TextView) helper.getView(R.id.iconText));
             }
         });

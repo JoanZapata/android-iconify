@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 
     Copyright 2013 Joan Zapata
 
@@ -26,6 +25,6 @@
     <item
         android:id="@+id/about"
         android:title="About"
-        android:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom" />
 
 </menu>

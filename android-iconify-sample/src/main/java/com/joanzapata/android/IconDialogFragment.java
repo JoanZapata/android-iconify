@@ -44,7 +44,8 @@ public class IconDialogFragment extends SherlockDialogFragment {
     @AfterViews
     protected void init() {
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialogBigIcon.setText(iconValue.formattedName());
+        final String text = iconValue.formattedName();
+        dialogBigIcon.setText(text);
         dialogText.setText(iconValue.name());
         Iconify.addIcons(dialogBigIcon);
         dialogDescription.setText(unicodeValue(iconValue));

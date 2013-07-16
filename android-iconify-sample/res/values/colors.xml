@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 
     Copyright 2013 Joan Zapata
 
@@ -22,5 +21,8 @@
 
 -->
 <resources>
-    <color name="ab_item">#FFCCCCCC</color>
+    <color name="ab_item">#FFFFFFFF</color>
+    <color name="grey_light">#FFEFEFEF</color>
+    <color name="text">#FF666666</color>
+    <color name="blue">#FF3fa9f5</color>
 </resources>

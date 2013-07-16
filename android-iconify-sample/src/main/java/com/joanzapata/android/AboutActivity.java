@@ -23,6 +23,7 @@ package com.joanzapata.android;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockActivity;
@@ -31,37 +32,32 @@ import com.googlecode.androidannotations.annotations.*;
 import com.joanzapata.android.iconify.IconDrawable;
 import com.joanzapata.android.iconify.Iconify;
 import com.joanzapata.android.icons.sample.R;
+import com.joanzapata.android.utils.IconUtils;
 import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.ValueAnimator;
 
 import static android.animation.ValueAnimator.*;
 import static com.joanzapata.android.iconify.Iconify.IconValue;
+import static com.joanzapata.android.iconify.Iconify.IconValue.*;
+import static com.joanzapata.android.utils.IconUtils.getRobotoTypeface;
+import static com.joanzapata.android.utils.IconUtils.setTypefaces;
 
 @EActivity(R.layout.activity_about)
 @OptionsMenu(R.menu.menu_about)
 public class AboutActivity extends SherlockActivity {
 
     @ViewById
-    @FromHtml
-    protected TextView fontAwesomeForAndroid;
-
-    @ViewById
-    @FromHtml
-    protected TextView bullets;
-
-    @ViewById
-    protected TextView iconify, title;
-
-    private ValueAnimator valueAnimator;
+    protected TextView bullet1, bullet2, bullet3, bullet4, bullet5;
 
     @AfterViews
     protected void init() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Typeface face = Typeface.createFromAsset(this.getAssets(), "DaysOne-Regular.ttf");
-        fontAwesomeForAndroid.setTypeface(face);
-        iconify.setTypeface(face);
-        Iconify.addIcons(bullets);
-        updateColor();
+        bullet1.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_android), null, null, null);
+        bullet2.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_code), null, null, null);
+        bullet3.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_flag), null, null, null);
+        bullet4.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_globe), null, null, null);
+        bullet5.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_twitter), null, null, null);
+        setTypefaces(getRobotoTypeface(this), bullet1, bullet2, bullet3, bullet4, bullet5);
     }
 
     @Override
@@ -71,11 +67,20 @@ public class AboutActivity extends SherlockActivity {
     }
 
     @OptionsItem(R.id.share)
+    @Click(R.id.share)
     public void onShareClicked() {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_action));
         this.startActivity(Intent.createChooser(intent, "Share..."));
+    }
+
+    @Click(R.id.website)
+    public void onWebsiteClicked() {
+        String url = "http://joanzapata.com/android-iconify";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 
     @Override
@@ -87,21 +92,8 @@ public class AboutActivity extends SherlockActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void updateColor() {
-        if (valueAnimator != null) return;
-        valueAnimator = ValueAnimator.ofInt(0xFF33B5E5, 0xFFAA66CC, 0xFF99CC00, 0xFFFFBB33, 0xFFFF4444);
-        valueAnimator.setDuration(6000);
-        valueAnimator.setInterpolator(new LinearInterpolator());
-        valueAnimator.setRepeatMode(REVERSE);
-        valueAnimator.setRepeatCount(INFINITE);
-        valueAnimator.setEvaluator(new ArgbEvaluator());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                iconify.setTextColor((Integer) valueAnimator.getAnimatedValue());
-                title.setTextColor((Integer) valueAnimator.getAnimatedValue());
-            }
-        });
-        valueAnimator.start();
+    private Drawable getIcon(IconValue iconValue) {
+        return new IconDrawable(this, iconValue).colorRes(R.color.text).sizeDp(40);
     }
+
 }

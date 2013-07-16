@@ -20,6 +20,9 @@
  */
 package com.joanzapata.android.utils;
 
+import android.content.Context;
+import android.graphics.Typeface;
+import android.widget.TextView;
 import com.joanzapata.android.iconify.Iconify;
 
 import java.util.Collections;
@@ -29,6 +32,8 @@ import java.util.List;
 import static java.lang.Integer.toHexString;
 
 public final class IconUtils {
+
+    private static Typeface typeface;
 
     private IconUtils() {
         // Prevents instantiation
@@ -46,5 +51,19 @@ public final class IconUtils {
 
     public static String unicodeValue(Iconify.IconValue iconValue) {
         return "\\u" + toHexString(iconValue.character() | 0x10000).substring(1);
+    }
+
+    public static Typeface getRobotoTypeface(Context context) {
+        if (typeface == null)
+            typeface = Typeface.createFromAsset(
+                    context.getApplicationContext().getAssets(),
+                    "Roboto-Light.ttf");
+        return typeface;
+    }
+
+    public static void setTypefaces(Typeface typeface, TextView... views) {
+        for (TextView view : views) {
+            view.setTypeface(typeface);
+        }
     }
 }
