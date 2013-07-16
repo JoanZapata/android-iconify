@@ -1,6 +1,6 @@
 ![Alt](https://raw.github.com/JoanZapata/android-iconify/master/logo.jpg)
 
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/header.png)
+![Alt](https://raw.github.com/JoanZapata/android-iconify/master/header.jpg)
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
