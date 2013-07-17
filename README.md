@@ -6,11 +6,13 @@
 
 > **[All available icons (361)](http://fortawesome.github.io/Font-Awesome/icons)**
 
-If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddently need to change their color or size, then I think ```Iconify``` can help you.
+**If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddently need to change their color or size, then I think ```Iconify``` can help you.**
+
+-----
 
 ### About
 
-**Iconify** allows you to include any of the **[361 FontAwesome icons](http://fortawesome.github.io/Font-Awesome/icons)** in your texts, your ```ActionBar```, and even in your ```EditText```s. Icons are infinitely scalable, and customizable with shadows and everything you can do on texts.
+**Iconify** allows you to include any of the **[361 FontAwesome icons](http://fortawesome.github.io/Font-Awesome/icons)** in your texts, your ```ActionBar```, and even in your ```EditText```s. Icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
 
 ### Get started #1
 
@@ -43,6 +45,8 @@ menu.findItem(R.id.share).setIcon(
    .colorRes(R.color.ab_icon)
    .actionBarSize());
 ```
+
+-----
 
 ## Get it
 
