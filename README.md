@@ -16,11 +16,11 @@
 
 ### Get started #1
 
-If you need icons on a ```TextView```, use the ```{ }``` syntax. Note that the shadows apply to the icons as well.
+If you need icons on a ```TextView```, use the ```{ }``` syntax. You can put any text around it and have more than one icon in the text. Note that the shadows apply to the icons as well.
 
 ```xml
 <IconTextView
-    android:text="{icon_android}"
+    android:text="{icon-android}"
     android:shadowColor="#22000000"
     android:shadowDx="3"
     android:shadowDy="3"
