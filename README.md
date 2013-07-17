@@ -14,7 +14,7 @@ If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) 
 
 ### Get started #1
 
-If you need icons on a ```TextView```, use the ```{ }``` syntax. All text effects will apply to the icons as well.
+If you need icons on a ```TextView```, use the ```{ }``` syntax. Note that the shadows apply to the icons as well.
 
 ```xml
 <IconTextView
@@ -34,24 +34,25 @@ If you need icons on a ```TextView```, use the ```{ }``` syntax. All text effect
 
 ### Get started #2
 
-If you need an icon in an ```ImageView``` or in you ```ActionBar```, then you should use ```IconDrawable```. Again, icons are infinitely scalable and will never get fuzzy.
+If you need an icon in an ```ImageView``` or in your ```ActionBar```, then you should use ```IconDrawable```. Again, icons are infinitely scalable and will never get fuzzy!
 
 ```java
+// Set an icon in the ActionBar
 menu.findItem(R.id.share).setIcon(
    new IconDrawable(this, IconValue.icon_share_alt)
-   .colorRes(R.color.ab_item)
+   .colorRes(R.color.ab_icon)
    .actionBarSize());
 ```
 
-### [Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.1/android-iconify-1.0.1.jar)
+## Get it
 
-Or via **Maven Central**
+[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.1/android-iconify-1.0.1.jar) or via **Maven Central**
 
 ```xml
 <dependency>
     <groupId>com.joanzapata.android</groupId>
     <artifactId>android-iconify</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
