@@ -4,29 +4,17 @@
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
-> **Iconify** makes it easy to include any of the **[361 FontAwesome icons](http://fortawesome.github.io/Font-Awesome/icons)** in a native Android application. 
+> **[All available icons (361)](http://fortawesome.github.io/Font-Awesome/icons)**
 
-> If you're not familiar with it, ```FontAwesome``` is a **font** in which some special characters draw vectorial icons instead of letters. That means you can **scale them as much as you want**, and you can **apply text transforms** on these icons, just like you would do with texts. These icons will **never ever become fuzzy**.
+If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddently need to change their color or size, then I think ```Iconify``` can help you.
 
-## How to use
+### About
 
-Wrap icon names with ```{ }``` where you want the icon to appear in the text.
+**Iconify** allows you to include any of the **[361 FontAwesome icons](http://fortawesome.github.io/Font-Awesome/icons)** in your texts, your ```ActionBar```, and even in your ```EditText```s. Icons are infinitely scalable, and customizable with shadows and everything you can do on texts.
 
-```xml
-<IconTextView
-    android:text="FontAwesome {icon_flag} in Android {icon_android} !"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-```
+### Get started #1
 
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/texts.png)
-
-> You can use any icon from [FontAwesome 3.2.0](http://fortawesome.github.io/Font-Awesome/icons/)
-
-
-# Transforms
-
-The good thing is that you can **scale** and apply **shadows** and **colors** to the icon, like any text.
+If you need icons on a ```TextView```, use the ```{ }``` syntax. All text effects will apply to the icons as well.
 
 ```xml
 <IconTextView
@@ -40,30 +28,22 @@ The good thing is that you can **scale** and apply **shadows** and **colors** to
     ... />
 ```
 
+> You can either use ```IconTextView``` / ```ButtonTextView``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView);```.
+
 ![Alt](https://raw.github.com/JoanZapata/android-iconify/master/androids.png)
 
-## Buttons
+### Get started #2
 
-It plays nice with buttons, just use ```IconButton``` instead of ```Button```.
-
-```xml
-<IconButton
-    android:text="{icon_retweet} Retweet"
-    ... />
-```
-
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/buttons.png)
-
-## Other views
-
-Any ```View``` that extends ```TextView``` can be iconified programmatically.
+If you need an icon in an ```ImageView``` or in you ```ActionBar```, then you should use ```IconDrawable```. Again, icons are infinitely scalable and will never get fuzzy.
 
 ```java
-TextView myTextView = (TextView) findViewById(R.id.myTextView);
-Iconify.addIcons(myTextView);
+menu.findItem(R.id.share).setIcon(
+   new IconDrawable(this, IconValue.icon_share_alt)
+   .colorRes(R.color.ab_item)
+   .actionBarSize());
 ```
 
-## [Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.1/android-iconify-1.0.1.jar)
+### [Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.1/android-iconify-1.0.1.jar)
 
 Or via **Maven Central**
 
@@ -71,7 +51,7 @@ Or via **Maven Central**
 <dependency>
     <groupId>com.joanzapata.android</groupId>
     <artifactId>android-iconify</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
