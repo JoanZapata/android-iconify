@@ -70,7 +70,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/bullet5"
+            android:id="@+id/bulletTwitter"
             android:text="@string/bullet5"
             style="@style/ShowcaseText"
             android:layout_width="fill_parent"

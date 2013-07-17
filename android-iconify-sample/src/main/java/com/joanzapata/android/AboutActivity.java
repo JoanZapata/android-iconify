@@ -47,7 +47,7 @@ import static com.joanzapata.android.utils.IconUtils.setTypefaces;
 public class AboutActivity extends SherlockActivity {
 
     @ViewById
-    protected TextView bullet1, bullet2, bullet3, bullet4, bullet5;
+    protected TextView bullet1, bullet2, bullet3, bullet4, bulletTwitter;
 
     @AfterViews
     protected void init() {
@@ -56,8 +56,8 @@ public class AboutActivity extends SherlockActivity {
         bullet2.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_code), null, null, null);
         bullet3.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_flag), null, null, null);
         bullet4.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_globe), null, null, null);
-        bullet5.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_twitter), null, null, null);
-        setTypefaces(getRobotoTypeface(this), bullet1, bullet2, bullet3, bullet4, bullet5);
+        bulletTwitter.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_twitter), null, null, null);
+        setTypefaces(getRobotoTypeface(this), bullet1, bullet2, bullet3, bullet4, bulletTwitter);
     }
 
     @Override
@@ -78,6 +78,14 @@ public class AboutActivity extends SherlockActivity {
     @Click(R.id.website)
     public void onWebsiteClicked() {
         String url = "http://joanzapata.com/android-iconify";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+    }
+
+    @Click(R.id.bulletTwitter)
+    public void onTwitterClicked() {
+        String url = "https://twitter.com/JoanZap";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
