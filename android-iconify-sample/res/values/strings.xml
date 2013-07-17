@@ -32,7 +32,7 @@
     </string>
     <string name="bullet1">Open Source library</string>
     <string name="bullet2">Available in maven central</string>
-    <string name="bullet3">Font Awesome 3.2.0</string>
+    <string name="bullet3">Font Awesome 3.2.1</string>
     <string name="bullet4">Apache v2 license</string>
     <string name="bullet5">\@JoanZap</string>
     <string name="share_button">{icon-share-alt} Share</string>

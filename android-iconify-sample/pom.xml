@@ -118,13 +118,6 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <id>manifestUpdate</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>manifest-update</goal>
-                                </goals>
-                            </execution>
-                            <execution>
                                 <id>alignApk</id>
                                 <phase>install</phase>
                                 <goals>
