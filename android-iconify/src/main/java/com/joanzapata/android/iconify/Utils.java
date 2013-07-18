@@ -50,7 +50,6 @@ class Utils {
     }
 
     static File resourceToFile(Context context, String resourceName) throws IOException {
-        InputStream inputStream = Iconify.class.getClassLoader().getResourceAsStream(resourceName);
         File f = new File(context.getFilesDir(), ICON_FONT_FOLDER);
         if (!f.exists()) {
             if (!f.mkdirs()) {
@@ -59,8 +58,11 @@ class Utils {
         }
         File outPath = new File(f, resourceName);
         if (outPath.exists()) return outPath;
+
         BufferedOutputStream bos = null;
+        InputStream inputStream = null;
         try {
+            inputStream = Iconify.class.getClassLoader().getResourceAsStream(resourceName);
             byte[] buffer = new byte[inputStream.available()];
             bos = new BufferedOutputStream(new FileOutputStream(outPath));
             int l = 0;
@@ -69,12 +71,18 @@ class Utils {
             }
             return outPath;
         } finally {
-            if (bos != null) {
-                try {
-                    bos.close();
-                } catch (IOException e) {
-                    // Don't care
-                }
+            closeQuietly(bos);
+            closeQuietly(inputStream);
+        }
+    }
+
+    private static void closeQuietly(Closeable closeable) {
+        if(closeable != null) {
+            try {
+                closeable.close();
+            }
+            catch (IOException e) {
+                 // Don't care
             }
         }
     }
