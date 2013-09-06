@@ -50,13 +50,13 @@ menu.findItem(R.id.share).setIcon(
 
 ## Get it
 
-[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.1/android-iconify-1.0.1.jar) or via **Maven Central**
+[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.2/android-iconify-1.0.2.jar) or via **Maven Central**
 
 ```xml
 <dependency>
     <groupId>com.joanzapata.android</groupId>
     <artifactId>android-iconify</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
