@@ -68,16 +68,7 @@ public class IconDrawable extends Drawable {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setUnderlineText(false);
         paint.setColor(Color.BLACK);
-        configurePaint(paint);
-    }
-
-    /**
-     * Override this method if you need to add
-     * special options to the Paint object drawing
-     * the icon.
-     */
-    protected void configurePaint(Paint paint) {
-        // Meant to be overridden.
+        paint.setAntiAlias(true);
     }
 
     /**
