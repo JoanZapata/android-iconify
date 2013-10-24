@@ -49,7 +49,7 @@ public class UtilsTest {
 
     @Test
     public void test_replaceIcons_withDash() {
-        test("A{icon-ok}A{icon-camera}A", "A" + fa_adjust.character + "A" + fa_adn.character + "A");
+        test("A{fa-adjust}A{fa-adn}A", "A" + fa_adjust.character + "A" + fa_adn.character + "A");
     }
 
     @Test
