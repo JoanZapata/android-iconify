@@ -104,6 +104,7 @@ public class IconDrawable extends Drawable {
      */
     public IconDrawable sizePx(int size) {
         this.size = size;
+        setBounds(0, 0, size, size);
         invalidateSelf();
         return this;
     }
