@@ -4,7 +4,7 @@
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
-> **[All available icons (361)](http://fortawesome.github.io/Font-Awesome/icons)**
+> **[All available icons (370)](http://fortawesome.github.io/Font-Awesome/icons)**
 
 **If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddently need to change their color or size, then I think ```Iconify``` can help you.**
 
@@ -12,7 +12,7 @@
 
 ### About
 
-**Iconify** allows you to include any of the **[361 FontAwesome icons by Dave Gandy](http://fortawesome.github.io/Font-Awesome/icons)** in your texts, your ```ActionBar```, and even in your ```EditText```s. Icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
+**Iconify** allows you to include any of the **[370 FontAwesome icons by Dave Gandy](http://fortawesome.github.io/Font-Awesome/icons)** in your texts, your ```ActionBar```, and even in your ```EditText```s. Icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
 
 ### Get started #1
 
@@ -20,7 +20,7 @@ If you need icons on a ```TextView```, use the ```{ }``` syntax. You can put any
 
 ```xml
 <IconTextView
-    android:text="{icon-android}"
+    android:text="{fa-android}"
     android:shadowColor="#22000000"
     android:shadowDx="3"
     android:shadowDy="3"
@@ -41,7 +41,7 @@ If you need an icon in an ```ImageView``` or in your ```ActionBar```, then you s
 ```java
 // Set an icon in the ActionBar
 menu.findItem(R.id.share).setIcon(
-   new IconDrawable(this, IconValue.icon_share_alt)
+   new IconDrawable(this, IconValue.fa_share)
    .colorRes(R.color.ab_icon)
    .actionBarSize());
 ```
@@ -50,13 +50,13 @@ menu.findItem(R.id.share).setIcon(
 
 ## Get it
 
-[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.2/android-iconify-1.0.2.jar) or via **Maven Central**
+[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.3/android-iconify-1.0.3.jar) or via **Maven Central**
 
 ```xml
 <dependency>
     <groupId>com.joanzapata.android</groupId>
     <artifactId>android-iconify</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 

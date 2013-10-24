@@ -24,7 +24,12 @@ import android.R;
 import android.content.Context;
 import android.util.Log;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import static android.util.TypedValue.*;
 import static com.joanzapata.android.iconify.Iconify.IconValue;
@@ -87,7 +92,7 @@ class Utils {
     }
 
     public static StringBuilder replaceIcons(StringBuilder text) {
-        int startIndex = text.indexOf("{icon");
+        int startIndex = text.indexOf("{fa");
         if (startIndex == -1) {
             return text;
         }

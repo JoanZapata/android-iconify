@@ -21,14 +21,16 @@
 package com.joanzapata.android;
 
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.widget.GridView;
 import android.widget.TextView;
-import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
-import com.googlecode.androidannotations.annotations.*;
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ItemClick;
+import com.googlecode.androidannotations.annotations.OptionsItem;
+import com.googlecode.androidannotations.annotations.OptionsMenu;
+import com.googlecode.androidannotations.annotations.ViewById;
 import com.joanzapata.android.iconify.IconDrawable;
 import com.joanzapata.android.iconify.Iconify;
 import com.joanzapata.android.icons.sample.R;
@@ -74,7 +76,7 @@ public class IconListActivity extends SherlockFragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Drawable aboutDrawable = new IconDrawable(this, IconValue.icon_question)
+        Drawable aboutDrawable = new IconDrawable(this, IconValue.fa_question)
                 .colorRes(R.color.ab_item)
                 .actionBarSize();
         menu.findItem(R.id.about).setIcon(aboutDrawable);

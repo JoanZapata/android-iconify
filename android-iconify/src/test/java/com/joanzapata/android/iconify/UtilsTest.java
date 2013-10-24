@@ -34,7 +34,7 @@ public class UtilsTest {
 
     @Test
     public void test_replaceIcons() {
-        test("A{icon_ok}A", "A" + icon_ok.character + "A");
+        test("A{fa_adjust}A", "A" + fa_adjust.character + "A");
     }
 
     @Test
@@ -44,12 +44,12 @@ public class UtilsTest {
 
     @Test
     public void test_replaceIcons_manyIcons() {
-        test("A{icon_ok}A{icon_camera}A", "A" + icon_ok.character + "A" + icon_camera.character + "A");
+        test("A{fa_adjust}A{fa_adn}A", "A" + fa_adjust.character + "A" + fa_adn.character + "A");
     }
 
     @Test
     public void test_replaceIcons_withDash() {
-        test("A{icon-ok}A{icon-camera}A", "A" + icon_ok.character + "A" + icon_camera.character + "A");
+        test("A{icon-ok}A{icon-camera}A", "A" + fa_adjust.character + "A" + fa_adn.character + "A");
     }
 
     @Test

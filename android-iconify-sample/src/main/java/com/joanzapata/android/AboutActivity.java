@@ -21,26 +21,23 @@
 package com.joanzapata.android;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
-import com.googlecode.androidannotations.annotations.*;
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Click;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.OptionsItem;
+import com.googlecode.androidannotations.annotations.OptionsMenu;
+import com.googlecode.androidannotations.annotations.ViewById;
 import com.joanzapata.android.iconify.IconDrawable;
-import com.joanzapata.android.iconify.Iconify;
 import com.joanzapata.android.icons.sample.R;
-import com.joanzapata.android.utils.IconUtils;
-import com.nineoldandroids.animation.ArgbEvaluator;
-import com.nineoldandroids.animation.ValueAnimator;
 
-import static android.animation.ValueAnimator.*;
 import static com.joanzapata.android.iconify.Iconify.IconValue;
 import static com.joanzapata.android.iconify.Iconify.IconValue.*;
-import static com.joanzapata.android.utils.IconUtils.getRobotoTypeface;
-import static com.joanzapata.android.utils.IconUtils.setTypefaces;
+import static com.joanzapata.android.utils.IconUtils.*;
 
 @EActivity(R.layout.activity_about)
 @OptionsMenu(R.menu.menu_about)
@@ -52,11 +49,11 @@ public class AboutActivity extends SherlockActivity {
     @AfterViews
     protected void init() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        bullet1.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_android), null, null, null);
-        bullet2.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_code), null, null, null);
-        bullet3.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_flag), null, null, null);
-        bullet4.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_globe), null, null, null);
-        bulletTwitter.setCompoundDrawablesWithIntrinsicBounds(getIcon(icon_twitter), null, null, null);
+        bullet1.setCompoundDrawablesWithIntrinsicBounds(getIcon(fa_android), null, null, null);
+        bullet2.setCompoundDrawablesWithIntrinsicBounds(getIcon(fa_code), null, null, null);
+        bullet3.setCompoundDrawablesWithIntrinsicBounds(getIcon(fa_flag), null, null, null);
+        bullet4.setCompoundDrawablesWithIntrinsicBounds(getIcon(fa_globe), null, null, null);
+        bulletTwitter.setCompoundDrawablesWithIntrinsicBounds(getIcon(fa_twitter), null, null, null);
         setTypefaces(getRobotoTypeface(this), bullet1, bullet2, bullet3, bullet4, bulletTwitter);
     }
 
@@ -93,7 +90,7 @@ public class AboutActivity extends SherlockActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Drawable aboutDrawable = new IconDrawable(this, IconValue.icon_share_alt)
+        Drawable aboutDrawable = new IconDrawable(this, IconValue.fa_share)
                 .colorRes(R.color.ab_item)
                 .actionBarSize();
         menu.findItem(R.id.share).setIcon(aboutDrawable);
