@@ -20,13 +20,17 @@
  */
 package com.joanzapata.android.iconify;
 
+import static com.joanzapata.android.iconify.Utils.convertDpToPx;
+import static com.joanzapata.android.iconify.Utils.isEnabled;
+import static java.lang.String.valueOf;
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
-
-import static com.joanzapata.android.iconify.Utils.*;
-import static java.lang.String.valueOf;
 
 /**
  * Embed an icon into a Drawable that can be used as TextView icons, or ActionBar icons.
@@ -194,6 +198,14 @@ public class IconDrawable extends Drawable {
     @Override
     public int getOpacity() {
         return this.alpha;
+    }
+
+    /**
+     * Sets paint style.
+     * @param style to be applied
+     */
+    public void setStyle(Paint.Style style) {
+    	paint.setStyle(style);
     }
 
 }
