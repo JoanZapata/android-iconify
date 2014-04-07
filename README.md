@@ -59,6 +59,10 @@ menu.findItem(R.id.share).setIcon(
     <version>1.0.3</version>
 </dependency>
 ```
+or Gradle:
+```groovy
+compile 'com.joanzapata.android:android-iconify:1.+'
+```
 
 ## License
 
