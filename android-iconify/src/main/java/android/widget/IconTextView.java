@@ -45,7 +45,7 @@ public class IconTextView extends TextView {
         if (!isInEditMode())
             Iconify.addIcons(this);
         else
-          this.setText("ico");
+          this.setText(this.getText());
     }
 
     @Override
