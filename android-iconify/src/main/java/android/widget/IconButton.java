@@ -42,7 +42,10 @@ public class IconButton extends Button {
     }
 
     private void init() {
-        Iconify.addIcons(this);
+        if (!isInEditMode())
+          Iconify.addIcons(this);
+        else
+          this.setText(this.getText());
     }
 
     @Override
