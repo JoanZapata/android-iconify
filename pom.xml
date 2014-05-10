@@ -43,7 +43,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
         <java.version>1.6</java.version>
-        <android-maven-plugin.version>3.7.0</android-maven-plugin.version>
+        <android-maven-plugin.version>3.8.1</android-maven-plugin.version>
         <android.version>4.1.1.4</android.version>
         <api.platform>16</api.platform>
         <androidannotations.version>2.7</androidannotations.version>
