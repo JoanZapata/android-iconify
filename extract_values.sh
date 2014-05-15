@@ -12,4 +12,4 @@ curl -silent "$URL" | sed -En "
 			s/-/_/g
 			p
 		}
-	}"
+	}" | sort
