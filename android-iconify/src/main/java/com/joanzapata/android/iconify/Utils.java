@@ -55,12 +55,16 @@ class Utils {
     }
 
     static File resourceToFile(Context context, String resourceName) throws IOException {
-        File f = new File(context.getFilesDir(), ICON_FONT_FOLDER);
-        if (!f.exists()) {
+        File f = null;
+        if(context.getFilesDir() == null)
+            f = new File(context.getCacheDir(), ICON_FONT_FOLDER);
+        else
+            f = new File(context.getFilesDir(), ICON_FONT_FOLDER);
+        if (!f.exists())
             if (!f.mkdirs()) {
-                return null;
+                Log.e(Iconify.TAG, "Font folder creation failed");
+                throw new IllegalStateException("Cannot create Iconify font destination folder");
             }
-        }
         File outPath = new File(f, resourceName);
         if (outPath.exists()) return outPath;
 
