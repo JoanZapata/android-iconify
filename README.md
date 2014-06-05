@@ -50,18 +50,18 @@ menu.findItem(R.id.share).setIcon(
 
 ## Get it
 
-[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.5/android-iconify-1.0.5.jar) or via **Maven Central**
+[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.6/android-iconify-1.0.6.jar) or via **Maven Central**
 
 ```xml
 <dependency>
     <groupId>com.joanzapata.android</groupId>
     <artifactId>android-iconify</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-compile 'com.joanzapata.android:android-iconify:1.0.+'
+compile 'com.joanzapata.android:android-iconify:1.0.6'
 ```
 
 ## License
