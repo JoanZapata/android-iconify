@@ -25,8 +25,6 @@ import android.graphics.Typeface;
 import android.text.Spanned;
 import android.widget.TextView;
 
-import java.io.IOException;
-
 import static android.text.Html.fromHtml;
 import static android.text.Html.toHtml;
 import static com.joanzapata.android.iconify.Utils.replaceIcons;
@@ -77,8 +75,8 @@ public final class Iconify {
     public static final Typeface getTypeface(Context context) {
         if (typeface == null) {
             try {
-                typeface = Typeface.createFromFile(resourceToFile(context, TTF_FILE));
-            } catch (IOException e) {
+                typeface = Typeface.createFromAsset(context.getAssets(), TTF_FILE);
+            } catch (Exception e) {
                 return null;
             }
         }
