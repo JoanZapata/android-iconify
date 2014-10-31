@@ -13,7 +13,7 @@
     <name>Android Icons parent</name>
     <description>An icon library based on FontAwesome for Android</description>
     <packaging>pom</packaging>
-    <version>1.0.7</version>
+    <version>1.0.8-SNAPSHOT</version>
     <url>http://joanzapata.com/android-iconify/</url>
     <inceptionYear>2013</inceptionYear>
 
