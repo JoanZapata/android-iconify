@@ -4,7 +4,7 @@
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
-> **[All available icons (439)](http://fortawesome.github.io/Font-Awesome/icons)**
+> **[All available icons (519)](http://fortawesome.github.io/Font-Awesome/icons)**
 
 **If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddently need to change their color or size, then I think ```Iconify``` can help you.**
 
@@ -12,7 +12,7 @@
 
 ### About
 
-**Iconify** allows you to include any of the **[FontAwesome 4.1.0 icons by Dave Gandy](http://fortawesome.github.io/Font-Awesome/icons)** in your texts, your ```ActionBar```, and even in your ```EditText```s. Icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
+**Iconify** allows you to include any of the **[FontAwesome 4.3.0 icons by Dave Gandy](http://fortawesome.github.io/Font-Awesome/icons)** in your texts, your ```ActionBar```, and even in your ```EditText```s. Icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
 
 ### Get started #1
 
@@ -50,18 +50,18 @@ menu.findItem(R.id.share).setIcon(
 
 ## Get it
 
-[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.8/android-iconify-1.0.8.jar) or via **Maven Central**
+[Download JAR](http://search.maven.org/remotecontent?filepath=com/joanzapata/android/android-iconify/1.0.9/android-iconify-1.0.9.jar) or via **Maven Central**
 
 ```xml
 <dependency>
     <groupId>com.joanzapata.android</groupId>
     <artifactId>android-iconify</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-compile 'com.joanzapata.android:android-iconify:1.0.8'
+compile 'com.joanzapata.android:android-iconify:1.0.9'
 ```
 
 ## Proguard
