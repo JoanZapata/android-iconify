@@ -64,6 +64,14 @@ or Gradle:
 compile 'com.joanzapata.android:android-iconify:1.0.8'
 ```
 
+## Proguard
+
+If you use Proguard, don't forget to add the following rule.
+
+```
+-keep class com.joanzapata.** { *; }
+```
+
 ## License
 
 ```
