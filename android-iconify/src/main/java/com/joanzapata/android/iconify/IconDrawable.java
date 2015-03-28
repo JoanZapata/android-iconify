@@ -68,7 +68,7 @@ public class IconDrawable extends Drawable {
         this.icon = icon;
         paint = new TextPaint();
         paint.setTypeface(Iconify.getTypeface(context));
-        paint.setStyle(Paint.Style.STROKE);
+        paint.setStyle(Paint.Style.FILL);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setUnderlineText(false);
         paint.setColor(Color.BLACK);
