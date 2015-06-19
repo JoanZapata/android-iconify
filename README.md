@@ -30,7 +30,7 @@ If you need icons on a ```TextView```, use the ```{ }``` syntax. You can put any
     ... />
 ```
 
-> You can either use ```IconTextView``` / ```ButtonTextView``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView);```.
+> You can either use ```IconTextView``` / ```IconButton``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView);```.
 
 ![Alt](https://raw.github.com/JoanZapata/android-iconify/master/androids.png)
 
