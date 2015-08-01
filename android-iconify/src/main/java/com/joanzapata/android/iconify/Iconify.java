@@ -35,7 +35,7 @@ import static java.lang.String.valueOf;
 
 public final class Iconify {
 
-    private static final String TTF_FILE = "fontawesome-webfont-4.3.0.ttf";
+    private static final String TTF_FILE = "fontawesome-webfont-4.4.0.ttf";
 
     public static final String TAG = Iconify.class.getSimpleName();
 
