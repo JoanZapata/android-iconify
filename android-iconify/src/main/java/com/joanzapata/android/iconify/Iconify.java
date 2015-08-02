@@ -763,15 +763,9 @@ public final class Iconify {
         fa_youtube_square('\uf166');
 
         char character;
-        boolean supportsRtl;
 
         IconValue(char character) {
-            this(character, true);
-        }
-
-        IconValue(char character, boolean supportsRtl) {
             this.character = character;
-            this.supportsRtl = supportsRtl;
         }
 
         public String formattedName() {
@@ -782,8 +776,5 @@ public final class Iconify {
             return character;
         }
 
-        public boolean supportsRtl() {
-            return supportsRtl;
-        }
     }
 }
