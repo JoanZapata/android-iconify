@@ -34,7 +34,6 @@ import android.text.TextPaint;
 
 /**
  * Embed an icon into a Drawable that can be used as TextView icons, or ActionBar icons.
- * <p/>
  * <pre>
  *     new IconDrawable(context, IconValue.icon_star)
  *           .colorRes(R.color.white)
