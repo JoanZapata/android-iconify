@@ -52,19 +52,27 @@ public final class Iconify {
      * @param textViews The TextViews to transform.
      */
     public static void addIcons(TextView... textViews) {
+        addIcons(IconValue.fa_500px, textViews);
+    }
+
+    public static <T extends Enum<T> & BaseIconValue> void addIcons(T icon, TextView... textViews) {
         for (TextView textView : textViews) {
-            textView.setTypeface(getTypeface(textView.getContext()));
-            textView.setText(compute(textView.getText()));
+            textView.setTypeface(getTypeface(textView.getContext(), icon.getTtfFilename()));
+            textView.setText(compute(icon, textView.getText()));
         }
     }
 
     public static CharSequence compute(CharSequence charSequence) {
+        return compute(IconValue.fa_500px, charSequence);
+    }
+
+    public static <T extends Enum<T> & BaseIconValue> CharSequence compute(T icon, CharSequence charSequence) {
         if (charSequence instanceof Spanned) {
             String text = toHtml((Spanned) charSequence);
-            return fromHtml(replaceIcons(new StringBuilder((text))).toString());
+            return fromHtml(replaceIcons(icon, new StringBuilder(text)).toString());
         }
         String text = charSequence.toString();
-        return replaceIcons(new StringBuilder(text));
+        return replaceIcons(icon, new StringBuilder(text));
     }
 
     public static void setIcon(TextView textView, IconValue value) {
@@ -788,6 +796,16 @@ public final class Iconify {
         @Override
         public String getTtfFilename() {
             return FONTAWESOME_TTF_FILE;
+        }
+
+        @Override
+        public String getPrefix() {
+            return "fa";
+        }
+
+        @Override
+        public IconValue iconFrom(String value) {
+            return IconValue.valueOf(value.replaceAll("-", "_"));
         }
     }
 }

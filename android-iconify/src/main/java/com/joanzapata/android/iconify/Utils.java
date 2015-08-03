@@ -96,23 +96,31 @@ class Utils {
     }
 
     public static StringBuilder replaceIcons(StringBuilder text) {
-        int startIndex = text.indexOf("{fa");
+        return replaceIcons(IconValue.fa_500px, text);
+    }
+
+    /**
+     * Replace icons placeholder by the appropriate character
+     *
+     * @param icon an arbitrary instance of {@link BaseIconValue} in order to have a reference on the icon font to use
+     * @param text the text to process
+     * @return the processed text
+     */
+    public static <T extends Enum<T> & BaseIconValue> StringBuilder replaceIcons(T icon, StringBuilder text) {
+        int startIndex = text.indexOf("{" + icon.getPrefix());
         if (startIndex == -1) {
             return text;
         }
 
-        int endIndex = text.substring(startIndex).indexOf("}") + startIndex + 1;
+        int endIndex = text.indexOf("}", startIndex) + 1;
 
         String iconString = text.substring(startIndex + 1, endIndex - 1);
-        iconString = iconString.replaceAll("-", "_");
         try {
-
-            IconValue value = IconValue.valueOf(iconString);
-            String iconValue = String.valueOf(value.character);
+            BaseIconValue value = icon.iconFrom(iconString);
+            String iconValue = String.valueOf(value.character());
 
             text = text.replace(startIndex, endIndex, iconValue);
-            return replaceIcons(text);
-
+            return replaceIcons(icon, text);
         } catch (IllegalArgumentException e) {
             Log.w(Iconify.TAG, "Wrong icon name: " + iconString);
             return text;

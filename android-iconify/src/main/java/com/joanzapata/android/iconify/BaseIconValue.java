@@ -2,8 +2,12 @@ package com.joanzapata.android.iconify;
 
 public interface BaseIconValue {
 
-	char character();
+    char character();
 
-	String getTtfFilename();
+    String getTtfFilename();
+
+    String getPrefix();
+
+    BaseIconValue iconFrom(String value);
 
 }
