@@ -21,57 +21,42 @@
 package com.joanzapata.android;
 
 import android.graphics.drawable.Drawable;
-import android.widget.GridView;
-import android.widget.TextView;
+import android.support.v4.app.FragmentTransaction;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
-import com.googlecode.androidannotations.annotations.ItemClick;
 import com.googlecode.androidannotations.annotations.OptionsItem;
 import com.googlecode.androidannotations.annotations.OptionsMenu;
-import com.googlecode.androidannotations.annotations.ViewById;
 import com.joanzapata.android.iconify.IconDrawable;
-import com.joanzapata.android.iconify.Iconify;
 import com.joanzapata.android.icons.sample.R;
 
 import static com.joanzapata.android.iconify.Iconify.IconValue;
-import static com.joanzapata.android.utils.IconUtils.sort;
-import static java.lang.String.format;
-import static java.util.Arrays.asList;
 
 @EActivity(R.layout.activity_iconlist)
 @OptionsMenu(R.menu.menu_iconlist)
-public class IconListActivity extends SherlockFragmentActivity {
-
-    @ViewById
-    protected GridView gridView;
+public class IconListActivity extends SherlockFragmentActivity implements ActionBar.TabListener {
 
     @AfterViews
     void afterViews() {
-        getSupportActionBar().setIcon(R.drawable.actionbar_logo);
-        gridView.setAdapter(new QuickAdapter<IconValue>(this, R.layout.item, sort(asList(IconValue.values()))) {
-            @Override
-            protected void convert(BaseAdapterHelper helper, IconValue iconValue) {
-                String iconName = iconValue.toString().replaceAll("_", "-");
-                helper.setText(R.id.iconText, format("{%s}  %s", iconName, iconName));
-                Iconify.addIcons((TextView) helper.getView(R.id.iconText));
-            }
-        });
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setIcon(R.drawable.actionbar_logo);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        actionBar.addTab(actionBar.newTab()
+                .setText("FontAwesome")
+                .setTabListener(this));
+        actionBar.addTab(actionBar.newTab()
+                .setText("Fontelico")
+                .setTabListener(this));
+        actionBar.selectTab(actionBar.getTabAt(0));
     }
 
     @OptionsItem(R.id.about)
     void onAboutClicked() {
         AboutActivity_.intent(this).start();
-    }
-
-    @ItemClick
-    void gridView(IconValue iconValue) {
-        IconDialogFragment_.builder()
-                .iconValue(iconValue)
-                .build()
-                .show(getSupportFragmentManager(),
-                        IconDialogFragment.class.getSimpleName());
     }
 
     @Override
@@ -81,5 +66,22 @@ public class IconListActivity extends SherlockFragmentActivity {
                 .actionBarSize();
         menu.findItem(R.id.about).setIcon(aboutDrawable);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onTabSelected(Tab tab, FragmentTransaction ft) {
+        if (tab.getPosition() == 0) {
+            ft.replace(R.id.containerView, new FontAwesomeFragment_());
+        } else {
+            ft.replace(R.id.containerView, new FontHelloFragment_());
+        }
+    }
+
+    @Override
+    public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+    }
+
+    @Override
+    public void onTabReselected(Tab tab, FragmentTransaction ft) {
     }
 }
