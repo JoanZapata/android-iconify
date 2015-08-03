@@ -37,7 +37,7 @@ import static java.lang.String.valueOf;
 
 public final class Iconify {
 
-    private static final String FONTAWESOME_TTF_FILE = "fontawesome-webfont-4.4.0.ttf";
+    private static final String FONTAWESOME_TTF_FILE = "res:fontawesome-webfont-4.4.0.ttf";
 
     public static final String TAG = Iconify.class.getSimpleName();
 
@@ -805,7 +805,7 @@ public final class Iconify {
 
         @Override
         public IconValue iconFrom(String value) {
-            return IconValue.valueOf(value.replaceAll("-", "_"));
+            return IconValue.valueOf(value);
         }
     }
 }

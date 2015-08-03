@@ -65,20 +65,41 @@ class Utils {
                 Log.e(Iconify.TAG, "Font folder creation failed");
                 throw new IllegalStateException("Cannot create Iconify font destination folder");
             }
-        File outPath = new File(f, resourceName);
+
+        String filename = resourceName;
+        int separatorIndex = resourceName.indexOf(':');
+        if (separatorIndex != -1) {
+            filename = resourceName.substring(separatorIndex + 1);
+        }
+
+        File outPath = new File(f, filename);
         if (outPath.exists()) return outPath;
 
-        BufferedOutputStream bos = null;
         InputStream inputStream = null;
         try {
-            inputStream = Iconify.class.getClassLoader().getResourceAsStream(resourceName);
+            if (resourceName.startsWith("asset:")) {
+                inputStream = context.getAssets().open(filename);
+                copy(inputStream, outPath);
+                return outPath;
+            }
+
+            inputStream = Iconify.class.getClassLoader().getResourceAsStream(filename);
+            copy(inputStream, outPath);
+            return outPath;
+        } finally {
+            closeQuietly(inputStream);
+        }
+    }
+
+    private static void copy(InputStream inputStream, File outputFile) throws IOException {
+        BufferedOutputStream bos = null;
+        try {
             byte[] buffer = new byte[inputStream.available()];
-            bos = new BufferedOutputStream(new FileOutputStream(outPath));
-            int l = 0;
+            bos = new BufferedOutputStream(new FileOutputStream(outputFile));
+            int l;
             while ((l = inputStream.read(buffer)) > 0) {
                 bos.write(buffer, 0, l);
             }
-            return outPath;
         } finally {
             closeQuietly(bos);
             closeQuietly(inputStream);
@@ -116,7 +137,7 @@ class Utils {
 
         String iconString = text.substring(startIndex + 1, endIndex - 1);
         try {
-            BaseIconValue value = icon.iconFrom(iconString);
+            BaseIconValue value = icon.iconFrom(iconString.replaceAll("-", "_"));
             String iconValue = String.valueOf(value.character());
 
             text = text.replace(startIndex, endIndex, iconValue);
