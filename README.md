@@ -1,7 +1,5 @@
 ![Alt](logo.jpg)
 
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/header.jpg)
-
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
 **If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddenly need to change their color or size, then I think ```Iconify``` can help you.**
@@ -19,7 +17,7 @@ The base library contains more than XXX icons, and allows you to add your own ic
 
 You don't need to import all the modules, choose the modules you'll want to use.
 
-```
+```gradle
 dependencies {
     compile 'com.joanzapata.android.iconify:android-iconify-fontawesome:2.0.0'
     compile 'com.joanzapata.android.iconify:android-iconify-entypo:2.0.0'
@@ -34,7 +32,7 @@ dependencies {
 
 After that, don't forget to initialize them in your Application's `onCreate`:
 
-```
+```java
 public class MyApplication extends Application {
 
     @Override
