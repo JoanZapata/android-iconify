@@ -21,6 +21,17 @@
 
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/containerView"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent" />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="@dimen/columnWidth"
+        android:numColumns="auto_fit"
+        android:horizontalSpacing="@dimen/smallSpace"
+        android:stretchMode="columnWidth"
+        android:gravity="center" />
+
+</FrameLayout>

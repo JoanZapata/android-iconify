@@ -26,6 +26,8 @@ import android.text.Spanned;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.text.Html.fromHtml;
 import static android.text.Html.toHtml;
@@ -35,11 +37,11 @@ import static java.lang.String.valueOf;
 
 public final class Iconify {
 
-    private static final String TTF_FILE = "fontawesome-webfont-4.4.0.ttf";
+    private static final String FONTAWESOME_TTF_FILE = "res:fontawesome-webfont-4.4.0.ttf";
 
     public static final String TAG = Iconify.class.getSimpleName();
 
-    private static Typeface typeface = null;
+    private static Map<String, Typeface> typefaces = new HashMap<String, Typeface>();
 
     private Iconify() {
         // Prevent instantiation
@@ -50,23 +52,31 @@ public final class Iconify {
      * @param textViews The TextViews to transform.
      */
     public static void addIcons(TextView... textViews) {
+        addIcons(IconValue.fa_500px, textViews);
+    }
+
+    public static <T extends Enum<T> & BaseIconValue> void addIcons(T icon, TextView... textViews) {
         for (TextView textView : textViews) {
-            textView.setTypeface(getTypeface(textView.getContext()));
-            textView.setText(compute(textView.getText()));
+            textView.setTypeface(getTypeface(textView.getContext(), icon.getTtfFilename()));
+            textView.setText(compute(icon, textView.getText()));
         }
     }
 
     public static CharSequence compute(CharSequence charSequence) {
+        return compute(IconValue.fa_500px, charSequence);
+    }
+
+    public static <T extends Enum<T> & BaseIconValue> CharSequence compute(T icon, CharSequence charSequence) {
         if (charSequence instanceof Spanned) {
             String text = toHtml((Spanned) charSequence);
-            return fromHtml(replaceIcons(new StringBuilder((text))).toString());
+            return fromHtml(replaceIcons(icon, new StringBuilder(text)).toString());
         }
         String text = charSequence.toString();
-        return replaceIcons(new StringBuilder(text));
+        return replaceIcons(icon, new StringBuilder(text));
     }
 
     public static void setIcon(TextView textView, IconValue value) {
-        textView.setTypeface(getTypeface(textView.getContext()));
+        textView.setTypeface(getTypeface(textView.getContext(), value.getTtfFilename()));
         textView.setText(valueOf(value.character));
     }
 
@@ -76,9 +86,15 @@ public final class Iconify {
      * @return the typeface, or null if something goes wrong.
      */
     public static Typeface getTypeface(Context context) {
+        return getTypeface(context, FONTAWESOME_TTF_FILE);
+    }
+
+    public static Typeface getTypeface(Context context, String ttfFilename) {
+        Typeface typeface = typefaces.get(ttfFilename);
         if (typeface == null) {
             try {
-                typeface = Typeface.createFromFile(resourceToFile(context, TTF_FILE));
+                typeface = Typeface.createFromFile(resourceToFile(context, ttfFilename));
+                typefaces.put(ttfFilename, typeface);
             } catch (IOException e) {
                 return null;
             }
@@ -86,8 +102,7 @@ public final class Iconify {
         return typeface;
     }
 
-    public  enum IconValue {
-
+    public enum IconValue implements BaseIconValue {
         fa_500px('\uf26e'),
         fa_adjust('\uf042'),
         fa_adn('\uf170'),
@@ -773,9 +788,24 @@ public final class Iconify {
             return "{" + name() + "}";
         }
 
+        @Override
         public char character() {
             return character;
         }
 
+        @Override
+        public String getTtfFilename() {
+            return FONTAWESOME_TTF_FILE;
+        }
+
+        @Override
+        public String getPrefix() {
+            return "fa";
+        }
+
+        @Override
+        public IconValue iconFrom(String value) {
+            return IconValue.valueOf(value);
+        }
     }
 }

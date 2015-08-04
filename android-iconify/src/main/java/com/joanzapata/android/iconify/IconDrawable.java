@@ -49,7 +49,7 @@ public class IconDrawable extends Drawable {
 
     private final Context context;
 
-    private final Iconify.IconValue icon;
+    private final BaseIconValue icon;
 
     private TextPaint paint;
 
@@ -62,11 +62,11 @@ public class IconDrawable extends Drawable {
      * @param context Your activity or application context.
      * @param icon    The icon you want this drawable to display.
      */
-    public IconDrawable(Context context, Iconify.IconValue icon) {
+    public IconDrawable(Context context, BaseIconValue icon) {
         this.context = context;
         this.icon = icon;
         paint = new TextPaint();
-        paint.setTypeface(Iconify.getTypeface(context));
+        paint.setTypeface(Iconify.getTypeface(context, icon.getTtfFilename()));
         paint.setStyle(Paint.Style.FILL);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setUnderlineText(false);
@@ -161,7 +161,7 @@ public class IconDrawable extends Drawable {
         int height = bounds.height();
         paint.setTextSize(height);
         Rect textBounds = new Rect();
-        String textValue = valueOf(icon.character);
+        String textValue = valueOf(icon.character());
         paint.getTextBounds(textValue, 0, 1, textBounds);
         int textHeight = textBounds.height();
         float textBottom = bounds.top + (height - textHeight) / 2f + textHeight - textBounds.bottom;

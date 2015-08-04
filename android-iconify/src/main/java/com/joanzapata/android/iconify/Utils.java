@@ -65,20 +65,41 @@ class Utils {
                 Log.e(Iconify.TAG, "Font folder creation failed");
                 throw new IllegalStateException("Cannot create Iconify font destination folder");
             }
-        File outPath = new File(f, resourceName);
+
+        String filename = resourceName;
+        int separatorIndex = resourceName.indexOf(':');
+        if (separatorIndex != -1) {
+            filename = resourceName.substring(separatorIndex + 1);
+        }
+
+        File outPath = new File(f, filename);
         if (outPath.exists()) return outPath;
 
-        BufferedOutputStream bos = null;
         InputStream inputStream = null;
         try {
-            inputStream = Iconify.class.getClassLoader().getResourceAsStream(resourceName);
+            if (resourceName.startsWith("asset:")) {
+                inputStream = context.getAssets().open(filename);
+                copy(inputStream, outPath);
+                return outPath;
+            }
+
+            inputStream = Iconify.class.getClassLoader().getResourceAsStream(filename);
+            copy(inputStream, outPath);
+            return outPath;
+        } finally {
+            closeQuietly(inputStream);
+        }
+    }
+
+    private static void copy(InputStream inputStream, File outputFile) throws IOException {
+        BufferedOutputStream bos = null;
+        try {
             byte[] buffer = new byte[inputStream.available()];
-            bos = new BufferedOutputStream(new FileOutputStream(outPath));
-            int l = 0;
+            bos = new BufferedOutputStream(new FileOutputStream(outputFile));
+            int l;
             while ((l = inputStream.read(buffer)) > 0) {
                 bos.write(buffer, 0, l);
             }
-            return outPath;
         } finally {
             closeQuietly(bos);
             closeQuietly(inputStream);
@@ -96,23 +117,31 @@ class Utils {
     }
 
     public static StringBuilder replaceIcons(StringBuilder text) {
-        int startIndex = text.indexOf("{fa");
+        return replaceIcons(IconValue.fa_500px, text);
+    }
+
+    /**
+     * Replace icons placeholder by the appropriate character
+     *
+     * @param icon an arbitrary instance of {@link BaseIconValue} in order to have a reference on the icon font to use
+     * @param text the text to process
+     * @return the processed text
+     */
+    public static <T extends Enum<T> & BaseIconValue> StringBuilder replaceIcons(T icon, StringBuilder text) {
+        int startIndex = text.indexOf("{" + icon.getPrefix());
         if (startIndex == -1) {
             return text;
         }
 
-        int endIndex = text.substring(startIndex).indexOf("}") + startIndex + 1;
+        int endIndex = text.indexOf("}", startIndex) + 1;
 
         String iconString = text.substring(startIndex + 1, endIndex - 1);
-        iconString = iconString.replaceAll("-", "_");
         try {
-
-            IconValue value = IconValue.valueOf(iconString);
-            String iconValue = String.valueOf(value.character);
+            BaseIconValue value = icon.iconFrom(iconString.replaceAll("-", "_"));
+            String iconValue = String.valueOf(value.character());
 
             text = text.replace(startIndex, endIndex, iconValue);
-            return replaceIcons(text);
-
+            return replaceIcons(icon, text);
         } catch (IllegalArgumentException e) {
             Log.w(Iconify.TAG, "Wrong icon name: " + iconString);
             return text;

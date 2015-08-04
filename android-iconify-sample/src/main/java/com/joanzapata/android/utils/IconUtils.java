@@ -23,6 +23,7 @@ package com.joanzapata.android.utils;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.TextView;
+import com.joanzapata.android.iconify.BaseIconValue;
 import com.joanzapata.android.iconify.Iconify;
 
 import java.util.Collections;
@@ -39,10 +40,10 @@ public final class IconUtils {
         // Prevents instantiation
     }
 
-    public static List<Iconify.IconValue> sort(List<Iconify.IconValue> iconValues) {
-        Collections.sort(iconValues, new Comparator<Iconify.IconValue>() {
+    public static <T extends BaseIconValue> List<T> sort(List<T> iconValues) {
+        Collections.sort(iconValues, new Comparator<T>() {
             @Override
-            public int compare(Iconify.IconValue lhs, Iconify.IconValue rhs) {
+            public int compare(T lhs, T rhs) {
                 return lhs.toString().compareTo(rhs.toString());
             }
         });
