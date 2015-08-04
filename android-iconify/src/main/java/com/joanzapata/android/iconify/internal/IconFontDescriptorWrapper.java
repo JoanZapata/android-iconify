@@ -16,8 +16,6 @@ public class IconFontDescriptorWrapper {
 
     private Typeface cachedTypeface;
 
-    private CustomTypefaceSpan customTypefaceSpan;
-
     public IconFontDescriptorWrapper(IconFontDescriptor iconFontDescriptor) {
         this.iconFontDescriptor = iconFontDescriptor;
         iconsByKey = new HashMap<String, Icon>();
@@ -37,12 +35,7 @@ public class IconFontDescriptorWrapper {
     }
 
     public CustomTypefaceSpan getCustomTypefaceSpan(Context context) {
-        if (customTypefaceSpan != null) return customTypefaceSpan;
-        synchronized (this) {
-            if (customTypefaceSpan != null) return customTypefaceSpan;
-            customTypefaceSpan = new CustomTypefaceSpan(iconFontDescriptor.ttfFileName(), getTypeface(context));
-            return customTypefaceSpan;
-        }
+        return new CustomTypefaceSpan(iconFontDescriptor.ttfFileName(), getTypeface(context));
     }
 
     public Typeface getTypeface(Context context) {

@@ -30,7 +30,6 @@ public class Iconify {
      * @param textViews The TextView(s) to enhance.
      */
     public static void addIcons(TextView... textViews) {
-        System.out.println("Add icons1");
         for (TextView textView : textViews) {
             textView.setText(compute(textView.getContext(), textView.getText()));
         }
@@ -52,7 +51,6 @@ public class Iconify {
     }
 
     public static CharSequence compute(Context context, CharSequence text) {
-        System.out.println("Add icons2");
         return ParsingUtil.parse(context, iconFontDescriptors, text);
     }
 
