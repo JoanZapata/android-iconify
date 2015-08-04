@@ -1,10 +1,8 @@
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/logo.jpg)
+![Alt](logo.jpg)
 
 ![Alt](https://raw.github.com/JoanZapata/android-iconify/master/header.jpg)
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
-
-> **[All available icons (585)](http://fortawesome.github.io/Font-Awesome/icons)**
 
 **If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddenly need to change their color or size, then I think ```Iconify``` can help you.**
 
@@ -75,7 +73,7 @@ You'll notice that the shadow, size, and color you apply on the TextView also af
 
 > You can either use ```IconTextView``` / ```IconButton``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView);```.
 
-![Alt](https://raw.github.com/JoanZapata/android-iconify/master/androids.png)
+![Alt](androids.png)
 
 ### Icons as `Drawable`s
 
