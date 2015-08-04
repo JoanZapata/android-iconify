@@ -1,12 +1,4 @@
-target/
-lint.xml
-bin/
-gen/
-.settings
-.project
-.classpath
-*.iml
+build/
 .idea
-out
-gen-external-apklibs/
-classes/
+.gradle
+*.iml
