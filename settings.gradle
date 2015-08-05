@@ -1,1 +1,4 @@
-include ':android-iconify', ':android-iconify-fontawesome', ':android-iconify-sample'
+include ':android-iconify',
+        ':android-iconify-typicons',
+        ':android-iconify-fontawesome',
+        ':android-iconify-sample'

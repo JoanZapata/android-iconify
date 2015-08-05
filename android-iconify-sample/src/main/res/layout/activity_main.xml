@@ -42,4 +42,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <com.joanzapata.android.iconify.views.IconTextView
+        android:text="Multiple fonts: {typcn-world}{fa-heart-o}"
+        android:shadowColor="#22000000"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="1"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:1.1.1'
     }
 }
 
@@ -43,4 +43,5 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
 
     compile project(':android-iconify-fontawesome')
+    compile project(':android-iconify-typicons')
 }
