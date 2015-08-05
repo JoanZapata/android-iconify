@@ -2,16 +2,14 @@
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
-**If, like me, you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddenly need to change their color or size, then I think ```Iconify``` can help you.**
-
------
-
-### About
+**If you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddenly need to change their color or size, then I think ```Iconify``` can help you.**
 
 **Iconify** allows you to easily include vector icons in your `TextView`, `Button`, etc…
 The icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
 
 The base library contains more than XXX icons, and allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
+
+-----
 
 ### Install
 
