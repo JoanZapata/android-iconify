@@ -19,7 +19,7 @@ public final class ParsingUtil {
         // Analyse the text and replace {} blocks with the appropriate character
         // Retain all transformations in the accumulator
         SparseArray<IconFontDescriptorWrapper> accumulator = new SparseArray<IconFontDescriptorWrapper>();
-        String result = recursivePrepareSpannableIndexes(new StringBuilder(text), iconFontDescriptors, accumulator);
+        String result = recursivePrepareSpannableIndexes(new StringBuilder(text), iconFontDescriptors, accumulator, 0);
         SpannableString spannableString = SpannableString.valueOf(result);
 
         // Then apply spans at all positions
@@ -35,10 +35,11 @@ public final class ParsingUtil {
 
     private static String recursivePrepareSpannableIndexes(StringBuilder text,
             List<IconFontDescriptorWrapper> iconFontDescriptors,
-            SparseArray<IconFontDescriptorWrapper> accumulator) {
+            SparseArray<IconFontDescriptorWrapper> accumulator,
+            int start) {
 
         // Try to find a {...} in the string and extract key from it
-        int startIndex = text.indexOf("{");
+        int startIndex = text.indexOf("{", start);
         if (startIndex == -1) {
             return text.toString();
         }
@@ -54,15 +55,15 @@ public final class ParsingUtil {
             if (icon != null) break;
         }
 
-        // If no match, throw
+        // If no match, continue
         if (icon == null) {
-            throw new IllegalArgumentException("Unknown icon key \"" + key + "\"");
+            return recursivePrepareSpannableIndexes(text, iconFontDescriptors, accumulator, endIndex);
         }
 
         // Get the typeface and set it
         text = text.replace(startIndex, endIndex, "" + icon.character());
         accumulator.put(startIndex, iconFontDescriptor);
-        return recursivePrepareSpannableIndexes(text, iconFontDescriptors, accumulator);
+        return recursivePrepareSpannableIndexes(text, iconFontDescriptors, accumulator, startIndex);
 
     }
 
