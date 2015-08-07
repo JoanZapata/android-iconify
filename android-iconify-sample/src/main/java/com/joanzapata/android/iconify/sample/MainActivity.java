@@ -2,20 +2,43 @@ package com.joanzapata.android.iconify.sample;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import com.joanzapata.android.iconify.fonts.FontAwesomeIcons;
-import com.joanzapata.android.iconify.sample.utils.AndroidUtils;
+import com.joanzapata.android.iconify.IconFontDescriptor;
+import com.joanzapata.android.iconify.fonts.FontAwesomeModule;
+import com.joanzapata.android.iconify.fonts.TypiconsModule;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    public enum Font implements FontIconsViewPagerAdapter.FontWithTitle {
+        FONTAWESOME("FontAwesome", new FontAwesomeModule()),
+        TYPICONS("Typicons", new TypiconsModule());
+
+        private final String title;
+        private final IconFontDescriptor descriptor;
+
+        @Override
+        public String getTitle() {
+            return title;
+        }
+
+        public IconFontDescriptor getFont() {
+            return descriptor;
+        }
+
+        Font(String title, IconFontDescriptor descriptor) {
+            this.title = title;
+            this.descriptor = descriptor;
+        }
+    }
+
     @Bind(R.id.tabs) TabLayout tabLayout;
-    @Bind(R.id.recyclerView) RecyclerView recyclerView;
     @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.viewPager) ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +49,8 @@ public class MainActivity extends AppCompatActivity {
         // Setup toolbar
         setSupportActionBar(toolbar);
 
-        // Tab layout
-        tabLayout.addTab(tabLayout.newTab().setText("FontAwesome"));
-        tabLayout.addTab(tabLayout.newTab().setText("Typicons"));
-
-        // Fill recycler view
-        recyclerView.setHasFixedSize(true);
-        int nbColumns = AndroidUtils.getScreenSize(this).width / getResources().getDimensionPixelSize(R.dimen.item_width);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, nbColumns));
-        recyclerView.setAdapter(new IconAdapter(FontAwesomeIcons.values()));
+        // Fill view pager
+        viewPager.setAdapter(new FontIconsViewPagerAdapter(Font.values()));
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
