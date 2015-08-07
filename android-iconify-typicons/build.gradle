@@ -26,4 +26,5 @@ android {
 
 dependencies {
     compile project(':android-iconify')
+    compile 'com.jakewharton:butterknife:7.0.1'
 }

@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId "com.joanzapata.android.iconify.sample"
-        minSdkVersion 8
+        minSdkVersion 13
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -40,6 +40,7 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
 
     compile project(':android-iconify-fontawesome')
