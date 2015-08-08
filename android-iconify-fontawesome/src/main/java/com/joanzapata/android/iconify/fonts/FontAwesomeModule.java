@@ -2,9 +2,7 @@ package com.joanzapata.android.iconify.fonts;
 
 import com.joanzapata.android.iconify.Icon;
 import com.joanzapata.android.iconify.IconFontDescriptor;
-import com.joanzapata.android.iconify.fonts.FontAwesomeIcons;
 
-/** IconFontDescriptor for FontAwesome. */
 public class FontAwesomeModule implements IconFontDescriptor {
 
     @Override
