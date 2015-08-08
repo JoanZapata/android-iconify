@@ -74,4 +74,17 @@ public class Iconify {
         }
     }
 
+    /**
+     * Internal method for finding the Typeface to apply for a particular icon.
+     * Used by {@link IconDrawable}.
+     */
+    static IconFontDescriptorWrapper findTypefaceOf(Icon icon) {
+        for (IconFontDescriptorWrapper iconFontDescriptor : iconFontDescriptors) {
+            if (iconFontDescriptor.hasIcon(icon)) {
+                return iconFontDescriptor;
+            }
+        }
+        return null;
+    }
+
 }

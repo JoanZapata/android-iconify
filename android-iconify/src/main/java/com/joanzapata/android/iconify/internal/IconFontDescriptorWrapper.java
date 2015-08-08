@@ -46,4 +46,8 @@ public class IconFontDescriptorWrapper {
             return cachedTypeface;
         }
     }
+
+    public boolean hasIcon(Icon icon) {
+        return iconsByKey.values().contains(icon);
+    }
 }
