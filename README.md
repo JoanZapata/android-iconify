@@ -7,24 +7,20 @@
 **Iconify** allows you to easily include vector icons in your `TextView`, `Button`, etc…
 The icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
 
-The base library contains more than XXX icons, and allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
+It already supports three icon fonts library, and allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
 
 -----
 
 ### Install
 
 You don't need to import all the modules, choose the modules you'll want to use.
+You can use the sample app to browse those libraries.
 
 ```gradle
 dependencies {
     compile 'com.joanzapata.android.iconify:android-iconify-fontawesome:2.0.0'
     compile 'com.joanzapata.android.iconify:android-iconify-entypo:2.0.0'
     compile 'com.joanzapata.android.iconify:android-iconify-typicons:2.0.0'
-    compile 'com.joanzapata.android.iconify:android-iconify-iconic:2.0.0'
-    compile 'com.joanzapata.android.iconify:android-iconify-meteocons:2.0.0'
-    compile 'com.joanzapata.android.iconify:android-iconify-zocial:2.0.0'
-    compile 'com.joanzapata.android.iconify:android-iconify-brandico:2.0.0'
-    compile 'com.joanzapata.android.iconify:android-iconify-elusive:2.0.0'
 }
 ```
 
@@ -39,12 +35,7 @@ public class MyApplication extends Application {
         Iconify
             .with(new FontAwesomeModule())
             .with(new EntypoModule())
-            .with(new TypiconsModule())
-            .with(new IconicModule())
-            .with(new MeteoconsModule())
-            .with(new ZocialModule())
-            .with(new BrandicoModule())
-            .with(new ElusiveModule())
+            .with(new TypiconsModule());
     }
 }
 ```
