@@ -1,9 +1,6 @@
 buildscript {
-    repositories {
-        jcenter()
-    }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.1'
+        classpath rootProject.ext.androidPlugin
     }
 }
 
@@ -14,15 +11,15 @@ repositories {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.joanzapata.android.iconify.sample"
-        minSdkVersion 13
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        applicationId GROUP + ".sample"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.compileSdkVersion
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME
     }
 
     compileOptions {
@@ -33,7 +30,6 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -42,8 +38,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:recyclerview-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
 
     compile project(':android-iconify-fontawesome')
     compile project(':android-iconify-typicons')
     compile project(':android-iconify-entypo')
 }
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

@@ -1,14 +1,18 @@
-buildscript {
-    repositories {
-        jcenter()
+subprojects {
+    buildscript {
+        repositories {
+            jcenter()
+        }
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
-    }
+
+    group = GROUP
+    version = VERSION_NAME
+
 }
 
-allprojects {
-    repositories {
-        jcenter()
-    }
+ext {
+    androidPlugin = 'com.android.tools.build:gradle:1.3.0'
+    minSdkVersion = 14
+    compileSdkVersion = 22
+    buildToolsVersion = '22.0.1'
 }

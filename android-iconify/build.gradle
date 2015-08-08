@@ -1,25 +1,23 @@
 buildscript {
-    repositories {
-        jcenter()
-    }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.1'
+        classpath rootProject.ext.androidPlugin
     }
 }
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion rootProject.ext.minSdkVersion
     }
-
-    buildToolsVersion "22.0.1"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
     }
 }
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

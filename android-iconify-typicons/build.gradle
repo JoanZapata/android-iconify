@@ -1,22 +1,18 @@
 buildscript {
-    repositories {
-        jcenter()
-    }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.1'
+        classpath rootProject.ext.androidPlugin
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion rootProject.ext.minSdkVersion
     }
-
-    buildToolsVersion "22.0.1"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6
@@ -26,5 +22,6 @@ android {
 
 dependencies {
     compile project(':android-iconify')
-    compile 'com.jakewharton:butterknife:7.0.1'
 }
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
