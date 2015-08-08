@@ -7,7 +7,7 @@ public class FontAwesomeModule implements IconFontDescriptor {
 
     @Override
     public String ttfFileName() {
-        return "fontawesome-webfont-4.4.0.ttf";
+        return "iconify/android-iconify-fontawesome.ttf";
     }
 
     @Override

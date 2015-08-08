@@ -7,7 +7,7 @@ public class EntypoModule implements IconFontDescriptor {
 
     @Override
     public String ttfFileName() {
-        return "entypo.ttf";
+        return "iconify/android-iconify-entypo.ttf";
     }
 
     @Override

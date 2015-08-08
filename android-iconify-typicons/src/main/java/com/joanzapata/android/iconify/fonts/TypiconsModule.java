@@ -7,7 +7,7 @@ public class TypiconsModule implements IconFontDescriptor {
 
     @Override
     public String ttfFileName() {
-        return "typicons.ttf";
+        return "iconify/android-iconify-typicons.ttf";
     }
 
     @Override
