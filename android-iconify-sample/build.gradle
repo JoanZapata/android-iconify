@@ -45,4 +45,5 @@ dependencies {
 
     compile project(':android-iconify-fontawesome')
     compile project(':android-iconify-typicons')
+    compile project(':android-iconify-entypo')
 }

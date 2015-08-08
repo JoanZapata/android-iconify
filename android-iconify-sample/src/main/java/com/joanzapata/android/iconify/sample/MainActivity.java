@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.joanzapata.android.iconify.IconFontDescriptor;
+import com.joanzapata.android.iconify.fonts.EntypoModule;
 import com.joanzapata.android.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.android.iconify.fonts.TypiconsModule;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     public enum Font implements FontIconsViewPagerAdapter.FontWithTitle {
         FONTAWESOME("FontAwesome", new FontAwesomeModule()),
+        ENTYPO("Entypo", new EntypoModule()),
         TYPICONS("Typicons", new TypiconsModule());
 
         private final String title;
