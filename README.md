@@ -17,9 +17,11 @@ Include the modules you need and declare them in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.1'
-    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.1'
-    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.1'
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.2'
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.2'
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.2'
+    compile 'com.joanzapata.iconify:android-iconify-material:2.0.2'
+    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.2'
 }
 ```
 
