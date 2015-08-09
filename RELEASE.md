@@ -1,21 +1,15 @@
-# Release instructions
+# Publish to Play Store
 
-Update license headers in all files
-
-```
-mvn license:format
-```
-
-Create tag, prepare version
+Setup `ICONIFY_SAMPLE_KEYSTORE_PASSWORD` in your `~/.gradle/gradle.properties` then
 
 ```
-mvn release:clean release:prepare
+gradle assembleRelease
 ```
 
-Stage the release
+# Publish to Maven central
 
 ```
-mvn release:perform
+gradle uploadArchives
 ```
 
 Promote release in [central](https://oss.sonatype.org/)
