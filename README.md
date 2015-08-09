@@ -71,6 +71,25 @@ menu.findItem(R.id.share).setIcon(
 
 -----
 
+## Migration from 1.X.X
+
+Iconify 2 introduces some breaking changes, here's the full list:
+
+**In build file**
+
+- `compile 'com.joanzapata.android:android-iconify:1.X.X'` -> `compile 'com.joanzapata.android.iconify:android-iconify-fontawesome:2.X.X'`
+
+**In layouts**
+
+- `android.widget.IconButton` -> `com.joanzapata.android.iconify.views.IconButton`
+- `android.widget.IconTextView` -> `com.joanzapata.android.iconify.views.IconTextView`
+- `android.widget.IconToggleButton` -> `com.joanzapata.android.iconify.views.IconToggleButton`
+
+**In code**
+
+- `Iconify.IconValue.fa_something` -> `FontAwesomeIcons.fa_something`
+- Nothing in `Application` class -> `Iconify.with(new FontAwesomeModule())`
+
 ## Proguard
 
 If you use Proguard, don't forget to add the following rule.
