@@ -2,6 +2,7 @@ package com.joanzapata.iconify.internal;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.util.SparseArray;
@@ -74,7 +75,7 @@ public final class ParsingUtil {
 
         // See if any more stroke within {} should be applied
         float iconSizePx = -1;
-        int iconColor = -1;
+        int iconColor = Integer.MAX_VALUE;
         float iconSizeRatio = -1;
         for (int i = 1; i < strokes.length; i++) {
             String stroke = strokes[i];
@@ -92,9 +93,20 @@ public final class ParsingUtil {
                     throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
             } else if (stroke.matches("([0-9]*(\\.[0-9]*)?)%")) {
                 iconSizeRatio = Float.valueOf(stroke.substring(0, stroke.length() - 1)) / 100f;
+            }
+
+            // Look for an icon color
+            else if (stroke.matches("#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})")) {
+                iconColor = Color.parseColor(stroke);
+            } else if (stroke.matches("@color/(.*)")) {
+                iconColor = getColorFromResource(context, stroke.substring(7));
+                if (iconColor == Integer.MAX_VALUE)
+                    throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
             } else {
                 throw new IllegalArgumentException("Unknown expression " + stroke + " in \"" + fullText + "\"");
             }
+
+
         }
 
         // Get the typeface and set it
@@ -114,6 +126,15 @@ public final class ParsingUtil {
                 context.getPackageName());
         if (resId <= 0) return -1;
         return resources.getDimension(resId);
+    }
+
+    public static int getColorFromResource(Context context, String resName) {
+        Resources resources = context.getResources();
+        int resId = resources.getIdentifier(
+                resName, "color",
+                context.getPackageName());
+        if (resId <= 0) return Integer.MAX_VALUE;
+        return resources.getColor(resId);
     }
 
     public static float dpToPx(Context context, float dp) {

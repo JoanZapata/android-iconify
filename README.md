@@ -68,7 +68,8 @@ If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }
 
 > You can either use ```IconTextView``` / ```IconButton``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView)```.
 
-> Shall you need to override the text size of a particular icon, the following syntaxes are supported `{fa-code 12px}`, `{fa-code 12dp}`, `{fa-code 12sp}`, `{fa-code @dimen/my_text_size}`, and also `{fa-code 120%}`.
+> Shall you need to override the text size of a particular icon, the following syntax is supported `{fa-code 12px}`, `{fa-code 12dp}`, `{fa-code 12sp}`, `{fa-code @dimen/my_text_size}`, and also `{fa-code 120%}`.
+In the same way you can override the icon color using `{fa-code #RRGGBB}`, `{fa-code #AARRGGBB}`, or `{fa-code @color/my_color}`.
 
 ### Show an icon where you need a `Drawable`
 

@@ -35,6 +35,6 @@ public class CustomTypefaceSpan extends TypefaceSpan {
         paint.setTypeface(tf);
         if (iconSizeRatio > 0) paint.setTextSize(paint.getTextSize() * iconSizeRatio);
         else if (iconSizePx > 0) paint.setTextSize(iconSizePx);
-        if (iconColor > 0) paint.setColor(iconColor);
+        if (iconColor < Integer.MAX_VALUE) paint.setColor(iconColor);
     }
 }
