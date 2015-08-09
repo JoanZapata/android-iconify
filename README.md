@@ -26,6 +26,7 @@ dependencies {
     compile 'com.joanzapata.iconify:android-iconify-material:2.0.4'
     compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.4'
     compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.4'
+    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.4'
 }
 ```
 
@@ -42,6 +43,7 @@ public class MyApplication extends Application {
             .with(new MaterialModule());
             .with(new MeteoconsModule());
             .with(new WeathericonsModule());
+            .with(new SimpleLineIconsModule());
     }
 }
 ```
