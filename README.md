@@ -64,6 +64,8 @@ If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }
 
 > You can either use ```IconTextView``` / ```IconButton``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView)```.
 
+> Shall you need to override the text size of a particular icon, the following syntaxes are supported `{fa-code 12px}`, `{fa-code 12dp}`, `{fa-code 12sp}`, `{fa-code @dimen/my_text_size}`, and also `{fa-code 120%}`.
+
 ### Show an icon where you need a `Drawable`
 
 If you need an icon in an ```ImageView``` or in your ```ActionBar``` menu item, then you should use ```IconDrawable```. Again, icons are infinitely scalable and will never get fuzzy!
