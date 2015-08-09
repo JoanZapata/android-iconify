@@ -15,11 +15,20 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId GROUP + ".sample"
+        applicationId "com.joanzapata.android.icons.sample"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.compileSdkVersion
         versionCode VERSION_CODE.toInteger()
         versionName VERSION_NAME
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("keystore")
+            storePassword ICONIFY_SAMPLE_KEYSTORE_PASSWORD
+            keyAlias "android-iconify"
+            keyPassword ICONIFY_SAMPLE_KEYSTORE_PASSWORD
+        }
     }
 
     compileOptions {
@@ -30,6 +39,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
         }
     }
 }
