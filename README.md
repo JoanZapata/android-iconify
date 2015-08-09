@@ -20,11 +20,11 @@ Declare them in your `build.gradle` and in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.3'
-    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.3'
-    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.3'
-    compile 'com.joanzapata.iconify:android-iconify-material:2.0.3'
-    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.3'
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.4'
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.4'
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.4'
+    compile 'com.joanzapata.iconify:android-iconify-material:2.0.4'
+    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.4'
 }
 ```
 
