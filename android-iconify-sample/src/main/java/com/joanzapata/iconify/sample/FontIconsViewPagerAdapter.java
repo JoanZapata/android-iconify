@@ -35,7 +35,6 @@ public class FontIconsViewPagerAdapter extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_font, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
         int nbColumns = AndroidUtils.getScreenSize(context).width /
                 context.getResources().getDimensionPixelSize(R.dimen.item_width);
         recyclerView.setLayoutManager(new GridLayoutManager(context, nbColumns));
