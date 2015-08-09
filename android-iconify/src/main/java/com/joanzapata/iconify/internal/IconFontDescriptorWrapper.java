@@ -34,10 +34,6 @@ public class IconFontDescriptorWrapper {
         return iconFontDescriptor;
     }
 
-    public CustomTypefaceSpan getCustomTypefaceSpan(Context context) {
-        return new CustomTypefaceSpan(iconFontDescriptor.ttfFileName(), getTypeface(context));
-    }
-
     public Typeface getTypeface(Context context) {
         if (cachedTypeface != null) return cachedTypeface;
         synchronized (this) {

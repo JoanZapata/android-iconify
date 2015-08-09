@@ -4,4 +4,6 @@ include ':android-iconify',
         ':android-iconify-entypo',
         ':android-iconify-material',
         ':android-iconify-meteocons',
+        ':android-iconify-weathericons',
+        ':android-iconify-simplelineicons',
         ':android-iconify-sample'
