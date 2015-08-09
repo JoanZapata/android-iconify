@@ -15,7 +15,8 @@ It currently supports three icon font libraries out-of-the-box, and there are ma
 
 ### Install
 
-Include the modules you need and declare them in your `Application`.
+Choose the modules you want using the [demo app](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample).
+Declare them in your `build.gradle` and in your `Application`.
 
 ```gradle
 dependencies {
@@ -37,6 +38,8 @@ public class MyApplication extends Application {
             .with(new FontAwesomeModule())
             .with(new EntypoModule())
             .with(new TypiconsModule());
+            .with(new MaterialModule());
+            .with(new MeteoconsModule());
     }
 }
 ```
