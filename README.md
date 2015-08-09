@@ -7,7 +7,7 @@
 **Iconify** allows you to easily include vector icons in your `TextView`, `Button`, etc…
 The icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
 
-It already supports three icon fonts library, and allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
+It currently supports three icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
 
 -----
 
@@ -39,7 +39,7 @@ public class MyApplication extends Application {
 
 ### Show icons in text widgets
 
-If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }``` syntax. The icons act exactely like the texts, so you can apply shadow, size and color on them!
+If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }``` syntax. The icons act exactly like the text, so you can apply shadow, size and color on them!
 
 ```xml
 <IconTextView
