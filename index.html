@@ -12,7 +12,7 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">Iconify</h1>
-      <h2 class="project-tagline">Android integration of multiple icons provider such as FontAwesome, Entypo, Typicons,...</h2>
+      <h2 class="project-tagline">Android integration of multiple icon providers such as FontAwesome, Entypo, Typicons,...</h2>
       <a href="https://github.com/JoanZapata/android-iconify" class="btn">View on GitHub</a>
       <a href="https://github.com/JoanZapata/android-iconify/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/JoanZapata/android-iconify/tarball/master" class="btn">Download .tar.gz</a>
@@ -26,23 +26,20 @@
 <p><strong>Iconify</strong> allows you to easily include vector icons in your <code>TextView</code>, <code>Button</code>, etc…
 The icons are infinitely <strong>scalable</strong>, and <strong>customizable</strong> with shadows and everything you can do on texts.</p>
 
-<p>It already supports three icon fonts library, and allows you to add your own icons from icon font generation services like <a href="http://fontello.com/">fontello.com</a>, <a href="https://icomoon.io/">icomoon.io</a> or <a href="http://fontastic.me/">fontastic.me</a>.</p>
+<p>It currently supports three icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like <a href="http://fontello.com/">fontello.com</a>, <a href="https://icomoon.io/">icomoon.io</a> or <a href="http://fontastic.me/">fontastic.me</a>.</p>
 
 <hr>
 
 <h3>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h3>
 
-<p>You don't need to import all the modules, choose the modules you'll want to use.
-You can use the sample app to browse those libraries.</p>
+<p>Include the modules you need and declare them in your <code>Application</code>.</p>
 
 <div class="highlight highlight-gradle"><pre><span class="pl-en">dependencies</span> {
     compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.android.iconify:android-iconify-fontawesome:2.0.0<span class="pl-pds">'</span></span>
     compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.android.iconify:android-iconify-entypo:2.0.0<span class="pl-pds">'</span></span>
     compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.android.iconify:android-iconify-typicons:2.0.0<span class="pl-pds">'</span></span>
 }</pre></div>
-
-<p>After that, don't forget to initialize them in your Application's <code>onCreate</code>:</p>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
 
@@ -57,11 +54,9 @@ You can use the sample app to browse those libraries.</p>
 }</pre></div>
 
 <h3>
-<a id="icons-in-texts" class="anchor" href="#icons-in-texts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Icons in texts</h3>
+<a id="show-icons-in-text-widgets" class="anchor" href="#show-icons-in-text-widgets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show icons in text widgets</h3>
 
-<p>If you need to put an icon on a <code>TextView</code>, use the <code>{ }</code> syntax.</p>
-
-<p>You'll notice that the shadow, size, and color you apply on the TextView also affect the icons!</p>
+<p>If you need to put an icon on a <code>TextView</code> or a <code>Button</code>, use the <code>{ }</code> syntax. The icons act exactly like the text, so you can apply shadow, size and color on them!</p>
 
 <div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">IconTextView</span>
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">text</span>=<span class="pl-s"><span class="pl-pds">"</span>I {fa-heart-o} to {fa-code} on {fa-android}<span class="pl-pds">"</span></span>
@@ -73,16 +68,17 @@ You can use the sample app to browse those libraries.</p>
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">textColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#FF...<span class="pl-pds">"</span></span>
     ... /&gt;</pre></div>
 
-<blockquote>
-<p>You can either use <code>IconTextView</code> / <code>IconButton</code> or use any <code>TextView</code> and then programmatically call <code>Iconify.addIcons(myTextView);</code>.</p>
-</blockquote>
-
 <p><img src="https://raw.githubusercontent.com/JoanZapata/android-iconify/master/graphics/androids.png" alt="Alt"></p>
 
-<h3>
-<a id="icons-as-drawables" class="anchor" href="#icons-as-drawables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Icons as <code>Drawable</code>s</h3>
+<blockquote>
+<p>You can either use <code>IconTextView</code> / <code>IconButton</code> or use any <code>TextView</code> and then programmatically call <code>Iconify.addIcons(myTextView)</code>.</p>
+</blockquote>
 
-<p>If you need an icon in an <code>ImageView</code> or in your <code>ActionBar</code>, then you should use <code>IconDrawable</code>. Again, icons are infinitely scalable and will never get fuzzy!</p>
+<h3>
+<a id="show-an-icon-where-you-need-a-drawable" class="anchor" href="#show-an-icon-where-you-need-a-drawable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show an icon where you need a <code>Drawable</code>
+</h3>
+
+<p>If you need an icon in an <code>ImageView</code> or in your <code>ActionBar</code> menu item, then you should use <code>IconDrawable</code>. Again, icons are infinitely scalable and will never get fuzzy!</p>
 
 <div class="highlight highlight-java"><pre><span class="pl-c">// Set an icon in the ActionBar</span>
 menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>share)<span class="pl-k">.</span>setIcon(
@@ -99,6 +95,18 @@ menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class
 
 <pre><code>-keep class com.joanzapata.** { *; }
 </code></pre>
+
+<h2>
+<a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributions</h2>
+
+<ul>
+<li>Joan Zapata <a href="https://github.com/JoanZapata">@JoanZapata</a>
+</li>
+<li>Damien Villeneuve <a href="https://github.com/DayS">@DayS</a>
+</li>
+<li>Mike Penz <a href="https://github.com/mikepenz">@mikepenz</a>
+</li>
+</ul>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
