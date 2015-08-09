@@ -31,6 +31,7 @@ public class Iconify {
      */
     public static void addIcons(TextView... textViews) {
         for (TextView textView : textViews) {
+            if (textView == null) continue;
             textView.setText(compute(textView.getContext(), textView.getText()));
         }
     }
