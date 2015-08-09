@@ -36,9 +36,9 @@ The icons are infinitely <strong>scalable</strong>, and <strong>customizable</st
 <p>Include the modules you need and declare them in your <code>Application</code>.</p>
 
 <div class="highlight highlight-gradle"><pre><span class="pl-en">dependencies</span> {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.android.iconify:android-iconify-fontawesome:2.0.0<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.android.iconify:android-iconify-entypo:2.0.0<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.android.iconify:android-iconify-typicons:2.0.0<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.0.1<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.0.1<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.0.1<span class="pl-pds">'</span></span>
 }</pre></div>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
@@ -58,7 +58,7 @@ The icons are infinitely <strong>scalable</strong>, and <strong>customizable</st
 
 <p>If you need to put an icon on a <code>TextView</code> or a <code>Button</code>, use the <code>{ }</code> syntax. The icons act exactly like the text, so you can apply shadow, size and color on them!</p>
 
-<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">IconTextView</span>
+<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">com</span>.joanzapata.iconify.widget.IconTextView
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">text</span>=<span class="pl-s"><span class="pl-pds">"</span>I {fa-heart-o} to {fa-code} on {fa-android}<span class="pl-pds">"</span></span>
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">shadowColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#22000000<span class="pl-pds">"</span></span>
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">shadowDx</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
@@ -87,6 +87,46 @@ menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class
    .actionBarSize());</pre></div>
 
 <hr>
+
+<h2>
+<a id="migration-from-1xx" class="anchor" href="#migration-from-1xx" aria-hidden="true"><span class="octicon octicon-link"></span></a>Migration from 1.X.X</h2>
+
+<p>Iconify 2.X.X introduces breaking changes, here's the full list:</p>
+
+<p><strong>In build file</strong></p>
+
+<ul>
+<li>
+<code>compile 'com.joanzapata.android:android-iconify:1.X.X'</code> -&gt; <code>compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.X.X'</code>
+</li>
+</ul>
+
+<p><strong>In layouts</strong></p>
+
+<ul>
+<li>
+<code>android.widget.IconButton</code> -&gt; <code>com.joanzapata.iconify.views.IconButton</code>
+</li>
+<li>
+<code>android.widget.IconTextView</code> -&gt; <code>com.joanzapata.iconify.views.IconTextView</code>
+</li>
+<li>
+<code>android.widget.IconToggleButton</code> -&gt; <code>com.joanzapata.iconify.views.IconToggleButton</code>
+</li>
+</ul>
+
+<p><strong>In code</strong></p>
+
+<ul>
+<li>
+<code>com.joanzapata.android.iconify...</code> -&gt; <code>com.joanzapata.iconify...</code>
+</li>
+<li>
+<code>Iconify.IconValue.fa_something</code> -&gt; <code>FontAwesomeIcons.fa_something</code>
+</li>
+<li>Nothing in <code>Application</code> class -&gt; <code>Iconify.with(new FontAwesomeModule())</code>
+</li>
+</ul>
 
 <h2>
 <a id="proguard" class="anchor" href="#proguard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proguard</h2>
