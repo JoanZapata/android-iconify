@@ -8,12 +8,14 @@ import android.text.style.TypefaceSpan;
 public class CustomTypefaceSpan extends TypefaceSpan {
     private final Typeface type;
     private final float iconSizePx;
+    private final float iconSizeRatio;
     private final int iconColor;
 
-    public CustomTypefaceSpan(String family, Typeface type, float iconSizePx, int iconColor) {
+    public CustomTypefaceSpan(String family, Typeface type, float iconSizePx, float iconSizeRatio, int iconColor) {
         super(family);
         this.type = type;
         this.iconSizePx = iconSizePx;
+        this.iconSizeRatio = iconSizeRatio;
         this.iconColor = iconColor;
     }
 
@@ -31,7 +33,8 @@ public class CustomTypefaceSpan extends TypefaceSpan {
         paint.setFakeBoldText(false);
         paint.setTextSkewX(0f);
         paint.setTypeface(tf);
-        if (iconSizePx > 0) paint.setTextSize(iconSizePx);
+        if (iconSizeRatio > 0) paint.setTextSize(paint.getTextSize() * iconSizeRatio);
+        else if (iconSizePx > 0) paint.setTextSize(iconSizePx);
         if (iconColor > 0) paint.setColor(iconColor);
     }
 }

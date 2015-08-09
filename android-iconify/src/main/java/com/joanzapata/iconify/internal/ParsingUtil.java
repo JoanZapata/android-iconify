@@ -75,6 +75,7 @@ public final class ParsingUtil {
         // See if any more stroke within {} should be applied
         float iconSizePx = -1;
         int iconColor = -1;
+        float iconSizeRatio = -1;
         for (int i = 1; i < strokes.length; i++) {
             String stroke = strokes[i];
 
@@ -89,6 +90,8 @@ public final class ParsingUtil {
                 iconSizePx = getPxFromDimen(context, stroke.substring(7));
                 if (iconSizePx < 0)
                     throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
+            } else if (stroke.matches("([0-9]*(\\.[0-9]*)?)%")) {
+                iconSizeRatio = Float.valueOf(stroke.substring(0, stroke.length() - 1)) / 100f;
             } else {
                 throw new IllegalArgumentException("Unknown expression " + stroke + " in \"" + fullText + "\"");
             }
@@ -99,7 +102,7 @@ public final class ParsingUtil {
         accumulator.put(startIndex, new CustomTypefaceSpan(
                 iconFontDescriptor.getIconFontDescriptor().ttfFileName(),
                 iconFontDescriptor.getTypeface(context),
-                iconSizePx, iconColor));
+                iconSizePx, iconSizeRatio, iconColor));
         return recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, accumulator, startIndex);
 
     }
