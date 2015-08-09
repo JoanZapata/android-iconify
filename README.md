@@ -17,9 +17,9 @@ Include the modules you need and declare them in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.android.iconify:android-iconify-fontawesome:2.0.0'
-    compile 'com.joanzapata.android.iconify:android-iconify-entypo:2.0.0'
-    compile 'com.joanzapata.android.iconify:android-iconify-typicons:2.0.0'
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.0'
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.0'
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.0'
 }
 ```
 
@@ -42,7 +42,7 @@ public class MyApplication extends Application {
 If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }``` syntax. The icons act exactly like the text, so you can apply shadow, size and color on them!
 
 ```xml
-<IconTextView
+<com.joanzapata.iconify.widget.IconTextView
     android:text="I {fa-heart-o} to {fa-code} on {fa-android}"
     android:shadowColor="#22000000"
     android:shadowDx="3"
@@ -73,20 +73,21 @@ menu.findItem(R.id.share).setIcon(
 
 ## Migration from 1.X.X
 
-Iconify 2 introduces some breaking changes, here's the full list:
+Iconify 2.X.X introduces breaking changes, here's the full list:
 
 **In build file**
 
-- `compile 'com.joanzapata.android:android-iconify:1.X.X'` -> `compile 'com.joanzapata.android.iconify:android-iconify-fontawesome:2.X.X'`
+- `compile 'com.joanzapata.android:android-iconify:1.X.X'` -> `compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.X.X'`
 
 **In layouts**
 
-- `android.widget.IconButton` -> `com.joanzapata.android.iconify.views.IconButton`
-- `android.widget.IconTextView` -> `com.joanzapata.android.iconify.views.IconTextView`
-- `android.widget.IconToggleButton` -> `com.joanzapata.android.iconify.views.IconToggleButton`
+- `android.widget.IconButton` -> `com.joanzapata.iconify.views.IconButton`
+- `android.widget.IconTextView` -> `com.joanzapata.iconify.views.IconTextView`
+- `android.widget.IconToggleButton` -> `com.joanzapata.iconify.views.IconToggleButton`
 
 **In code**
 
+- `com.joanzapata.android.iconify...` -> `com.joanzapata.iconify...`
 - `Iconify.IconValue.fa_something` -> `FontAwesomeIcons.fa_something`
 - Nothing in `Application` class -> `Iconify.with(new FontAwesomeModule())`
 
