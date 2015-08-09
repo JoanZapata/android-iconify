@@ -1,4 +1,4 @@
-![Alt](logo.jpg)
+![Alt](graphics/logo.jpg)
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
@@ -60,7 +60,7 @@ You'll notice that the shadow, size, and color you apply on the TextView also af
 
 > You can either use ```IconTextView``` / ```IconButton``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView);```.
 
-![Alt](androids.png)
+![Alt](graphics/androids.png)
 
 ### Icons as `Drawable`s
 
