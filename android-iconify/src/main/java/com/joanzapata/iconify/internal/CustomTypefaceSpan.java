@@ -24,19 +24,8 @@ public class CustomTypefaceSpan extends TypefaceSpan {
     }
 
     private void applyCustomTypeFace(Paint paint, Typeface tf) {
-        int oldStyle;
-        Typeface old = paint.getTypeface();
-        oldStyle = old == null ? 0 : old.getStyle();
-
-        int fake = oldStyle & ~tf.getStyle();
-        if ((fake & Typeface.BOLD) != 0) {
-            paint.setFakeBoldText(true);
-        }
-
-        if ((fake & Typeface.ITALIC) != 0) {
-            paint.setTextSkewX(-0.25f);
-        }
-
+        paint.setFakeBoldText(false);
+        paint.setTextSkewX(0f);
         paint.setTypeface(tf);
     }
 }

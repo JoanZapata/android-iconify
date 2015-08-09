@@ -9,19 +9,22 @@ The icons are infinitely **scalable**, and **customizable** with shadows and eve
 
 It currently supports three icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
 
+> If you're migrating from version 1.X.X, please read the [migration guide](MIGRATION.md).
+
 -----
 
 ### Install
 
-Include the modules you need and declare them in your `Application`.
+Choose the modules you want using the [demo app](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample).
+Declare them in your `build.gradle` and in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.2'
-    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.2'
-    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.2'
-    compile 'com.joanzapata.iconify:android-iconify-material:2.0.2'
-    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.2'
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.3'
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.3'
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.3'
+    compile 'com.joanzapata.iconify:android-iconify-material:2.0.3'
+    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.3'
 }
 ```
 
@@ -35,6 +38,8 @@ public class MyApplication extends Application {
             .with(new FontAwesomeModule())
             .with(new EntypoModule())
             .with(new TypiconsModule());
+            .with(new MaterialModule());
+            .with(new MeteoconsModule());
     }
 }
 ```
@@ -72,26 +77,6 @@ menu.findItem(R.id.share).setIcon(
 ```
 
 -----
-
-## Migration from 1.X.X
-
-Iconify 2.X.X introduces breaking changes, here's the full list:
-
-**In build file**
-
-- `compile 'com.joanzapata.android:android-iconify:1.X.X'` -> `compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.X.X'`
-
-**In layouts**
-
-- `android.widget.IconButton` -> `com.joanzapata.iconify.views.IconButton`
-- `android.widget.IconTextView` -> `com.joanzapata.iconify.views.IconTextView`
-- `android.widget.IconToggleButton` -> `com.joanzapata.iconify.views.IconToggleButton`
-
-**In code**
-
-- `com.joanzapata.android.iconify...` -> `com.joanzapata.iconify...`
-- `Iconify.IconValue.fa_something` -> `FontAwesomeIcons.fa_something`
-- Nothing in `Application` class -> `Iconify.with(new FontAwesomeModule())`
 
 ## Proguard
 
