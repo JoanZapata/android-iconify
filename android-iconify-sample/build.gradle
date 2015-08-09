@@ -54,6 +54,7 @@ dependencies {
     compile project(':android-iconify-typicons')
     compile project(':android-iconify-entypo')
     compile project(':android-iconify-material')
+    compile project(':android-iconify-meteocons')
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

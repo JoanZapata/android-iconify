@@ -3,4 +3,5 @@ include ':android-iconify',
         ':android-iconify-fontawesome',
         ':android-iconify-entypo',
         ':android-iconify-material',
+        ':android-iconify-meteocons',
         ':android-iconify-sample'

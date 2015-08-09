@@ -1,16 +1,14 @@
 package com.joanzapata.iconify.sample;
 
 import com.joanzapata.iconify.IconFontDescriptor;
-import com.joanzapata.iconify.fonts.EntypoModule;
-import com.joanzapata.iconify.fonts.FontAwesomeModule;
-import com.joanzapata.iconify.fonts.MaterialModule;
-import com.joanzapata.iconify.fonts.TypiconsModule;
+import com.joanzapata.iconify.fonts.*;
 
 public enum Font implements FontIconsViewPagerAdapter.FontWithTitle {
     FONTAWESOME("FontAwesome", new FontAwesomeModule()),
     ENTYPO("Entypo", new EntypoModule()),
     TYPICONS("Typicons", new TypiconsModule()),
-    MATERIAL("Material", new MaterialModule());
+    MATERIAL("Material", new MaterialModule()),
+    METEOCONS("Meteocons", new MeteoconsModule());
 
     private final String title;
     private final IconFontDescriptor descriptor;
