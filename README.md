@@ -13,8 +13,7 @@ It already supports three icon fonts library, and allows you to add your own ico
 
 ### Install
 
-You don't need to import all the modules, choose the modules you'll want to use.
-You can use the sample app to browse those libraries.
+Include the modules you need and declare them in your `Application`.
 
 ```gradle
 dependencies {
@@ -23,8 +22,6 @@ dependencies {
     compile 'com.joanzapata.android.iconify:android-iconify-typicons:2.0.0'
 }
 ```
-
-After that, don't forget to initialize them in your Application's `onCreate`:
 
 ```java
 public class MyApplication extends Application {
@@ -40,11 +37,9 @@ public class MyApplication extends Application {
 }
 ```
 
-### Icons in texts
+### Show icons in text widgets
 
-If you need to put an icon on a ```TextView```, use the ```{ }``` syntax.
-
-You'll notice that the shadow, size, and color you apply on the TextView also affect the icons!
+If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }``` syntax. The icons act exactely like the texts, so you can apply shadow, size and color on them!
 
 ```xml
 <IconTextView
@@ -58,13 +53,13 @@ You'll notice that the shadow, size, and color you apply on the TextView also af
     ... />
 ```
 
-> You can either use ```IconTextView``` / ```IconButton``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView);```.
-
 ![Alt](graphics/androids.png)
 
-### Icons as `Drawable`s
+> You can either use ```IconTextView``` / ```IconButton``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView)```.
 
-If you need an icon in an ```ImageView``` or in your ```ActionBar```, then you should use ```IconDrawable```. Again, icons are infinitely scalable and will never get fuzzy!
+### Show an icon where you need a `Drawable`
+
+If you need an icon in an ```ImageView``` or in your ```ActionBar``` menu item, then you should use ```IconDrawable```. Again, icons are infinitely scalable and will never get fuzzy!
 
 ```java
 // Set an icon in the ActionBar
