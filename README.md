@@ -7,7 +7,7 @@
 **Iconify** allows you to easily include vector icons in your `TextView`, `Button`, etc…
 The icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
 
-It currently supports three icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
+It currently supports a few icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
 
 > If you're migrating from version 1.X.X, please read the [migration guide](MIGRATION.md).
 
@@ -25,6 +25,7 @@ dependencies {
     compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.4'
     compile 'com.joanzapata.iconify:android-iconify-material:2.0.4'
     compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.4'
+    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.4'
 }
 ```
 
@@ -40,6 +41,7 @@ public class MyApplication extends Application {
             .with(new TypiconsModule());
             .with(new MaterialModule());
             .with(new MeteoconsModule());
+            .with(new WeathericonsModule());
     }
 }
 ```
