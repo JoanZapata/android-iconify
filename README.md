@@ -79,6 +79,12 @@ If you use Proguard, don't forget to add the following rule.
 -keep class com.joanzapata.** { *; }
 ```
 
+## Contributions
+
+* Joan Zapata [@JoanZapata](https://github.com/JoanZapata)
+* Damien Villeneuve [@DayS](https://github.com/DayS)
+* Mike Penz [@mikepenz](https://github.com/mikepenz)
+
 ## License
 
 ```
