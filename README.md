@@ -9,7 +9,8 @@ The icons are infinitely **scalable**, and **customizable** with shadows and eve
 
 It currently supports three icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
 
-> If you're migrating from V1, please read the [migration guide](MIGRATION.md)
+> If you're migrating from version 1.X.X, please read the [migration guide](MIGRATION.md).
+
 -----
 
 ### Install
