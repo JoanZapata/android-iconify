@@ -1,36 +1,12 @@
-/**
- * Copyright 2013 Joan Zapata
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * It uses FontAwesome font, licensed under OFL 1.1, which is compatible
- * with this library's license.
- *
- *     http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
- */
 package com.joanzapata.android.iconify;
 
-import static com.joanzapata.android.iconify.Utils.convertDpToPx;
-import static com.joanzapata.android.iconify.Utils.isEnabled;
-import static java.lang.String.valueOf;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
+import android.util.TypedValue;
+
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
 /**
  * Embed an icon into a Drawable that can be used as TextView icons, or ActionBar icons.
@@ -49,7 +25,7 @@ public class IconDrawable extends Drawable {
 
     private final Context context;
 
-    private final BaseIconValue icon;
+    private final Icon icon;
 
     private TextPaint paint;
 
@@ -62,12 +38,12 @@ public class IconDrawable extends Drawable {
      * @param context Your activity or application context.
      * @param icon    The icon you want this drawable to display.
      */
-    public IconDrawable(Context context, BaseIconValue icon) {
+    public IconDrawable(Context context, Icon icon) {
         this.context = context;
         this.icon = icon;
         paint = new TextPaint();
-        paint.setTypeface(Iconify.getTypeface(context, icon.getTtfFilename()));
-        paint.setStyle(Paint.Style.FILL);
+        paint.setTypeface(Iconify.findTypefaceOf(icon).getTypeface(context));
+        paint.setStyle(Paint.Style.STROKE);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setUnderlineText(false);
         paint.setColor(Color.BLACK);
@@ -161,7 +137,7 @@ public class IconDrawable extends Drawable {
         int height = bounds.height();
         paint.setTextSize(height);
         Rect textBounds = new Rect();
-        String textValue = valueOf(icon.character());
+        String textValue = String.valueOf(icon.character());
         paint.getTextBounds(textValue, 0, 1, textBounds);
         int textHeight = textBounds.height();
         float textBottom = bounds.top + (height - textHeight) / 2f + textHeight - textBounds.bottom;
@@ -207,7 +183,21 @@ public class IconDrawable extends Drawable {
      * @param style to be applied
      */
     public void setStyle(Paint.Style style) {
-    	paint.setStyle(style);
+        paint.setStyle(style);
     }
 
+    // Util
+    private boolean isEnabled(int[] stateSet) {
+        for (int state : stateSet)
+            if (state == android.R.attr.state_enabled)
+                return true;
+        return false;
+    }
+
+    // Util
+    private int convertDpToPx(Context context, float dp) {
+        return (int) TypedValue.applyDimension(
+                COMPLEX_UNIT_DIP, dp,
+                context.getResources().getDisplayMetrics());
+    }
 }

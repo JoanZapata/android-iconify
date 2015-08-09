@@ -1,0 +1,17 @@
+package com.joanzapata.android.iconify.fonts;
+
+import com.joanzapata.android.iconify.Icon;
+import com.joanzapata.android.iconify.IconFontDescriptor;
+
+public class EntypoModule implements IconFontDescriptor {
+
+    @Override
+    public String ttfFileName() {
+        return "iconify/android-iconify-entypo.ttf";
+    }
+
+    @Override
+    public Icon[] characters() {
+        return EntypoIcons.values();
+    }
+}

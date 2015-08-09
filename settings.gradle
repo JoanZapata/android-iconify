@@ -1,0 +1,5 @@
+include ':android-iconify',
+        ':android-iconify-typicons',
+        ':android-iconify-fontawesome',
+        ':android-iconify-entypo',
+        ':android-iconify-sample'

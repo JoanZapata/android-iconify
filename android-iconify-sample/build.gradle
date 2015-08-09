@@ -1,0 +1,58 @@
+buildscript {
+    dependencies {
+        classpath rootProject.ext.androidPlugin
+    }
+}
+
+apply plugin: 'com.android.application'
+
+repositories {
+    jcenter()
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.joanzapata.android.icons.sample"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.compileSdkVersion
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("keystore")
+            storePassword ICONIFY_SAMPLE_KEYSTORE_PASSWORD
+            keyAlias "android-iconify"
+            keyPassword ICONIFY_SAMPLE_KEYSTORE_PASSWORD
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'com.android.support:design:22.2.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    compile project(':android-iconify-fontawesome')
+    compile project(':android-iconify-typicons')
+    compile project(':android-iconify-entypo')
+}
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
