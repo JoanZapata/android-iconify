@@ -26,7 +26,7 @@
 <p><strong>Iconify</strong> allows you to easily include vector icons in your <code>TextView</code>, <code>Button</code>, etc…
 The icons are infinitely <strong>scalable</strong>, and <strong>customizable</strong> with shadows and everything you can do on texts.</p>
 
-<p>It currently supports three icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like <a href="http://fontello.com/">fontello.com</a>, <a href="https://icomoon.io/">icomoon.io</a> or <a href="http://fontastic.me/">fontastic.me</a>.</p>
+<p>It currently supports a few icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like <a href="http://fontello.com/">fontello.com</a>, <a href="https://icomoon.io/">icomoon.io</a> or <a href="http://fontastic.me/">fontastic.me</a>.</p>
 
 <blockquote>
 <p>If you're migrating from version 1.X.X, please read the <a href="MIGRATION.md">migration guide</a>.</p>
@@ -41,11 +41,13 @@ The icons are infinitely <strong>scalable</strong>, and <strong>customizable</st
 Declare them in your <code>build.gradle</code> and in your <code>Application</code>.</p>
 
 <div class="highlight highlight-gradle"><pre><span class="pl-en">dependencies</span> {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.0.3<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.0.3<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.0.3<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material:2.0.3<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-meteocons:2.0.3<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.0.4<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.0.4<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.0.4<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material:2.0.4<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-meteocons:2.0.4<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-weathericons:2.0.4<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-simplelineicons:2.0.4<span class="pl-pds">'</span></span>
 }</pre></div>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
@@ -59,6 +61,8 @@ Declare them in your <code>build.gradle</code> and in your <code>Application</co
             .with(<span class="pl-k">new</span> <span class="pl-smi">TypiconsModule</span>());
             .with(<span class="pl-k">new</span> <span class="pl-smi">MaterialModule</span>());
             .with(<span class="pl-k">new</span> <span class="pl-smi">MeteoconsModule</span>());
+            .with(<span class="pl-k">new</span> <span class="pl-smi">WeathericonsModule</span>());
+            .with(<span class="pl-k">new</span> <span class="pl-smi">SimpleLineIconsModule</span>());
     }
 }</pre></div>
 
@@ -81,6 +85,9 @@ Declare them in your <code>build.gradle</code> and in your <code>Application</co
 
 <blockquote>
 <p>You can either use <code>IconTextView</code> / <code>IconButton</code> or use any <code>TextView</code> and then programmatically call <code>Iconify.addIcons(myTextView)</code>.</p>
+
+<p>Shall you need to override the text size of a particular icon, the following syntax is supported <code>{fa-code 12px}</code>, <code>{fa-code 12dp}</code>, <code>{fa-code 12sp}</code>, <code>{fa-code @dimen/my_text_size}</code>, and also <code>{fa-code 120%}</code>.
+In the same way you can override the icon color using <code>{fa-code #RRGGBB}</code>, <code>{fa-code #AARRGGBB}</code>, or <code>{fa-code @color/my_color}</code>.</p>
 </blockquote>
 
 <h3>
