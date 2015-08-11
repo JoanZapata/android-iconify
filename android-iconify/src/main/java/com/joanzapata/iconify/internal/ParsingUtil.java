@@ -3,9 +3,8 @@ package com.joanzapata.iconify.internal;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.util.SparseArray;
 import android.util.TypedValue;
 import com.joanzapata.iconify.Icon;
 
@@ -16,7 +15,7 @@ public final class ParsingUtil {
     // Prevents instantiation
     private ParsingUtil() {}
 
-    public static SpannableString parse(
+    public static CharSequence parse(
             Context context,
             List<IconFontDescriptorWrapper> iconFontDescriptors,
             CharSequence text) {
@@ -24,36 +23,27 @@ public final class ParsingUtil {
 
         // Analyse the text and replace {} blocks with the appropriate character
         // Retain all transformations in the accumulator
-        SparseArray<CustomTypefaceSpan> accumulator = new SparseArray<CustomTypefaceSpan>();
-        String result = recursivePrepareSpannableIndexes(context, text.toString(), new StringBuilder(text), iconFontDescriptors, accumulator, 0);
-        SpannableString spannableString = SpannableString.valueOf(result);
+        SpannableStringBuilder spannableBuilder = new SpannableStringBuilder(text);
+        recursivePrepareSpannableIndexes(context,
+                text.toString(), spannableBuilder,
+                iconFontDescriptors, 0);
 
-        // Then apply spans at all positions
-        int size = accumulator.size();
-        for (int i = 0; i < size; i++) {
-            int index = accumulator.keyAt(i);
-            CustomTypefaceSpan descriptor = accumulator.valueAt(i);
-            spannableString.setSpan(descriptor, index, index + 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        }
-
-        return spannableString;
+        return spannableBuilder;
     }
 
-    private static String recursivePrepareSpannableIndexes(
+    private static void recursivePrepareSpannableIndexes(
             Context context,
             String fullText,
-            StringBuilder text,
+            SpannableStringBuilder text,
             List<IconFontDescriptorWrapper> iconFontDescriptors,
-            SparseArray<CustomTypefaceSpan> accumulator,
             int start) {
 
         // Try to find a {...} in the string and extract expression from it
-        int startIndex = text.indexOf("{", start);
-        if (startIndex == -1) {
-            return text.toString();
-        }
-        int endIndex = text.indexOf("}", startIndex) + 1;
-        String expression = text.substring(startIndex + 1, endIndex - 1);
+        String stringText = text.toString();
+        int startIndex = stringText.indexOf("{", start);
+        if (startIndex == -1) return;
+        int endIndex = stringText.indexOf("}", startIndex) + 1;
+        String expression = stringText.substring(startIndex + 1, endIndex - 1);
 
         // Split the expression and retrieve the icon key
         String[] strokes = expression.split(" ");
@@ -70,7 +60,8 @@ public final class ParsingUtil {
 
         // If no match, ignore and continue
         if (icon == null) {
-            return recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, accumulator, endIndex);
+            recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, endIndex);
+            return;
         }
 
         // See if any more stroke within {} should be applied
@@ -109,13 +100,15 @@ public final class ParsingUtil {
 
         }
 
-        // Get the typeface and set it
+        // Replace the character and apply the typeface
         text = text.replace(startIndex, endIndex, "" + icon.character());
-        accumulator.put(startIndex, new CustomTypefaceSpan(
-                iconFontDescriptor.getIconFontDescriptor().ttfFileName(),
-                iconFontDescriptor.getTypeface(context),
-                iconSizePx, iconSizeRatio, iconColor));
-        return recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, accumulator, startIndex);
+        text.setSpan(new CustomTypefaceSpan(
+                        iconFontDescriptor.getIconFontDescriptor().ttfFileName(),
+                        iconFontDescriptor.getTypeface(context),
+                        iconSizePx, iconSizeRatio, iconColor),
+                startIndex, startIndex + 1,
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, startIndex);
 
     }
 
