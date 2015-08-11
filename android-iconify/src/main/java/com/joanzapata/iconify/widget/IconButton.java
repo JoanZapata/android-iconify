@@ -23,8 +23,7 @@ public class IconButton extends Button {
     }
 
     private void init() {
-        if (isInEditMode()) return;
-        Iconify.addIcons(this);
+        setTransformationMethod(null);
     }
 
     @Override

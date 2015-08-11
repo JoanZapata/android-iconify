@@ -23,17 +23,12 @@ public class IconToggleButton extends ToggleButton {
     }
 
     private void init() {
-        if (isInEditMode()) return;
-        Iconify.addIcons(this);
+        setTransformationMethod(null);
     }
 
     @Override
-    public void setTextOn(CharSequence textOn) {
-        super.setTextOn(Iconify.compute(getContext(), textOn));
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(Iconify.compute(getContext(), text), BufferType.NORMAL);
     }
 
-    @Override
-    public void setTextOff(CharSequence textOff) {
-        super.setTextOff(Iconify.compute(getContext(), textOff));
-    }
 }
