@@ -6,4 +6,5 @@ include ':android-iconify',
         ':android-iconify-meteocons',
         ':android-iconify-weathericons',
         ':android-iconify-simplelineicons',
+        ':android-iconify-ionicons',
         ':android-iconify-sample'

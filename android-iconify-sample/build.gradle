@@ -52,6 +52,7 @@ dependencies {
 
     compile project(':android-iconify-fontawesome')
     compile project(':android-iconify-typicons')
+    compile project(':android-iconify-ionicons')
     compile project(':android-iconify-entypo')
     compile project(':android-iconify-material')
     compile project(':android-iconify-meteocons')
