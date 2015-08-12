@@ -23,9 +23,9 @@ public class IconDrawable extends Drawable {
 
     public static final int ANDROID_ACTIONBAR_ICON_SIZE_DP = 24;
 
-    private final Context context;
+    private Context context;
 
-    private final Icon icon;
+    private Icon icon;
 
     private TextPaint paint;
 
@@ -36,9 +36,27 @@ public class IconDrawable extends Drawable {
     /**
      * Create an IconDrawable.
      * @param context Your activity or application context.
+     * @param iconKey The icon key you want this drawable to display.
+     * @throws IllegalArgumentException if the key doesn't match any icon.
+     */
+    public IconDrawable(Context context, String iconKey) {
+        Icon icon = Iconify.findIconForKey(iconKey);
+        if (icon == null) {
+            throw new IllegalArgumentException("No icon with that key \"" + iconKey + "\".");
+        }
+        init(context, icon);
+    }
+
+    /**
+     * Create an IconDrawable.
+     * @param context Your activity or application context.
      * @param icon    The icon you want this drawable to display.
      */
     public IconDrawable(Context context, Icon icon) {
+        init(context, icon);
+    }
+
+    private void init(Context context, Icon icon) {
         this.context = context;
         this.icon = icon;
         paint = new TextPaint();
