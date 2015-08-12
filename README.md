@@ -20,13 +20,13 @@ Declare them in your `build.gradle` and in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.5'
-    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.5'
-    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.5'
-    compile 'com.joanzapata.iconify:android-iconify-material:2.0.5'
-    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.5'
-    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.5'
-    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.5'
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.6' // (v4.4)
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.6' // (v3,2015)
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.6' // (v2.0.7)
+    compile 'com.joanzapata.iconify:android-iconify-material:2.0.6' // (v2.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.6' // (latest)
+    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.6' // (v2.0)
+    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.6' // (v1.0.0)
 }
 ```
 

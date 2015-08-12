@@ -2,4 +2,5 @@
 <resources>
     <color name="text_primary">#FF333333</color>
     <color name="text_secondary">#FF666666</color>
+    <color name="color_accent">#FF3AAD73</color>
 </resources>

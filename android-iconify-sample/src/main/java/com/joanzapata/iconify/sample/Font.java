@@ -7,6 +7,7 @@ public enum Font implements FontIconsViewPagerAdapter.FontWithTitle {
     FONTAWESOME("FontAwesome", new FontAwesomeModule()),
     ENTYPO("Entypo", new EntypoModule()),
     TYPICONS("Typicons", new TypiconsModule()),
+    IONICONS("Ionicons", new IoniconsModule()),
     MATERIAL("Material", new MaterialModule()),
     METEOCONS("Meteocons", new MeteoconsModule()),
     WEATHERICONS("WeatherIcons", new WeathericonsModule()),
