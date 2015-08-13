@@ -8,9 +8,9 @@ Iconify 2.X.X introduces breaking changes, here's the full list:
 
 **In layouts**
 
-- `android.widget.IconButton` -> `com.joanzapata.iconify.views.IconButton`
-- `android.widget.IconTextView` -> `com.joanzapata.iconify.views.IconTextView`
-- `android.widget.IconToggleButton` -> `com.joanzapata.iconify.views.IconToggleButton`
+- `android.widget.IconButton` -> `com.joanzapata.iconify.widget.IconButton`
+- `android.widget.IconTextView` -> `com.joanzapata.iconify.widget.IconTextView`
+- `android.widget.IconToggleButton` -> `com.joanzapata.iconify.widget.IconToggleButton`
 
 **In code**
 
