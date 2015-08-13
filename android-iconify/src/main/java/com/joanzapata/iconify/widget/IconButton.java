@@ -28,6 +28,6 @@ public class IconButton extends Button {
 
     @Override
     public void setText(CharSequence text, BufferType type) {
-        super.setText(Iconify.compute(getContext(), text), type);
+        super.setText(Iconify.compute(getContext(), text, this), type);
     }
 }

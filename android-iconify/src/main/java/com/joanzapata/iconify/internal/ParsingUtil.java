@@ -3,9 +3,11 @@ package com.joanzapata.iconify.internal;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.support.v4.view.ViewCompat;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.util.TypedValue;
+import android.widget.TextView;
 import com.joanzapata.iconify.Icon;
 
 import java.util.List;
@@ -18,17 +20,46 @@ public final class ParsingUtil {
     public static CharSequence parse(
             Context context,
             List<IconFontDescriptorWrapper> iconFontDescriptors,
-            CharSequence text) {
+            CharSequence text,
+            final TextView target) {
         context = context.getApplicationContext();
 
         // Analyse the text and replace {} blocks with the appropriate character
         // Retain all transformations in the accumulator
-        SpannableStringBuilder spannableBuilder = new SpannableStringBuilder(text);
+        final SpannableStringBuilder spannableBuilder = new SpannableStringBuilder(text);
         recursivePrepareSpannableIndexes(context,
                 text.toString(), spannableBuilder,
                 iconFontDescriptors, 0);
+        boolean isAnimated = hasAnimatedSpans(spannableBuilder);
 
+        // If animated, periodically invalidate the TextView so that the
+        // CustomTypefaceSpan can redraw itself
+        if (isAnimated) {
+            if (target == null)
+                throw new IllegalArgumentException("You can't use \"spin\" without providing the target TextView.");
+            ViewCompat.postOnAnimation(target, new Runnable() {
+                @Override
+                public void run() {
+                    if (!ViewCompat.isAttachedToWindow(target) ||
+                            !spannableBuilder.equals(target.getText())) {
+                        System.out.println("Stopped because different");
+                        return;
+                    }
+                    target.invalidate();
+                    ViewCompat.postOnAnimation(target, this);
+                }
+            });
+        }
         return spannableBuilder;
+    }
+
+    private static boolean hasAnimatedSpans(SpannableStringBuilder spannableBuilder) {
+        CustomTypefaceSpan[] spans = spannableBuilder.getSpans(0, spannableBuilder.length(), CustomTypefaceSpan.class);
+        for (CustomTypefaceSpan span : spans) {
+            if (span.isAnimated())
+                return true;
+        }
+        return false;
     }
 
     private static void recursivePrepareSpannableIndexes(
@@ -68,11 +99,17 @@ public final class ParsingUtil {
         float iconSizePx = -1;
         int iconColor = Integer.MAX_VALUE;
         float iconSizeRatio = -1;
+        boolean spin = false;
         for (int i = 1; i < strokes.length; i++) {
             String stroke = strokes[i];
 
+            // Look for "spin"
+            if (stroke.equalsIgnoreCase("spin")) {
+                spin = true;
+            }
+
             // Look for an icon size
-            if (stroke.matches("([0-9]*(\\.[0-9]*)?)dp")) {
+            else if (stroke.matches("([0-9]*(\\.[0-9]*)?)dp")) {
                 iconSizePx = dpToPx(context, Float.valueOf(stroke.substring(0, stroke.length() - 2)));
             } else if (stroke.matches("([0-9]*(\\.[0-9]*)?)sp")) {
                 iconSizePx = spToPx(context, Float.valueOf(stroke.substring(0, stroke.length() - 2)));
@@ -102,14 +139,12 @@ public final class ParsingUtil {
 
         // Replace the character and apply the typeface
         text = text.replace(startIndex, endIndex, "" + icon.character());
-        text.setSpan(new CustomTypefaceSpan(
-                        iconFontDescriptor.getIconFontDescriptor().ttfFileName(),
+        text.setSpan(new CustomTypefaceSpan(icon,
                         iconFontDescriptor.getTypeface(context),
-                        iconSizePx, iconSizeRatio, iconColor),
+                        iconSizePx, iconSizeRatio, iconColor, spin),
                 startIndex, startIndex + 1,
                 Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, startIndex);
-
     }
 
     public static float getPxFromDimen(Context context, String resName) {
