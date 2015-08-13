@@ -20,14 +20,14 @@ Declare them in your `build.gradle` and in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.6' // (v4.4)
-    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.6' // (v3,2015)
-    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.6' // (v2.0.7)
-    compile 'com.joanzapata.iconify:android-iconify-material:2.0.6' // (v2.0.0)
-    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.6' // (latest)
-    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.6' // (v2.0)
-    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.6' // (v1.0.0)
-    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.0.6' // (v2.0.1)
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.7' // (v4.4)
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.7' // (v3,2015)
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.7' // (v2.0.7)
+    compile 'com.joanzapata.iconify:android-iconify-material:2.0.7' // (v2.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.7' // (latest)
+    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.7' // (v2.0)
+    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.7' // (v1.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.0.7' // (v2.0.1)
 }
 ```
 
@@ -68,10 +68,13 @@ If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }
 
 ![Alt](graphics/androids.png)
 
-> You can either use ```IconTextView``` / ```IconButton``` or use any ```TextView``` and then programmatically call ```Iconify.addIcons(myTextView)```.
+### Icon options
 
-> Shall you need to override the text size of a particular icon, the following syntax is supported `{fa-code 12px}`, `{fa-code 12dp}`, `{fa-code 12sp}`, `{fa-code @dimen/my_text_size}`, and also `{fa-code 120%}`.
-In the same way you can override the icon color using `{fa-code #RRGGBB}`, `{fa-code #AARRGGBB}`, or `{fa-code @color/my_color}`.
+* Shall you need to override the text size of a particular icon, the following syntax is supported `{fa-code 12px}`, `{fa-code 12dp}`, `{fa-code 12sp}`, `{fa-code @dimen/my_text_size}`, and also `{fa-code 120%}`.
+* In the same way you can override the icon color using `{fa-code #RRGGBB}`, `{fa-code #AARRGGBB}`, or `{fa-code @color/my_color}`.
+* You can even easily spin an icon like so `{fa-cog spin}`.
+
+![](graphics/spinning.gif)
 
 ### Show an icon where you need a `Drawable`
 

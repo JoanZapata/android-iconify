@@ -28,7 +28,7 @@ public class IconToggleButton extends ToggleButton {
 
     @Override
     public void setText(CharSequence text, BufferType type) {
-        super.setText(Iconify.compute(getContext(), text), BufferType.NORMAL);
+        super.setText(Iconify.compute(getContext(), text, this), BufferType.NORMAL);
     }
 
 }

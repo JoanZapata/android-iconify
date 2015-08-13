@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:text="Spinning: {fa-circle-o-notch spin 200%} And this is a big test {fa-cog spin} Blablablabla dzidh ozih  {fa-refresh spin 150%} Coucou les lapins bidoud bidoud{fa-spinner spin} "
+        android:textSize="50sp"
+        android:padding="0px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

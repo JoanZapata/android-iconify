@@ -32,7 +32,7 @@ public class Iconify {
     public static void addIcons(TextView... textViews) {
         for (TextView textView : textViews) {
             if (textView == null) continue;
-            textView.setText(compute(textView.getContext(), textView.getText()));
+            textView.setText(compute(textView.getContext(), textView.getText(), textView));
         }
     }
 
@@ -52,7 +52,11 @@ public class Iconify {
     }
 
     public static CharSequence compute(Context context, CharSequence text) {
-        return ParsingUtil.parse(context, iconFontDescriptors, text);
+        return compute(context, text, null);
+    }
+
+    public static CharSequence compute(Context context, CharSequence text, TextView target) {
+        return ParsingUtil.parse(context, iconFontDescriptors, text, target);
     }
 
     /**
