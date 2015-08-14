@@ -2,12 +2,9 @@
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
-**If you're tired of copying 5 images (ldpi, mdpi, hdpi, xhdpi, xxhdpi) for each icon you want to use in your app, for each color you want to use them with, and bang your head on the wall when you suddenly need to change their color or size, then I think ```Iconify``` can help you.**
+**Iconify** has been introduced in a [**blog post**](http://blog.joanzapata.com/iconify-just-got-a-lot-better/) which is a good place to get started. The goal of this library is to offer you a **huge collection of vector icons** to choose from, and an intuitive way to **add and customize them in your app**.
 
-**Iconify** allows you to easily include vector icons in your `TextView`, `Button`, etc…
-The icons are infinitely **scalable**, and **customizable** with shadows and everything you can do on texts.
-
-It currently supports a few icon font libraries out-of-the-box, and there are many more to come. In case you need a custom one, it allows you to add your own icons from icon font generation services like [fontello.com](http://fontello.com/), [icomoon.io](https://icomoon.io/) or [fontastic.me](http://fontastic.me/).
+In case you can't find the icon you want, you can extend the available icon directly from your app. All you need to do is to implement `IconFontDescriptor` with a `.ttf` file in your assets and the mapping between keys and special characters, then give it to `Iconify.addIconFontDescriptor()`. For reference [here](https://github.com/JoanZapata/android-iconify/blob/master/ADD_FONT.md) is the guide I follow when I add support for a new icon font.
 
 > If you're migrating from version 1.X.X, please read the [migration guide](MIGRATION.md).
 
