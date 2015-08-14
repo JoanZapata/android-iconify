@@ -41,13 +41,14 @@ The icons are infinitely <strong>scalable</strong>, and <strong>customizable</st
 Declare them in your <code>build.gradle</code> and in your <code>Application</code>.</p>
 
 <div class="highlight highlight-gradle"><pre><span class="pl-en">dependencies</span> {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.0.5<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.0.5<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.0.5<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material:2.0.5<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-meteocons:2.0.5<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-weathericons:2.0.5<span class="pl-pds">'</span></span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-simplelineicons:2.0.5<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.0.7<span class="pl-pds">'</span></span> <span class="pl-c">// (v4.4)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.0.7<span class="pl-pds">'</span></span> <span class="pl-c">// (v3,2015)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.0.7<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.7)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material:2.0.7<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-meteocons:2.0.7<span class="pl-pds">'</span></span> <span class="pl-c">// (latest)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-weathericons:2.0.7<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-simplelineicons:2.0.7<span class="pl-pds">'</span></span> <span class="pl-c">// (v1.0.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-ionicons:2.0.7<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.1)</span>
 }</pre></div>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
@@ -63,6 +64,7 @@ Declare them in your <code>build.gradle</code> and in your <code>Application</co
             .with(<span class="pl-k">new</span> <span class="pl-smi">MeteoconsModule</span>());
             .with(<span class="pl-k">new</span> <span class="pl-smi">WeathericonsModule</span>());
             .with(<span class="pl-k">new</span> <span class="pl-smi">SimpleLineIconsModule</span>());
+            .with(<span class="pl-k">new</span> <span class="pl-smi">IoniconsModule</span>());
     }
 }</pre></div>
 
@@ -83,12 +85,16 @@ Declare them in your <code>build.gradle</code> and in your <code>Application</co
 
 <p><img src="https://raw.githubusercontent.com/JoanZapata/android-iconify/master/graphics/androids.png" alt="Alt"></p>
 
-<blockquote>
-<p>You can either use <code>IconTextView</code> / <code>IconButton</code> or use any <code>TextView</code> and then programmatically call <code>Iconify.addIcons(myTextView)</code>.</p>
+<h3>
+<a id="icon-options" class="anchor" href="#icon-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Icon options</h3>
 
-<p>Shall you need to override the text size of a particular icon, the following syntax is supported <code>{fa-code 12px}</code>, <code>{fa-code 12dp}</code>, <code>{fa-code 12sp}</code>, <code>{fa-code @dimen/my_text_size}</code>, and also <code>{fa-code 120%}</code>.
-In the same way you can override the icon color using <code>{fa-code #RRGGBB}</code>, <code>{fa-code #AARRGGBB}</code>, or <code>{fa-code @color/my_color}</code>.</p>
-</blockquote>
+<ul>
+<li>Shall you need to override the text size of a particular icon, the following syntax is supported <code>{fa-code 12px}</code>, <code>{fa-code 12dp}</code>, <code>{fa-code 12sp}</code>, <code>{fa-code @dimen/my_text_size}</code>, and also <code>{fa-code 120%}</code>.</li>
+<li>In the same way you can override the icon color using <code>{fa-code #RRGGBB}</code>, <code>{fa-code #AARRGGBB}</code>, or <code>{fa-code @color/my_color}</code>.</li>
+<li>You can even easily spin an icon like so <code>{fa-cog spin}</code>.</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/JoanZapata/android-iconify/master/graphics/spinning.gif" alt=""></p>
 
 <h3>
 <a id="show-an-icon-where-you-need-a-drawable" class="anchor" href="#show-an-icon-where-you-need-a-drawable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show an icon where you need a <code>Drawable</code>
