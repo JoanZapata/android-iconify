@@ -4,8 +4,6 @@
 
 **Iconify** has been introduced in a [**blog post**](http://blog.joanzapata.com/iconify-just-got-a-lot-better/) which is a good place to get started. The goal of this library is to offer you a **huge collection of vector icons** to choose from, and an intuitive way to **add and customize them in your app**.
 
-In case you can't find the icon you want, you can extend the available icon directly from your app. All you need to do is to implement `IconFontDescriptor` with a `.ttf` file in your assets and the mapping between keys and special characters, then give it to `Iconify.addIconFontDescriptor()`. For reference [here](https://github.com/JoanZapata/android-iconify/blob/master/ADD_FONT.md) is the guide I follow when I add support for a new icon font.
-
 > If you're migrating from version 1.X.X, please read the [migration guide](MIGRATION.md).
 
 -----
@@ -84,6 +82,10 @@ menu.findItem(R.id.share).setIcon(
    .colorRes(R.color.ab_icon)
    .actionBarSize());
 ```
+
+## Extensibility
+
+In case you can't find the icon you want, you can extend the available icon directly from your app. All you need to do is to implement `IconFontDescriptor` with a `.ttf` file in your assets and provide the mapping between keys and special characters, then give it to `Iconify.addIconFontDescriptor()`. I suggest you use  [FontAwesomeModule](https://github.com/JoanZapata/android-iconify/blob/master/android-iconify-fontawesome/src/main/java/com/joanzapata/iconify/fonts/FontAwesomeModule.java) as an example.
 
 -----
 
