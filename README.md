@@ -2,7 +2,7 @@
 
 [![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
-**Iconify** has been introduced in a [**blog post**](http://blog.joanzapata.com/iconify-just-got-a-lot-better/) which is a good place to get started. The goal of this library is to offer you a **huge collection of vector icons** to choose from, and an intuitive way to **add and customize them in your app**.
+**Iconify** offers you a **huge collection of vector icons** to choose from, and an intuitive way to **add and customize them in your Android app**. It has been introduced in [**this blog post**](http://blog.joanzapata.com/iconify-just-got-a-lot-better/) which is a good place to get started. 
 
 > If you're migrating from version 1.X.X, please read the [migration guide](MIGRATION.md).
 
