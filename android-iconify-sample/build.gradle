@@ -22,12 +22,14 @@ android {
         versionName VERSION_NAME
     }
 
+    def password = project.hasProperty('ICONIFY_SAMPLE_KEYSTORE_PASSWORD') ?
+            project.property('ICONIFY_SAMPLE_KEYSTORE_PASSWORD') : ''
     signingConfigs {
         release {
             storeFile file("keystore")
-            storePassword ICONIFY_SAMPLE_KEYSTORE_PASSWORD
+            storePassword password
             keyAlias "android-iconify"
-            keyPassword ICONIFY_SAMPLE_KEYSTORE_PASSWORD
+            keyPassword password
         }
     }
 
