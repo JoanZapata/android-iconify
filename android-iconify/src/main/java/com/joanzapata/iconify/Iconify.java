@@ -42,7 +42,8 @@ public class Iconify {
         for (IconFontDescriptorWrapper wrapper : iconFontDescriptors) {
             if (wrapper.getIconFontDescriptor().ttfFileName().equals(iconFontDescriptor.ttfFileName())) {
                 throw new IllegalArgumentException("Can't add twice the same font \""
-                        + iconFontDescriptor.ttfFileName() + "\"");
+                        + iconFontDescriptor.ttfFileName() + "\", please initialize " +
+                        "Iconify in your Application and not in your Activity.");
             }
         }
 
