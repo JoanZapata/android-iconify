@@ -14,14 +14,14 @@ Pick any number of modules and declare them in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.8' // (v4.4)
-    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.8' // (v3,2015)
-    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.8' // (v2.0.7)
-    compile 'com.joanzapata.iconify:android-iconify-material:2.0.8' // (v2.0.0)
-    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.8' // (latest)
-    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.8' // (v2.0)
-    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.8' // (v1.0.0)
-    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.0.8' // (v2.0.1)
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.9' // (v4.4)
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.9' // (v3,2015)
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.9' // (v2.0.7)
+    compile 'com.joanzapata.iconify:android-iconify-material:2.0.9' // (v2.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.9' // (latest)
+    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.9' // (v2.0)
+    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.9' // (v1.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.0.9' // (v2.0.1)
 }
 ```
 
