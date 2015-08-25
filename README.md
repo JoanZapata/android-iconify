@@ -90,14 +90,6 @@ There are no constraints on the icon keys, but I strongly suggest you use a uniq
 
 -----
 
-## Proguard
-
-If you use Proguard, don't forget to add the following rule.
-
-```
--keep class com.joanzapata.** { *; }
-```
-
 ## Contributions
 
 * Joan Zapata [@JoanZapata](https://github.com/JoanZapata)
