@@ -40,10 +40,9 @@ public class Iconify {
 
         // Prevent duplicates
         for (IconFontDescriptorWrapper wrapper : iconFontDescriptors) {
-            if (wrapper.getIconFontDescriptor().ttfFileName().equals(iconFontDescriptor.ttfFileName())) {
-                throw new IllegalArgumentException("Can't add twice the same font \""
-                        + iconFontDescriptor.ttfFileName() + "\", please initialize " +
-                        "Iconify in your Application and not in your Activity.");
+            if (wrapper.getIconFontDescriptor().ttfFileName()
+                    .equals(iconFontDescriptor.ttfFileName())) {
+                return;
             }
         }
 
