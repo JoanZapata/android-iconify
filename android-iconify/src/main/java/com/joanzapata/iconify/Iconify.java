@@ -40,10 +40,9 @@ public class Iconify {
 
         // Prevent duplicates
         for (IconFontDescriptorWrapper wrapper : iconFontDescriptors) {
-            if (wrapper.getIconFontDescriptor().ttfFileName().equals(iconFontDescriptor.ttfFileName())) {
-                throw new IllegalArgumentException("Can't add twice the same font \""
-                        + iconFontDescriptor.ttfFileName() + "\", please initialize " +
-                        "Iconify in your Application and not in your Activity.");
+            if (wrapper.getIconFontDescriptor().ttfFileName()
+                    .equals(iconFontDescriptor.ttfFileName())) {
+                return;
             }
         }
 
@@ -81,10 +80,13 @@ public class Iconify {
     }
 
     /**
-     * Internal method for finding the Typeface to apply for a particular icon.
-     * Used by {@link IconDrawable}.
+     * Finds the Typeface to apply for a given icon.
+     * @param icon The icon for which you need the typeface.
+     * @return The font descriptor which contains info about the typeface to apply, or null
+     * if the icon cannot be found. In that case, check that you properly added the modules
+     * using {@link #with(IconFontDescriptor)}} prior to calling this method.
      */
-    static IconFontDescriptorWrapper findTypefaceOf(Icon icon) {
+    public static IconFontDescriptorWrapper findTypefaceOf(Icon icon) {
         for (IconFontDescriptorWrapper iconFontDescriptor : iconFontDescriptors) {
             if (iconFontDescriptor.hasIcon(icon)) {
                 return iconFontDescriptor;

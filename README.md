@@ -14,14 +14,15 @@ Pick any number of modules and declare them in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.8' // (v4.4)
-    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.8' // (v3,2015)
-    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.8' // (v2.0.7)
-    compile 'com.joanzapata.iconify:android-iconify-material:2.0.8' // (v2.0.0)
-    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.8' // (latest)
-    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.8' // (v2.0)
-    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.8' // (v1.0.0)
-    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.0.8' // (v2.0.1)
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.0.9' // (v4.4)
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.9' // (v3,2015)
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.9' // (v2.0.7)
+    compile 'com.joanzapata.iconify:android-iconify-material:2.0.9' // (v2.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-material-community:2.0.9' // (v1.2.65)
+    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.9' // (latest)
+    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.9' // (v2.0)
+    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.9' // (v1.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.0.9' // (v2.0.1)
 }
 ```
 
@@ -89,14 +90,6 @@ In case you can't find the icon you want, you can extend the available icon dire
 There are no constraints on the icon keys, but I strongly suggest you use a unique prefix like `my-` or anything, to avoid conflicts with other modules. FYI, if there **is** a conflict, the first module declared with `Iconify.with()` has priority.
 
 -----
-
-## Proguard
-
-If you use Proguard, don't forget to add the following rule.
-
-```
--keep class com.joanzapata.** { *; }
-```
 
 ## Contributions
 

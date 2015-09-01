@@ -12,7 +12,6 @@ android {
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
-        consumerProguardFiles 'proguard-rules.txt'
     }
 
     compileOptions {
@@ -22,7 +21,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:22.2.1'
+    compile project(':android-iconify')
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
