@@ -18,6 +18,7 @@ dependencies {
     compile 'com.joanzapata.iconify:android-iconify-entypo:2.0.9' // (v3,2015)
     compile 'com.joanzapata.iconify:android-iconify-typicons:2.0.9' // (v2.0.7)
     compile 'com.joanzapata.iconify:android-iconify-material:2.0.9' // (v2.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-material-community:2.0.9' // (v1.2.65)
     compile 'com.joanzapata.iconify:android-iconify-meteocons:2.0.9' // (latest)
     compile 'com.joanzapata.iconify:android-iconify-weathericons:2.0.9' // (v2.0)
     compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.0.9' // (v1.0.0)
