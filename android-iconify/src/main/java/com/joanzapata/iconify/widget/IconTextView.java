@@ -4,8 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.internal.HasOnViewAttachListener;
 
-public class IconTextView extends TextView {
+public class IconTextView extends TextView implements HasOnViewAttachListener {
+
+    private HasOnViewAttachListenerDelegate delegate;
 
     public IconTextView(Context context) {
         super(context);
@@ -31,4 +34,21 @@ public class IconTextView extends TextView {
         super.setText(Iconify.compute(getContext(), text, this), type);
     }
 
+    @Override
+    public void setOnViewAttachListener(OnViewAttachListener listener) {
+        if (delegate == null) delegate = new HasOnViewAttachListenerDelegate(this);
+        delegate.setOnViewAttachListener(listener);
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        delegate.onAttachedToWindow();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        delegate.onDetachedFromWindow();
+    }
 }

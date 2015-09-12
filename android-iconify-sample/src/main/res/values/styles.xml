@@ -6,6 +6,8 @@
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#AAFFFFFF</item>
         <item name="colorPrimary">#FF219BDE</item>
         <item name="colorPrimaryDark">#1A90D3</item>
         <item name="colorAccent">#FF3AAD73</item>
