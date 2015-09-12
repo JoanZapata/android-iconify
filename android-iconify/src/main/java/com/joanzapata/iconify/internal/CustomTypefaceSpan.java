@@ -13,6 +13,7 @@ public class CustomTypefaceSpan extends ReplacementSpan {
     private static final int ROTATION_DURATION = 2000;
     private static final Rect TEXT_BOUNDS = new Rect();
     private static final Paint LOCAL_PAINT = new Paint();
+    private static final float BASELINE_RATIO = 1 / 7f;
 
     private final String icon;
     private final Typeface type;
@@ -47,8 +48,8 @@ public class CustomTypefaceSpan extends ReplacementSpan {
         applyCustomTypeFace(LOCAL_PAINT, type);
         LOCAL_PAINT.getTextBounds(icon, 0, 1, TEXT_BOUNDS);
         if (fm != null) {
-            fm.ascent = TEXT_BOUNDS.top;
-            fm.descent = TEXT_BOUNDS.bottom;
+            fm.descent = (int) (TEXT_BOUNDS.height() * BASELINE_RATIO);
+            fm.ascent = -(TEXT_BOUNDS.height() - fm.descent);
             fm.top = fm.ascent;
             fm.bottom = fm.descent;
         }
@@ -62,11 +63,14 @@ public class CustomTypefaceSpan extends ReplacementSpan {
         canvas.save();
         if (rotate) {
             Float rotation = (Float) valueAnimator.getAnimatedValue();
-            float centerX = x + TEXT_BOUNDS.centerX();
-            float centerY = y + TEXT_BOUNDS.centerY();
+            float centerX = x + TEXT_BOUNDS.width() / 2f;
+            float centerY = y - TEXT_BOUNDS.height() / 2f + TEXT_BOUNDS.height() * BASELINE_RATIO;
             canvas.rotate(rotation, centerX, centerY);
         }
-        canvas.drawText(icon, x, y, paint);
+
+        canvas.drawText(icon,
+                x - TEXT_BOUNDS.left,
+                y - TEXT_BOUNDS.bottom + TEXT_BOUNDS.height() * BASELINE_RATIO, paint);
         canvas.restore();
     }
 
