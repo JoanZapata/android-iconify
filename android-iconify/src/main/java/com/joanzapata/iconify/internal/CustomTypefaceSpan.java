@@ -1,12 +1,10 @@
 package com.joanzapata.iconify.internal;
 
-import android.animation.ValueAnimator;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.text.style.ReplacementSpan;
-import android.view.animation.LinearInterpolator;
 import com.joanzapata.iconify.Icon;
 
 public class CustomTypefaceSpan extends ReplacementSpan {
@@ -21,7 +19,7 @@ public class CustomTypefaceSpan extends ReplacementSpan {
     private final float iconSizeRatio;
     private final int iconColor;
     private final boolean rotate;
-    private final ValueAnimator valueAnimator;
+    private final long rotationStartTime;
 
     public CustomTypefaceSpan(Icon icon, Typeface type, float iconSizePx, float iconSizeRatio, int iconColor, boolean rotate) {
         this.rotate = rotate;
@@ -30,16 +28,7 @@ public class CustomTypefaceSpan extends ReplacementSpan {
         this.iconSizePx = iconSizePx;
         this.iconSizeRatio = iconSizeRatio;
         this.iconColor = iconColor;
-        if (rotate) {
-            valueAnimator = ValueAnimator.ofFloat(0f, 360f);
-            valueAnimator.setDuration(ROTATION_DURATION);
-            valueAnimator.setInterpolator(new LinearInterpolator());
-            valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
-            valueAnimator.setRepeatMode(ValueAnimator.RESTART);
-            valueAnimator.start();
-        } else {
-            valueAnimator = null;
-        }
+        this.rotationStartTime = System.currentTimeMillis();
     }
 
     @Override
@@ -62,7 +51,7 @@ public class CustomTypefaceSpan extends ReplacementSpan {
         paint.getTextBounds(icon, 0, 1, TEXT_BOUNDS);
         canvas.save();
         if (rotate) {
-            Float rotation = (Float) valueAnimator.getAnimatedValue();
+            float rotation = (System.currentTimeMillis() - rotationStartTime) / (float) ROTATION_DURATION * 360f;
             float centerX = x + TEXT_BOUNDS.width() / 2f;
             float centerY = y - TEXT_BOUNDS.height() / 2f + TEXT_BOUNDS.height() * BASELINE_RATIO;
             canvas.rotate(rotation, centerX, centerY);
