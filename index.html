@@ -35,14 +35,15 @@
 <p>Pick any number of modules and declare them in your <code>Application</code>.</p>
 
 <div class="highlight highlight-gradle"><pre><span class="pl-en">dependencies</span> {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.0.8<span class="pl-pds">'</span></span> <span class="pl-c">// (v4.4)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.0.8<span class="pl-pds">'</span></span> <span class="pl-c">// (v3,2015)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.0.8<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.7)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material:2.0.8<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.0)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-meteocons:2.0.8<span class="pl-pds">'</span></span> <span class="pl-c">// (latest)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-weathericons:2.0.8<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-simplelineicons:2.0.8<span class="pl-pds">'</span></span> <span class="pl-c">// (v1.0.0)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-ionicons:2.0.8<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.1)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v4.4)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v3,2015)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.7)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material-community:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v1.2.65)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-meteocons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (latest)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-weathericons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-simplelineicons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v1.0.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-ionicons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.1)</span>
 }</pre></div>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
@@ -110,14 +111,6 @@ menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class
 <p>There are no constraints on the icon keys, but I strongly suggest you use a unique prefix like <code>my-</code> or anything, to avoid conflicts with other modules. FYI, if there <strong>is</strong> a conflict, the first module declared with <code>Iconify.with()</code> has priority.</p>
 
 <hr>
-
-<h2>
-<a id="proguard" class="anchor" href="#proguard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proguard</h2>
-
-<p>If you use Proguard, don't forget to add the following rule.</p>
-
-<pre><code>-keep class com.joanzapata.** { *; }
-</code></pre>
 
 <h2>
 <a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributions</h2>
