@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId "com.joanzapata.android.icons.sample"
-        minSdkVersion 14
+        minSdkVersion 8
         targetSdkVersion rootProject.ext.compileSdkVersion
         versionCode VERSION_CODE.toInteger()
         versionName VERSION_NAME

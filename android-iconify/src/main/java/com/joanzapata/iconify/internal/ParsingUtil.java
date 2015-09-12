@@ -9,6 +9,7 @@ import android.text.Spanned;
 import android.util.TypedValue;
 import android.widget.TextView;
 import com.joanzapata.iconify.Icon;
+import com.joanzapata.iconify.internal.HasOnViewAttachListener.OnViewAttachListener;
 
 import java.util.List;
 
@@ -37,19 +38,37 @@ public final class ParsingUtil {
         if (isAnimated) {
             if (target == null)
                 throw new IllegalArgumentException("You can't use \"spin\" without providing the target TextView.");
-            ViewCompat.postOnAnimation(target, new Runnable() {
+            if (!(target instanceof HasOnViewAttachListener))
+                throw new IllegalArgumentException(target.getClass().getSimpleName() + " does not implement " +
+                        "HasOnViewAttachListener. Please use IconTextView, IconButton or IconToggleButton.");
+
+            ((HasOnViewAttachListener) target).setOnViewAttachListener(new OnViewAttachListener() {
+                boolean isAttached = false;
+
                 @Override
-                public void run() {
-                    if (!ViewCompat.isAttachedToWindow(target) ||
-                            !spannableBuilder.equals(target.getText())) {
-                        System.out.println("Stopped because different");
-                        return;
-                    }
-                    target.invalidate();
-                    ViewCompat.postOnAnimation(target, this);
+                public void onAttach() {
+                    isAttached = true;
+                    ViewCompat.postOnAnimation(target, new Runnable() {
+                        @Override
+                        public void run() {
+                            if (isAttached) {
+                                target.invalidate();
+                                ViewCompat.postOnAnimation(target, this);
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                public void onDetach() {
+                    isAttached = false;
                 }
             });
+
+        } else if (target instanceof HasOnViewAttachListener) {
+            ((HasOnViewAttachListener) target).setOnViewAttachListener(null);
         }
+
         return spannableBuilder;
     }
 

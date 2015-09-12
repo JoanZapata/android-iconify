@@ -1,5 +1,6 @@
 package com.joanzapata.iconify.sample;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.GridLayoutManager;
@@ -35,7 +36,7 @@ public class FontIconsViewPagerAdapter extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_font, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        int nbColumns = AndroidUtils.getScreenSize(context).width /
+        int nbColumns = AndroidUtils.getScreenSize((Activity) context).width /
                 context.getResources().getDimensionPixelSize(R.dimen.item_width);
         recyclerView.setLayoutManager(new GridLayoutManager(context, nbColumns));
         recyclerView.setAdapter(new IconAdapter(fonts[position].getFont().characters()));
