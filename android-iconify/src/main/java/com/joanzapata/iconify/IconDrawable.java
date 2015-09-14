@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.util.TypedValue;
 
+import java.lang.Override;
+
 import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
 /**
@@ -32,6 +34,8 @@ public class IconDrawable extends Drawable {
     private int size = -1;
 
     private int alpha = 255;
+
+    private IconDrawable.ConstantState constantState;
 
     /**
      * Create an IconDrawable.
@@ -66,6 +70,7 @@ public class IconDrawable extends Drawable {
         paint.setUnderlineText(false);
         paint.setColor(Color.BLACK);
         paint.setAntiAlias(true);
+        constantState = new IconDrawable.ConstantState();
     }
 
     /**
@@ -196,6 +201,15 @@ public class IconDrawable extends Drawable {
         return this.alpha;
     }
 
+    /*
+     * Fixes problem with setIcon() method, issue found (and wrongfully closed) here:
+     * https://github.com/JoanZapata/android-iconify/issues/93
+     */
+    @Override
+    public Drawable.ConstantState getConstantState(){
+        return constantState;
+    }
+
     /**
      * Sets paint style.
      * @param style to be applied
@@ -218,4 +232,17 @@ public class IconDrawable extends Drawable {
                 COMPLEX_UNIT_DIP, dp,
                 context.getResources().getDisplayMetrics());
     }
+
+    public static class ConstantState extends Drawable.ConstantState{
+
+        public Drawable newDrawable(){
+            return IconDrawable.this;
+        }
+
+        public int getChangingConfigurations(){
+            return 0;
+        }
+
+    }
+
 }
