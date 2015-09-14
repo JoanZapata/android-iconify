@@ -70,7 +70,7 @@ public class IconDrawable extends Drawable {
         paint.setUnderlineText(false);
         paint.setColor(Color.BLACK);
         paint.setAntiAlias(true);
-        constantState = new IconDrawable.ConstantState();
+        constantState = new IconDrawable.ConstantState(this);
     }
 
     /**
@@ -234,9 +234,15 @@ public class IconDrawable extends Drawable {
     }
 
     public static class ConstantState extends Drawable.ConstantState{
+        private Drawable drawable;
+
+        public ConstantState(Drawable drawable){
+            super();
+            this.drawable = drawable;
+        }
 
         public Drawable newDrawable(){
-            return IconDrawable.this;
+            return drawable;
         }
 
         public int getChangingConfigurations(){
