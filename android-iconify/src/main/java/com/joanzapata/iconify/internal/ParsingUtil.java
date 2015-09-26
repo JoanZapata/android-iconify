@@ -119,6 +119,9 @@ public final class ParsingUtil {
         int iconColor = Integer.MAX_VALUE;
         float iconSizeRatio = -1;
         boolean spin = false;
+        int rotation = 0;
+        boolean flip_vertical = false;
+        boolean flip_horizontal = false;
         for (int i = 1; i < strokes.length; i++) {
             String stroke = strokes[i];
 
@@ -149,7 +152,25 @@ public final class ParsingUtil {
                 iconColor = getColorFromResource(context, stroke.substring(7));
                 if (iconColor == Integer.MAX_VALUE)
                     throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
-            } else {
+            }
+
+            // look for icon rotation
+            else if (stroke.matches("rotate-([0-9]+)")) {
+                try{
+                    rotation = Integer.parseInt(stroke.substring(8));
+                }catch (NumberFormatException e){
+                    throw new IllegalArgumentException("Bad number format " + stroke + " in \"" + fullText + "\"");
+                }
+            }
+
+            // look for icon mirroring
+            else if (stroke.equals("flip-vertical")) {
+                flip_vertical = true;
+            } else if (stroke.equals("flip-horizontal")) {
+                flip_horizontal = true;
+            }
+
+            else {
                 throw new IllegalArgumentException("Unknown expression " + stroke + " in \"" + fullText + "\"");
             }
 
@@ -160,7 +181,8 @@ public final class ParsingUtil {
         text = text.replace(startIndex, endIndex, "" + icon.character());
         text.setSpan(new CustomTypefaceSpan(icon,
                         iconFontDescriptor.getTypeface(context),
-                        iconSizePx, iconSizeRatio, iconColor, spin),
+                        iconSizePx, iconSizeRatio, iconColor, spin, rotation,
+                        flip_vertical, flip_horizontal),
                 startIndex, startIndex + 1,
                 Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, startIndex);
