@@ -134,8 +134,8 @@ public final class ParsingUtil {
                 iconSizePx = spToPx(context, Float.valueOf(stroke.substring(0, stroke.length() - 2)));
             } else if (stroke.matches("([0-9]*)px")) {
                 iconSizePx = Integer.valueOf(stroke.substring(0, stroke.length() - 2));
-            } else if (stroke.matches("@dimen/(.*)")) {
-                iconSizePx = getPxFromDimen(context, stroke.substring(7));
+            } else if (stroke.matches("@([0-9a-fA-F.]*:)?dimen/(.*)")) {
+                iconSizePx = getPxFromDimen(context, stroke);
                 if (iconSizePx < 0)
                     throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
             } else if (stroke.matches("([0-9]*(\\.[0-9]*)?)%")) {
@@ -145,8 +145,8 @@ public final class ParsingUtil {
             // Look for an icon color
             else if (stroke.matches("#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})")) {
                 iconColor = Color.parseColor(stroke);
-            } else if (stroke.matches("@color/(.*)")) {
-                iconColor = getColorFromResource(context, stroke.substring(7));
+            } else if (stroke.matches("@([0-9a-fA-F.]*:)?color/(.*)")) {
+                iconColor = getColorFromResource(context, stroke);
                 if (iconColor == Integer.MAX_VALUE)
                     throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
             } else {
@@ -168,18 +168,37 @@ public final class ParsingUtil {
 
     public static float getPxFromDimen(Context context, String resName) {
         Resources resources = context.getResources();
+        float resId = getPxFromDimen(context, resName, context.getPackageName());
+        // If no resource was found, try without a specific package
+        if (resId == -1) {
+            resId = getPxFromDimen(context, resName, null);
+        }
+        return resId;
+    }
+
+    public static float getPxFromDimen(Context context, String resName, String packageName) {
+        Resources resources = context.getResources();
         int resId = resources.getIdentifier(
                 resName, "dimen",
-                context.getPackageName());
+                packageName);
         if (resId <= 0) return -1;
         return resources.getDimension(resId);
     }
 
     public static int getColorFromResource(Context context, String resName) {
+        int resId = getColorFromResource(context, resName, context.getPackageName());
+        // If no resource was found, try without a specific package
+        if (resId == Integer.MAX_VALUE) {
+            resId = getColorFromResource(context, resName, null);
+        }
+        return resId;
+    }
+
+    public static int getColorFromResource(Context context, String resName, String packageName) {
         Resources resources = context.getResources();
         int resId = resources.getIdentifier(
                 resName, "color",
-                context.getPackageName());
+                packageName);
         if (resId <= 0) return Integer.MAX_VALUE;
         return resources.getColor(resId);
     }
