@@ -35,11 +35,12 @@ public class MyApplication extends Application {
         Iconify
             .with(new FontAwesomeModule())
             .with(new EntypoModule())
-            .with(new TypiconsModule());
-            .with(new MaterialModule());
-            .with(new MeteoconsModule());
-            .with(new WeathericonsModule());
-            .with(new SimpleLineIconsModule());
+            .with(new TypiconsModule())
+            .with(new MaterialModule())
+            .with(new MaterialCommunityModule())
+            .with(new MeteoconsModule())
+            .with(new WeathericonsModule())
+            .with(new SimpleLineIconsModule())
             .with(new IoniconsModule());
     }
 }
