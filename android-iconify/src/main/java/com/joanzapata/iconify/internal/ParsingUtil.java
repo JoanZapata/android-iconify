@@ -15,6 +15,8 @@ import java.util.List;
 
 public final class ParsingUtil {
 
+    private static final String ANDROID_PACKAGE_NAME = "android";
+
     // Prevents instantiation
     private ParsingUtil() {}
 
@@ -135,7 +137,11 @@ public final class ParsingUtil {
             } else if (stroke.matches("([0-9]*)px")) {
                 iconSizePx = Integer.valueOf(stroke.substring(0, stroke.length() - 2));
             } else if (stroke.matches("@dimen/(.*)")) {
-                iconSizePx = getPxFromDimen(context, stroke.substring(7));
+                iconSizePx = getPxFromDimen(context, context.getPackageName(), stroke.substring(7));
+                if (iconSizePx < 0)
+                    throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
+            } else if (stroke.matches("@android:dimen/(.*)")) {
+                iconSizePx = getPxFromDimen(context, ANDROID_PACKAGE_NAME, stroke.substring(15));
                 if (iconSizePx < 0)
                     throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
             } else if (stroke.matches("([0-9]*(\\.[0-9]*)?)%")) {
@@ -146,14 +152,16 @@ public final class ParsingUtil {
             else if (stroke.matches("#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})")) {
                 iconColor = Color.parseColor(stroke);
             } else if (stroke.matches("@color/(.*)")) {
-                iconColor = getColorFromResource(context, stroke.substring(7));
+                iconColor = getColorFromResource(context, context.getPackageName(), stroke.substring(7));
+                if (iconColor == Integer.MAX_VALUE)
+                    throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
+            } else if (stroke.matches("@android:color/(.*)")) {
+                iconColor = getColorFromResource(context, ANDROID_PACKAGE_NAME, stroke.substring(15));
                 if (iconColor == Integer.MAX_VALUE)
                     throw new IllegalArgumentException("Unknown resource " + stroke + " in \"" + fullText + "\"");
             } else {
                 throw new IllegalArgumentException("Unknown expression " + stroke + " in \"" + fullText + "\"");
             }
-
-
         }
 
         // Replace the character and apply the typeface
@@ -166,20 +174,20 @@ public final class ParsingUtil {
         recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, startIndex);
     }
 
-    public static float getPxFromDimen(Context context, String resName) {
+    public static float getPxFromDimen(Context context, String packageName, String resName) {
         Resources resources = context.getResources();
         int resId = resources.getIdentifier(
                 resName, "dimen",
-                context.getPackageName());
+                packageName);
         if (resId <= 0) return -1;
         return resources.getDimension(resId);
     }
 
-    public static int getColorFromResource(Context context, String resName) {
+    public static int getColorFromResource(Context context, String packageName, String resName) {
         Resources resources = context.getResources();
         int resId = resources.getIdentifier(
                 resName, "color",
-                context.getPackageName());
+                packageName);
         if (resId <= 0) return Integer.MAX_VALUE;
         return resources.getColor(resId);
     }
