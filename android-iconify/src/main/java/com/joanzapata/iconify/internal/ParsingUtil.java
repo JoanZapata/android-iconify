@@ -121,12 +121,18 @@ public final class ParsingUtil {
         int iconColor = Integer.MAX_VALUE;
         float iconSizeRatio = -1;
         boolean spin = false;
+        boolean baselineAligned = false;
         for (int i = 1; i < strokes.length; i++) {
             String stroke = strokes[i];
 
             // Look for "spin"
             if (stroke.equalsIgnoreCase("spin")) {
                 spin = true;
+            }
+
+            // Look for "baseline"
+            else if (stroke.equalsIgnoreCase("baseline")) {
+                baselineAligned = true;
             }
 
             // Look for an icon size
@@ -168,7 +174,7 @@ public final class ParsingUtil {
         text = text.replace(startIndex, endIndex, "" + icon.character());
         text.setSpan(new CustomTypefaceSpan(icon,
                         iconFontDescriptor.getTypeface(context),
-                        iconSizePx, iconSizeRatio, iconColor, spin),
+                        iconSizePx, iconSizeRatio, iconColor, spin, baselineAligned),
                 startIndex, startIndex + 1,
                 Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, startIndex);
