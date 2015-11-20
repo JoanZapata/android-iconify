@@ -18,16 +18,22 @@ public class CustomTypefaceSpan extends ReplacementSpan {
     private final float iconSizePx;
     private final float iconSizeRatio;
     private final int iconColor;
-    private final boolean rotate;
+    private final boolean spin;
     private final long rotationStartTime;
+    private final int rotation;
+    private final boolean flip_vertical;
+    private final boolean flip_horizontal;
 
-    public CustomTypefaceSpan(Icon icon, Typeface type, float iconSizePx, float iconSizeRatio, int iconColor, boolean rotate) {
-        this.rotate = rotate;
+    public CustomTypefaceSpan(Icon icon, Typeface type, float iconSizePx, float iconSizeRatio, int iconColor, boolean spin, int rotation, boolean flip_vertical, boolean flip_horizontal) {
+        this.spin = spin;
         this.icon = String.valueOf(icon.character());
         this.type = type;
         this.iconSizePx = iconSizePx;
         this.iconSizeRatio = iconSizeRatio;
         this.iconColor = iconColor;
+        this.rotation = rotation;
+        this.flip_vertical = flip_vertical;
+        this.flip_horizontal = flip_horizontal;
         this.rotationStartTime = System.currentTimeMillis();
     }
 
@@ -49,13 +55,19 @@ public class CustomTypefaceSpan extends ReplacementSpan {
     public void draw(Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, Paint paint) {
         applyCustomTypeFace(paint, type);
         paint.getTextBounds(icon, 0, 1, TEXT_BOUNDS);
+        float centerX = x + TEXT_BOUNDS.width() / 2f;
+        float centerY = y - TEXT_BOUNDS.height() / 2f + TEXT_BOUNDS.height() * BASELINE_RATIO;
         canvas.save();
-        if (rotate) {
-            float rotation = (System.currentTimeMillis() - rotationStartTime) / (float) ROTATION_DURATION * 360f;
-            float centerX = x + TEXT_BOUNDS.width() / 2f;
-            float centerY = y - TEXT_BOUNDS.height() / 2f + TEXT_BOUNDS.height() * BASELINE_RATIO;
-            canvas.rotate(rotation, centerX, centerY);
+        if (spin) {
+            float angle = (System.currentTimeMillis() - rotationStartTime) / (float) ROTATION_DURATION * 360f;
+            canvas.rotate(angle, centerX, centerY);
         }
+        if(rotation > 0)
+            canvas.rotate(rotation, centerX, centerY);
+        if(flip_horizontal)
+            canvas.scale(-1, 1, centerX, centerY);
+        if (flip_vertical)
+            canvas.scale(-1, 1, centerX, centerY);
 
         canvas.drawText(icon,
                 x - TEXT_BOUNDS.left,
@@ -64,14 +76,14 @@ public class CustomTypefaceSpan extends ReplacementSpan {
     }
 
     public boolean isAnimated() {
-        return rotate;
+        return spin;
     }
 
     private void applyCustomTypeFace(Paint paint, Typeface tf) {
         paint.setFakeBoldText(false);
         paint.setTextSkewX(0f);
         paint.setTypeface(tf);
-        if (rotate) paint.clearShadowLayer();
+        if (spin) paint.clearShadowLayer();
         if (iconSizeRatio > 0) paint.setTextSize(paint.getTextSize() * iconSizeRatio);
         else if (iconSizePx > 0) paint.setTextSize(iconSizePx);
         if (iconColor < Integer.MAX_VALUE) paint.setColor(iconColor);
