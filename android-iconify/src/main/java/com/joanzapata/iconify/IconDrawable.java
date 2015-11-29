@@ -5,6 +5,7 @@ import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.util.TypedValue;
+import com.joanzapata.iconify.internal.IconFontDescriptorWrapper;
 
 import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
@@ -60,7 +61,13 @@ public class IconDrawable extends Drawable {
         this.context = context;
         this.icon = icon;
         paint = new TextPaint();
-        paint.setTypeface(Iconify.findTypefaceOf(icon).getTypeface(context));
+        IconFontDescriptorWrapper descriptor = Iconify.findTypefaceOf(icon);
+        if (descriptor == null) {
+            throw new IllegalStateException("Unable to find the module associated " +
+                    "with icon " + icon.key() + ", have you registered the module " +
+                    "you are trying to use with Iconify.with(...) in your Application?");
+        }
+        paint.setTypeface(descriptor.getTypeface(context));
         paint.setStyle(Paint.Style.FILL);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setUnderlineText(false);

@@ -19,10 +19,14 @@ public class CustomTypefaceSpan extends ReplacementSpan {
     private final float iconSizeRatio;
     private final int iconColor;
     private final boolean rotate;
+    private final boolean baselineAligned;
     private final long rotationStartTime;
 
-    public CustomTypefaceSpan(Icon icon, Typeface type, float iconSizePx, float iconSizeRatio, int iconColor, boolean rotate) {
+    public CustomTypefaceSpan(Icon icon, Typeface type,
+            float iconSizePx, float iconSizeRatio, int iconColor,
+            boolean rotate, boolean baselineAligned) {
         this.rotate = rotate;
+        this.baselineAligned = baselineAligned;
         this.icon = String.valueOf(icon.character());
         this.type = type;
         this.iconSizePx = iconSizePx;
@@ -32,12 +36,14 @@ public class CustomTypefaceSpan extends ReplacementSpan {
     }
 
     @Override
-    public int getSize(Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fm) {
+    public int getSize(Paint paint, CharSequence text,
+            int start, int end, Paint.FontMetricsInt fm) {
         LOCAL_PAINT.set(paint);
         applyCustomTypeFace(LOCAL_PAINT, type);
         LOCAL_PAINT.getTextBounds(icon, 0, 1, TEXT_BOUNDS);
         if (fm != null) {
-            fm.descent = (int) (TEXT_BOUNDS.height() * BASELINE_RATIO);
+            float baselineRatio = baselineAligned ? 0 : BASELINE_RATIO;
+            fm.descent = (int) (TEXT_BOUNDS.height() * baselineRatio);
             fm.ascent = -(TEXT_BOUNDS.height() - fm.descent);
             fm.top = fm.ascent;
             fm.bottom = fm.descent;
@@ -46,20 +52,23 @@ public class CustomTypefaceSpan extends ReplacementSpan {
     }
 
     @Override
-    public void draw(Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, Paint paint) {
+    public void draw(Canvas canvas, CharSequence text,
+            int start, int end, float x, int top, int y,
+            int bottom, Paint paint) {
         applyCustomTypeFace(paint, type);
         paint.getTextBounds(icon, 0, 1, TEXT_BOUNDS);
         canvas.save();
+        float baselineRatio = baselineAligned ? 0f : BASELINE_RATIO;
         if (rotate) {
             float rotation = (System.currentTimeMillis() - rotationStartTime) / (float) ROTATION_DURATION * 360f;
             float centerX = x + TEXT_BOUNDS.width() / 2f;
-            float centerY = y - TEXT_BOUNDS.height() / 2f + TEXT_BOUNDS.height() * BASELINE_RATIO;
+            float centerY = y - TEXT_BOUNDS.height() / 2f + TEXT_BOUNDS.height() * baselineRatio;
             canvas.rotate(rotation, centerX, centerY);
         }
 
         canvas.drawText(icon,
                 x - TEXT_BOUNDS.left,
-                y - TEXT_BOUNDS.bottom + TEXT_BOUNDS.height() * BASELINE_RATIO, paint);
+                y - TEXT_BOUNDS.bottom + TEXT_BOUNDS.height() * baselineRatio, paint);
         canvas.restore();
     }
 
