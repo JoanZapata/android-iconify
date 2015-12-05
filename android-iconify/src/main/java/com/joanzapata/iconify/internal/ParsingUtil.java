@@ -33,13 +33,14 @@ public final class ParsingUtil {
         recursivePrepareSpannableIndexes(context,
                 text.toString(), spannableBuilder,
                 iconFontDescriptors, 0);
-        boolean isAnimated = hasAnimatedSpans(spannableBuilder);
+        final Animation animation = getSpansAnimation(spannableBuilder);
 
         // If animated, periodically invalidate the TextView so that the
         // CustomTypefaceSpan can redraw itself
-        if (isAnimated) {
+        if (animation != Animation.NONE) {
             if (target == null)
-                throw new IllegalArgumentException("You can't use \"spin\" without providing the target TextView.");
+                throw new IllegalArgumentException("You can't use \"" + animation.getToken() +
+                        "\" without providing the target TextView.");
             if (!(target instanceof HasOnViewAttachListener))
                 throw new IllegalArgumentException(target.getClass().getSimpleName() + " does not implement " +
                         "HasOnViewAttachListener. Please use IconTextView, IconButton or IconToggleButton.");
@@ -55,7 +56,14 @@ public final class ParsingUtil {
                         public void run() {
                             if (isAttached) {
                                 target.invalidate();
-                                ViewCompat.postOnAnimation(target, this);
+                                switch (animation) {
+                                    case SPIN:
+                                        ViewCompat.postOnAnimation(target, this);
+                                        break;
+                                    case PULSE:
+                                        ViewCompat.postOnAnimationDelayed(target, this, CustomTypefaceSpan.ROTATION_PULSES);
+                                        break;
+                                }
                             }
                         }
                     });
@@ -74,13 +82,20 @@ public final class ParsingUtil {
         return spannableBuilder;
     }
 
-    private static boolean hasAnimatedSpans(SpannableStringBuilder spannableBuilder) {
+    private static Animation getSpansAnimation(SpannableStringBuilder spannableBuilder) {
+        Animation animation = Animation.NONE;
         CustomTypefaceSpan[] spans = spannableBuilder.getSpans(0, spannableBuilder.length(), CustomTypefaceSpan.class);
         for (CustomTypefaceSpan span : spans) {
-            if (span.isAnimated())
-                return true;
+            Animation spanAnimation = span.getAnimation();
+            // Return the animation with the highest refresh rate
+            if (spanAnimation != Animation.NONE) {
+                animation = spanAnimation;
+                if (animation == Animation.SPIN) {
+                    break;
+                }
+            }
         }
-        return false;
+        return animation;
     }
 
     private static void recursivePrepareSpannableIndexes(
@@ -120,14 +135,19 @@ public final class ParsingUtil {
         float iconSizePx = -1;
         int iconColor = Integer.MAX_VALUE;
         float iconSizeRatio = -1;
-        boolean spin = false;
+        Animation animation = Animation.NONE;
         boolean baselineAligned = false;
         for (int i = 1; i < strokes.length; i++) {
             String stroke = strokes[i];
 
             // Look for "spin"
             if (stroke.equalsIgnoreCase("spin")) {
-                spin = true;
+                animation = Animation.SPIN;
+            }
+
+            // Look for "pulse"
+            else if (stroke.equalsIgnoreCase("pulse")) {
+                animation = Animation.PULSE;
             }
 
             // Look for "baseline"
@@ -174,7 +194,7 @@ public final class ParsingUtil {
         text = text.replace(startIndex, endIndex, "" + icon.character());
         text.setSpan(new CustomTypefaceSpan(icon,
                         iconFontDescriptor.getTypeface(context),
-                        iconSizePx, iconSizeRatio, iconColor, spin, baselineAligned),
+                        iconSizePx, iconSizeRatio, iconColor, animation, baselineAligned),
                 startIndex, startIndex + 1,
                 Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         recursivePrepareSpannableIndexes(context, fullText, text, iconFontDescriptors, startIndex);
