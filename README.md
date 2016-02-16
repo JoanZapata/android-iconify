@@ -4,8 +4,6 @@
 
 **Iconify** offers you a **huge collection of vector icons** to choose from, and an intuitive way to **add and customize them in your Android app**. It has been introduced in [**this blog post**](http://blog.joanzapata.com/iconify-just-got-a-lot-better/) which is a good place to get started. 
 
-> If you're migrating from version 1.X.X, please read the [migration guide](MIGRATION.md).
-
 -----
 
 ### Install
@@ -62,7 +60,7 @@ If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }
     ... />
 ```
 
-![Alt](graphics/androids.png)
+<img src="graphics/androids.png" height="347">
 
 ### Icon options
 
@@ -70,7 +68,7 @@ If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }
 * In the same way you can override the icon color using `{fa-code #RRGGBB}`, `{fa-code #AARRGGBB}`, or `{fa-code @color/my_color}`.
 * You can even easily spin an icon like so `{fa-cog spin}`.
 
-![](graphics/spinning.gif)
+<img src="graphics/spinning.gif" height="37">
 
 ### Show an icon where you need a `Drawable`
 
