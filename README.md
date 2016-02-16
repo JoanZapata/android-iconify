@@ -1,6 +1,7 @@
 ![Alt](graphics/logo.jpg)
 
-[![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
+
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" width="121">](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
 **Iconify** offers you a **huge collection of vector icons** to choose from, and an intuitive way to **add and customize them in your Android app**. It has been introduced in [**this blog post**](http://blog.joanzapata.com/iconify-just-got-a-lot-better/) which is a good place to get started. 
 
