@@ -1,5 +1,7 @@
 package com.joanzapata.iconify.internal;
 
+import java.util.List;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -8,10 +10,9 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.util.TypedValue;
 import android.widget.TextView;
+
 import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.internal.HasOnViewAttachListener.OnViewAttachListener;
-
-import java.util.List;
 
 public final class ParsingUtil {
 
@@ -26,6 +27,9 @@ public final class ParsingUtil {
             CharSequence text,
             final TextView target) {
         context = context.getApplicationContext();
+
+        // Don't do anything related to iconify if text is null
+        if (text == null) return text;
 
         // Analyse the text and replace {} blocks with the appropriate character
         // Retain all transformations in the accumulator
@@ -95,6 +99,7 @@ public final class ParsingUtil {
         int startIndex = stringText.indexOf("{", start);
         if (startIndex == -1) return;
         int endIndex = stringText.indexOf("}", startIndex) + 1;
+        if (endIndex == -1) return;
         String expression = stringText.substring(startIndex + 1, endIndex - 1);
 
         // Split the expression and retrieve the icon key
