@@ -28,6 +28,9 @@ public final class ParsingUtil {
             final TextView target) {
         context = context.getApplicationContext();
 
+        // Don't do anything related to iconify if text is null
+        if (text == null) return text;
+
         // Analyse the text and replace {} blocks with the appropriate character
         // Retain all transformations in the accumulator
         final SpannableStringBuilder spannableBuilder = new SpannableStringBuilder(text);
