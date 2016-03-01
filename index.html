@@ -19,34 +19,32 @@
     </section>
 
     <section class="main-content">
-      <p><a href="https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample"><img src="http://developer.android.com/images/brand/en_app_rgb_wo_45.png" alt="Alt"></a></p>
+      <p><img src="https://raw.githubusercontent.com/JoanZapata/android-iconify/master/graphics/logo.jpg" height="154" align="center"></p>
+
+<p><a href="https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" width="121"></a></p>
 
 <p><strong>Iconify</strong> offers you a <strong>huge collection of vector icons</strong> to choose from, and an intuitive way to <strong>add and customize them in your Android app</strong>. It has been introduced in <a href="http://blog.joanzapata.com/iconify-just-got-a-lot-better/"><strong>this blog post</strong></a> which is a good place to get started. </p>
-
-<blockquote>
-<p>If you're migrating from version 1.X.X, please read the <a href="MIGRATION.md">migration guide</a>.</p>
-</blockquote>
 
 <hr>
 
 <h3>
-<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h3>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h3>
 
 <p>Pick any number of modules and declare them in your <code>Application</code>.</p>
 
-<div class="highlight highlight-gradle"><pre><span class="pl-en">dependencies</span> {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v4.4)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v3,2015)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.7)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.0)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material-community:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v1.2.65)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-meteocons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (latest)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-weathericons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-simplelineicons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v1.0.0)</span>
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-ionicons:2.1.0<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.1)</span>
+<div class="highlight highlight-source-groovy-gradle"><pre><span class="pl-en">dependencies</span> {
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-fontawesome:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (v4.5)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-entypo:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (v3,2015)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-typicons:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.7)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-material-community:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (v1.4.57)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-meteocons:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (latest)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-weathericons:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-simplelineicons:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (v1.0.0)</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.joanzapata.iconify:android-iconify-ionicons:2.2.1<span class="pl-pds">'</span></span> <span class="pl-c">// (v2.0.1)</span>
 }</pre></div>
 
-<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
 
     <span class="pl-k">@Override</span>
     <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>() {
@@ -54,21 +52,22 @@
         <span class="pl-smi">Iconify</span>
             .with(<span class="pl-k">new</span> <span class="pl-smi">FontAwesomeModule</span>())
             .with(<span class="pl-k">new</span> <span class="pl-smi">EntypoModule</span>())
-            .with(<span class="pl-k">new</span> <span class="pl-smi">TypiconsModule</span>());
-            .with(<span class="pl-k">new</span> <span class="pl-smi">MaterialModule</span>());
-            .with(<span class="pl-k">new</span> <span class="pl-smi">MeteoconsModule</span>());
-            .with(<span class="pl-k">new</span> <span class="pl-smi">WeathericonsModule</span>());
-            .with(<span class="pl-k">new</span> <span class="pl-smi">SimpleLineIconsModule</span>());
+            .with(<span class="pl-k">new</span> <span class="pl-smi">TypiconsModule</span>())
+            .with(<span class="pl-k">new</span> <span class="pl-smi">MaterialModule</span>())
+            .with(<span class="pl-k">new</span> <span class="pl-smi">MaterialCommunityModule</span>())
+            .with(<span class="pl-k">new</span> <span class="pl-smi">MeteoconsModule</span>())
+            .with(<span class="pl-k">new</span> <span class="pl-smi">WeathericonsModule</span>())
+            .with(<span class="pl-k">new</span> <span class="pl-smi">SimpleLineIconsModule</span>())
             .with(<span class="pl-k">new</span> <span class="pl-smi">IoniconsModule</span>());
     }
 }</pre></div>
 
 <h3>
-<a id="show-icons-in-text-widgets" class="anchor" href="#show-icons-in-text-widgets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show icons in text widgets</h3>
+<a id="show-icons-in-text-widgets" class="anchor" href="#show-icons-in-text-widgets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show icons in text widgets</h3>
 
 <p>If you need to put an icon on a <code>TextView</code> or a <code>Button</code>, use the <code>{ }</code> syntax. The icons act exactly like the text, so you can apply shadow, size and color on them!</p>
 
-<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">com</span>.joanzapata.iconify.widget.IconTextView
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">com</span>.joanzapata.iconify.widget.IconTextView
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">text</span>=<span class="pl-s"><span class="pl-pds">"</span>I {fa-heart-o} to {fa-code} on {fa-android}<span class="pl-pds">"</span></span>
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">shadowColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#22000000<span class="pl-pds">"</span></span>
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">shadowDx</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
@@ -78,10 +77,10 @@
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">textColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#FF...<span class="pl-pds">"</span></span>
     ... /&gt;</pre></div>
 
-<p><img src="https://raw.githubusercontent.com/JoanZapata/android-iconify/master/graphics/androids.png" alt="Alt"></p>
+<p><img src="https://raw.githubusercontent.com/JoanZapata/android-iconify/master/graphics/androids.png" height="347"></p>
 
 <h3>
-<a id="icon-options" class="anchor" href="#icon-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Icon options</h3>
+<a id="icon-options" class="anchor" href="#icon-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Icon options</h3>
 
 <ul>
 <li>Shall you need to override the text size of a particular icon, the following syntax is supported <code>{fa-code 12px}</code>, <code>{fa-code 12dp}</code>, <code>{fa-code 12sp}</code>, <code>{fa-code @dimen/my_text_size}</code>, and also <code>{fa-code 120%}</code>.</li>
@@ -89,22 +88,22 @@
 <li>You can even easily spin an icon like so <code>{fa-cog spin}</code>.</li>
 </ul>
 
-<p><img src="https://raw.githubusercontent.com/JoanZapata/android-iconify/master/graphics/spinning.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/JoanZapata/android-iconify/master/graphics/spinning.gif" height="37"></p>
 
 <h3>
-<a id="show-an-icon-where-you-need-a-drawable" class="anchor" href="#show-an-icon-where-you-need-a-drawable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show an icon where you need a <code>Drawable</code>
+<a id="show-an-icon-where-you-need-a-drawable" class="anchor" href="#show-an-icon-where-you-need-a-drawable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show an icon where you need a <code>Drawable</code>
 </h3>
 
 <p>If you need an icon in an <code>ImageView</code> or in your <code>ActionBar</code> menu item, then you should use <code>IconDrawable</code>. Again, icons are infinitely scalable and will never get fuzzy!</p>
 
-<div class="highlight highlight-java"><pre><span class="pl-c">// Set an icon in the ActionBar</span>
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// Set an icon in the ActionBar</span>
 menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>share)<span class="pl-k">.</span>setIcon(
    <span class="pl-k">new</span> <span class="pl-smi">IconDrawable</span>(<span class="pl-v">this</span>, <span class="pl-smi">FontAwesomeIcons</span><span class="pl-k">.</span>fa_share)
    .colorRes(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>ab_icon)
    .actionBarSize());</pre></div>
 
 <h2>
-<a id="extensibility" class="anchor" href="#extensibility" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extensibility</h2>
+<a id="extensibility" class="anchor" href="#extensibility" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extensibility</h2>
 
 <p>In case you can't find the icon you want, you can extend the available icon directly from your app. All you need to do is to implement <code>IconFontDescriptor</code> with a <code>.ttf</code> file in your assets and provide the mapping between keys and special characters, then give it to <code>Iconify.with()</code>. You can use the  <a href="https://github.com/JoanZapata/android-iconify/blob/master/android-iconify-fontawesome/src/main/java/com/joanzapata/iconify/fonts/FontAwesomeModule.java">FontAwesomeModule</a> as an example.</p>
 
@@ -113,7 +112,7 @@ menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class
 <hr>
 
 <h2>
-<a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributions</h2>
+<a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributions</h2>
 
 <ul>
 <li>Joan Zapata <a href="https://github.com/JoanZapata">@JoanZapata</a>
@@ -125,7 +124,7 @@ menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class
 </ul>
 
 <h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
 <pre><code>Copyright 2015 Joan Zapata
 
