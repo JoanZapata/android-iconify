@@ -88,6 +88,12 @@ In case you can't find the icon you want, you can extend the available icon dire
 
 There are no constraints on the icon keys, but I strongly suggest you use a unique prefix like `my-` or anything, to avoid conflicts with other modules. FYI, if there **is** a conflict, the first module declared with `Iconify.with()` has priority.
 
+The only dependency you need if you want to use a custom icon is Iconify core.
+
+```gradle
+compile 'com.joanzapata.iconify:android-iconify:2.2.1'
+```
+
 -----
 
 ## Contributions
