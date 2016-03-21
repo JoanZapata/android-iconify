@@ -91,7 +91,7 @@ There are no constraints on the icon keys, but I strongly suggest you use a uniq
 The only dependency you need if you want to use a custom icon is Iconify core.
 
 ```gradle
-compile 'com.joanzapata.iconify:android-iconify:2.2.1'
+compile 'com.joanzapata.iconify:android-iconify:2.2.2'
 ```
 
 -----
