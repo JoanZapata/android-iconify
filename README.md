@@ -12,15 +12,15 @@ Pick any number of modules and declare them in your `Application`.
 
 ```gradle
 dependencies {
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.1' // (v4.5)
-    compile 'com.joanzapata.iconify:android-iconify-entypo:2.2.1' // (v3,2015)
-    compile 'com.joanzapata.iconify:android-iconify-typicons:2.2.1' // (v2.0.7)
-    compile 'com.joanzapata.iconify:android-iconify-material:2.2.1' // (v2.0.0)
-    compile 'com.joanzapata.iconify:android-iconify-material-community:2.2.1' // (v1.4.57)
-    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.2.1' // (latest)
-    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.2.1' // (v2.0)
-    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.2.1' // (v1.0.0)
-    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.1' // (v2.0.1)
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2' // (v4.5)
+    compile 'com.joanzapata.iconify:android-iconify-entypo:2.2.2' // (v3,2015)
+    compile 'com.joanzapata.iconify:android-iconify-typicons:2.2.2' // (v2.0.7)
+    compile 'com.joanzapata.iconify:android-iconify-material:2.2.2' // (v2.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-material-community:2.2.2' // (v1.4.57)
+    compile 'com.joanzapata.iconify:android-iconify-meteocons:2.2.2' // (latest)
+    compile 'com.joanzapata.iconify:android-iconify-weathericons:2.2.2' // (v2.0)
+    compile 'com.joanzapata.iconify:android-iconify-simplelineicons:2.2.2' // (v1.0.0)
+    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2' // (v2.0.1)
 }
 ```
 
@@ -91,7 +91,7 @@ There are no constraints on the icon keys, but I strongly suggest you use a uniq
 The only dependency you need if you want to use a custom icon is Iconify core.
 
 ```gradle
-compile 'com.joanzapata.iconify:android-iconify:2.2.1'
+compile 'com.joanzapata.iconify:android-iconify:2.2.2'
 ```
 
 -----

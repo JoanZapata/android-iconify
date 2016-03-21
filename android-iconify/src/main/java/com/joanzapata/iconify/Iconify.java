@@ -100,7 +100,7 @@ public class Iconify {
      * Retrieve an icon from a key,
      * @return The icon, or null if no icon matches the key.
      */
-    static Icon findIconForKey(String iconKey) {
+    public static Icon findIconForKey(String iconKey) {
         for (int i = 0, iconFontDescriptorsSize = iconFontDescriptors.size(); i < iconFontDescriptorsSize; i++) {
             IconFontDescriptorWrapper iconFontDescriptor = iconFontDescriptors.get(i);
             Icon icon = iconFontDescriptor.getIcon(iconKey);
