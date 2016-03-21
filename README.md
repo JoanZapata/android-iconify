@@ -1,10 +1,8 @@
-![Alt](graphics/logo.jpg)
+<img src="graphics/logo.jpg" height="154" align="center">
 
-[![Alt](http://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" width="121">](https://play.google.com/store/apps/details?id=com.joanzapata.android.icons.sample)
 
 **Iconify** offers you a **huge collection of vector icons** to choose from, and an intuitive way to **add and customize them in your Android app**. It has been introduced in [**this blog post**](http://blog.joanzapata.com/iconify-just-got-a-lot-better/) which is a good place to get started. 
-
-> If you're migrating from version 1.X.X, please read the [migration guide](MIGRATION.md).
 
 -----
 
@@ -35,11 +33,12 @@ public class MyApplication extends Application {
         Iconify
             .with(new FontAwesomeModule())
             .with(new EntypoModule())
-            .with(new TypiconsModule());
-            .with(new MaterialModule());
-            .with(new MeteoconsModule());
-            .with(new WeathericonsModule());
-            .with(new SimpleLineIconsModule());
+            .with(new TypiconsModule())
+            .with(new MaterialModule())
+            .with(new MaterialCommunityModule())
+            .with(new MeteoconsModule())
+            .with(new WeathericonsModule())
+            .with(new SimpleLineIconsModule())
             .with(new IoniconsModule());
     }
 }
@@ -61,7 +60,7 @@ If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }
     ... />
 ```
 
-![Alt](graphics/androids.png)
+<img src="graphics/androids.png" height="347">
 
 ### Icon options
 
@@ -69,7 +68,7 @@ If you need to put an icon on a ```TextView``` or a ```Button```, use the ```{ }
 * In the same way you can override the icon color using `{fa-code #RRGGBB}`, `{fa-code #AARRGGBB}`, or `{fa-code @color/my_color}`.
 * You can even easily spin an icon like so `{fa-cog spin}`.
 
-![](graphics/spinning.gif)
+<img src="graphics/spinning.gif" height="37">
 
 ### Show an icon where you need a `Drawable`
 
@@ -88,6 +87,12 @@ menu.findItem(R.id.share).setIcon(
 In case you can't find the icon you want, you can extend the available icon directly from your app. All you need to do is to implement `IconFontDescriptor` with a `.ttf` file in your assets and provide the mapping between keys and special characters, then give it to `Iconify.with()`. You can use the  [FontAwesomeModule](https://github.com/JoanZapata/android-iconify/blob/master/android-iconify-fontawesome/src/main/java/com/joanzapata/iconify/fonts/FontAwesomeModule.java) as an example.
 
 There are no constraints on the icon keys, but I strongly suggest you use a unique prefix like `my-` or anything, to avoid conflicts with other modules. FYI, if there **is** a conflict, the first module declared with `Iconify.with()` has priority.
+
+The only dependency you need if you want to use a custom icon is Iconify core.
+
+```gradle
+compile 'com.joanzapata.iconify:android-iconify:2.2.1'
+```
 
 -----
 
