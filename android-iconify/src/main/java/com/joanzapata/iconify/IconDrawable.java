@@ -146,6 +146,14 @@ public class IconDrawable extends Drawable {
         return this;
     }
 
+    /**
+     * Returns the icon to be displayed
+     * @return The icon
+     */
+    public final Icon getIcon() {
+        return icon;
+    }
+
     @Override
     public int getIntrinsicHeight() {
         return size;
