@@ -524,7 +524,7 @@ public enum WeathericonsIcons implements Icon {
 
     @Override
     public String key() {
-        return name().replace('_', '_');
+        return name().replace('_', '-');
     }
 
     @Override
