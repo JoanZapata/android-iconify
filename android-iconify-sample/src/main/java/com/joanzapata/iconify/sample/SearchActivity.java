@@ -11,8 +11,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.IconFontDescriptor;
@@ -30,6 +33,8 @@ public class SearchActivity extends AppCompatActivity
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+    @Bind(R.id.tv_no_result)
+    TextView tvNoResult;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -120,28 +125,23 @@ public class SearchActivity extends AppCompatActivity
             handler = new Handler();
         }
         handler.removeCallbacks(runnable);
-        runnable = null;
-
-        if (newText.length() > 1) {
-            runnable = new Runnable() {
-                @Override
-                public void run() {
-                    doSearch(newText);
-                }
-            };
-            handler.postDelayed(runnable, 500);
-        } else {
-            adapter.reset();
-            adapter.notifyDataSetChanged();
-        }
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                doSearch(newText);
+            }
+        };
+        handler.postDelayed(runnable, 500);
         return false;
     }
 
     private void doSearch(final String keyword) {
-        if (lastNoResultKeyword != null &&
-                keyword.startsWith(lastNoResultKeyword)) {
+        if (TextUtils.isEmpty(keyword)
+                || lastNoResultKeyword != null
+                && keyword.startsWith(lastNoResultKeyword)) {
             adapter.reset();
             adapter.notifyDataSetChanged();
+            tvNoResult.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -159,6 +159,9 @@ public class SearchActivity extends AppCompatActivity
         adapter.notifyDataSetChanged();
         if (icons.size() == 0) {
             lastNoResultKeyword = keyword;
+            tvNoResult.setVisibility(View.VISIBLE);
+        } else {
+            tvNoResult.setVisibility(View.GONE);
         }
     }
 
