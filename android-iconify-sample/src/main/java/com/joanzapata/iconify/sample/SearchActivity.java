@@ -18,10 +18,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.joanzapata.iconify.Icon;
-import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.sample.utils.AndroidUtils;
+import com.joanzapata.iconify.sample.utils.SearchUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -43,7 +42,7 @@ public class SearchActivity extends AppCompatActivity
     private Handler handler;
     private Runnable runnable;
     private String lastNoResultKeyword;
-    private SearchIconAdapter adapter;
+    private IconAdapter adapter;
 
     ///////////////////////////////////////////
 
@@ -81,7 +80,7 @@ public class SearchActivity extends AppCompatActivity
         int nbColumns = AndroidUtils.getScreenSize(this).width /
                 getResources().getDimensionPixelSize(R.dimen.item_width);
         recyclerView.setLayoutManager(new GridLayoutManager(this, nbColumns));
-        adapter = new SearchIconAdapter();
+        adapter = new IconAdapter();
         recyclerView.setAdapter(adapter);
     }
 
@@ -141,20 +140,16 @@ public class SearchActivity extends AppCompatActivity
                 && keyword.startsWith(lastNoResultKeyword)) {
             adapter.reset();
             adapter.notifyDataSetChanged();
-            tvNoResult.setVisibility(View.VISIBLE);
+            if (TextUtils.isEmpty(keyword)) {
+                tvNoResult.setVisibility(View.GONE);
+            } else {
+                tvNoResult.setVisibility(View.VISIBLE);
+            }
             return;
         }
 
-        // TODO: better way is to search in thread, but now it is enough
-        List<Icon> icons = new ArrayList<Icon>();
-        for (Font font : Font.values()) {
-            IconFontDescriptor fontDescriptor = font.getFont();
-            for (Icon icon : fontDescriptor.characters()) {
-                if (icon.key().contains(keyword)) {
-                    icons.add(icon);
-                }
-            }
-        }
+        // TODO: it is better to search in thread, but here it is also enough
+        List<Icon> icons = SearchUtils.searchIcons(keyword);
         adapter.setIcons(icons);
         adapter.notifyDataSetChanged();
         if (icons.size() == 0) {

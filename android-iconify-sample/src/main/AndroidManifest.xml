@@ -19,6 +19,11 @@
         <activity
             android:name=".SearchActivity"
             android:theme="@style/SearchActivityTheme"/>
+        <activity
+            android:launchMode="singleTop"
+            android:label="Similar icons"
+            android:name=".SimilarIconsActivity"
+            android:theme="@style/SearchActivityTheme"/>
     </application>
 
 </manifest>
