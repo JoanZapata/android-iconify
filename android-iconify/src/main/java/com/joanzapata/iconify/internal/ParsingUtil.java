@@ -98,8 +98,9 @@ public final class ParsingUtil {
         String stringText = text.toString();
         int startIndex = stringText.indexOf("{", start);
         if (startIndex == -1) return;
-        int endIndex = stringText.indexOf("}", startIndex) + 1;
+        int endIndex = stringText.indexOf("}", startIndex);
         if (endIndex == -1) return;
+        endIndex += 1;
         String expression = stringText.substring(startIndex + 1, endIndex - 1);
 
         // Split the expression and retrieve the icon key
