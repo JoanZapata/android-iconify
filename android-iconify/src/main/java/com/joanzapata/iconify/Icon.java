@@ -8,7 +8,8 @@ public interface Icon {
     /** The key of icon, for example 'fa-ok' */
     String key();
 
-    /** The character matching the key in the font, for example '\u4354' */
-    char character();
+    /** The character matching the key in the font, for example String.valueOf('\u4354') or in case
+     * of characters outside the initial Basic Multilingual Plane, simply "\uD83D\uDC64" */
+    String character();
 
 }
