@@ -1,28 +1,28 @@
 buildscript {
-    dependencies {
-        classpath rootProject.ext.androidPlugin
-    }
+  dependencies {
+    classpath rootProject.ext.androidPlugin
+  }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
 
-    defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        consumerProguardFiles 'proguard-rules.txt'
-    }
+  defaultConfig {
+    minSdkVersion rootProject.ext.minSdkVersion
+    consumerProguardFiles 'proguard-rules.txt'
+  }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_6
-        targetCompatibility JavaVersion.VERSION_1_6
-    }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:22.2.1'
+  implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

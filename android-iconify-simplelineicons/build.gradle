@@ -15,13 +15,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_6
-        targetCompatibility JavaVersion.VERSION_1_6
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-    compile project(':android-iconify')
+    implementation project(':android-iconify')
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

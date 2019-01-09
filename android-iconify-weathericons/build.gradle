@@ -1,27 +1,29 @@
 buildscript {
-    dependencies {
-        classpath rootProject.ext.androidPlugin
-    }
+  dependencies {
+    classpath rootProject.ext.androidPlugin
+  }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
 
-    defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-    }
+  defaultConfig {
+    minSdkVersion rootProject.ext.minSdkVersion
+  }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_6
-        targetCompatibility JavaVersion.VERSION_1_6
-    }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
+
+
 dependencies {
-    compile project(':android-iconify')
+  implementation project(':android-iconify')
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
