@@ -811,7 +811,7 @@ public enum MaterialIcons implements Icon {
     }
 
     @Override
-    public char character() {
-        return character;
+    public String character() {
+        return String.valueOf(character);
     }
 }

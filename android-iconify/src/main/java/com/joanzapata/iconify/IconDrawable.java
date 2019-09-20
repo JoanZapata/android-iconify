@@ -162,8 +162,8 @@ public class IconDrawable extends Drawable {
         int height = bounds.height();
         paint.setTextSize(height);
         Rect textBounds = new Rect();
-        String textValue = String.valueOf(icon.character());
-        paint.getTextBounds(textValue, 0, 1, textBounds);
+        String textValue = icon.character();
+        paint.getTextBounds(textValue, 0, textValue.length(), textBounds);
         int textHeight = textBounds.height();
         float textBottom = bounds.top + (height - textHeight) / 2f + textHeight - textBounds.bottom;
         canvas.drawText(textValue, bounds.exactCenterX(), textBottom, paint);
